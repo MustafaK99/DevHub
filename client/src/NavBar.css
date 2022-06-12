@@ -1,0 +1,23 @@
+
+.navbar {
+    display: block;
+    text-align: center;
+    background-color: transparent;
+    border-bottom: 1px solid #f2f2f2
+
+  }
+  .navbar h1 {
+    color: #f1356d;
+  }
+  .navbar .links {
+    display: block;
+    text-align: center;
+  }
+  .navbar a {
+    margin-left: 16px;
+    text-decoration: none;
+    padding: 10px;
+  }
+  .navbar a:hover {
+    color: #f1356d;
+  }
