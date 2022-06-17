@@ -8,9 +8,9 @@ const NavBar = () => {
                 <Link to="/" className="links"> <h1>DevHub </h1></Link>
                
                         <>
-                            <Link to="#" id="chatNavButton">Chat</Link>
+                            <Link to="/chat" id="chatNavButton">Chat</Link>
                             <Link to="/board" id="workNavButton">Board</Link>
-                            <Link to="#" id="gitNavButton" >Git</Link>
+                            <Link to="/git" id="gitNavButton" >Git</Link>
                         </>
             </nav>
      )
