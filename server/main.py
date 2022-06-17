@@ -1,4 +1,5 @@
 import imp
+from turtle import title
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from config import DevConfig
@@ -19,7 +20,17 @@ class User(db.Model):
         return "<User '{}'".format(self.username)
 
 class Post(db.Model):
-    id = db.Column(db.integer)
+    id = db.Column(db.Integer(), primary_key=True)
+    title = db.Column(db.String(255))
+    text = db.Column(db.String())
+    publish_date = db.Column(db.DateTime())
+    user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+
+    def __init__(self, title) -> None:
+        self.title = title
+
+    def __repr__(self) -> str:
+        return "<Post '{}'".format(self.title)
 
 # Changed to show the git diff command
 @app.route('/')
