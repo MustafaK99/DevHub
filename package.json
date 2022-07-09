@@ -1,15 +1,22 @@
 {
-  "name": "backend",
+  "name": "devhub",
   "version": "1.0.0",
-  "description": "DevHub App",
+  "description": "DevHub",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js"
-
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MustafaK99/DevHub.git"
   },
   "author": "Mustafa",
-  "license": "ISC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MustafaK99/DevHub/issues"
+  },
+  "homepage": "https://github.com/MustafaK99/DevHub#readme",
   "dependencies": {
     "colors": "^1.4.0",
     "dotenv": "^16.0.1",

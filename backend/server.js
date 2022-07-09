@@ -1,1 +1,12 @@
-console.log('hello world')
+const express = require("express")
+const dotenv = require("dotenv").config()
+const port = process.env.PORT
+
+const app = express()
+
+
+app.use('/api/tickets', require('./routes/ticketRoutes'))
+
+
+
+app.listen(port, () => console.log(`server is listening on ${port}`))
