@@ -1,29 +1,27 @@
+const asyncHandler = require('express-async-handler')
 
-const getTickets = (req, res) => {
+const getTickets = asyncHandler (async (req, res) => {
     res.status(200).json({message: 'get tickets'})
-}
+})
 
 
-const setTicket = (req, res) => {
-
-    if(!req.body.title){
+const setTicket = asyncHandler( async (req, res) => {
+     
+    if(!req.body.text){
         res.status(400)
-        throw new Error('add stuff');
+        throw new Error('Please add a field')
     }
-
-    const {title, priority} = req.body
-    console.log(title)
-    console.log(priority)
+   
     res.status(200).json({message: 'create ticket'})
-}
+})
 
-const updateTicket = (req, res) => {
+const updateTicket = asyncHandler( async (req, res) => {
     res.status(200).json({message: `update ticket ${req.params.id}`})
-}
+})
 
-const deleteTicket = (req, res) => {
+const deleteTicket = asyncHandler (async (req, res) => {
     res.status(200).json({message: `delete ticket ${req.params.id}`})
-}
+})
 
 
 
