@@ -1,7 +1,11 @@
 const asyncHandler = require('express-async-handler')
 
+const Ticket = require('../models/ticketModel')
+
 const getTickets = asyncHandler (async (req, res) => {
-    res.status(200).json({message: 'get tickets'})
+    const tickets = await Ticket.find()
+
+    res.status(200).json(tickets)
 })
 
 
@@ -11,6 +15,8 @@ const setTicket = asyncHandler( async (req, res) => {
         res.status(400)
         throw new Error('Please add a field')
     }
+
+    const ticket = await Ticket.create({})
    
     res.status(200).json({message: 'create ticket'})
 })
