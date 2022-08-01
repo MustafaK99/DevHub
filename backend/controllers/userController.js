@@ -65,9 +65,9 @@ const registerAdminUser = asyncHandler(async(req, res) => {
 })
 
 const registerUser = asyncHandler(async(req, res) => {
-    const {name, email, password} = req.body
+    const {name, email, password, role} = req.body
 
-    if(!name || !email || !password){
+    if(!name || !email || !password || !role){
         res.status(400)
         next(error)
     }
@@ -79,13 +79,17 @@ const registerUser = asyncHandler(async(req, res) => {
         next(error)
     }
 
+
+
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
     const user = await User.create({
         name, 
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        role,
+        organisation: req.user.organisation
     })
 
     if(user){
@@ -93,6 +97,7 @@ const registerUser = asyncHandler(async(req, res) => {
             _id: user.id,
             name: user.name,
             email: user.email,
+            org: user.organisation,
             token: generateToken(user._id)
         })
     } else {
@@ -124,11 +129,13 @@ const loginUser = asyncHandler(async(req, res) => {
 
 
 const getMe = asyncHandler(async(req, res) => {
-    const {_id, name, email} = await User.findById(req.user.id)
+    const {_id, name, email, role, organisation} = await User.findById(req.user.id)
     res.status(200).json({
         id: _id,
         name,
-        email
+        email,
+        role,
+        organisation
     })
 })
 
