@@ -14,6 +14,15 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    role: {
+        type: String,
+        required: true
+    },
+    organisation: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Organisation'
     }
 
 }, {

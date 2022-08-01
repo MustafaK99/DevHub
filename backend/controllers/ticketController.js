@@ -2,9 +2,10 @@ const { response } = require('express')
 const asyncHandler = require('express-async-handler')
 
 const Ticket = require('../models/ticketModel')
+const User = require('../models/userModel')
 
 const getTickets = asyncHandler (async (req, res) => {
-    const tickets = await Ticket.find({})
+    const tickets = await Ticket.find({ user: req.user.id})
 
     res.status(200).json(tickets)
 })
@@ -29,7 +30,8 @@ const setTicket = asyncHandler( async (req, res) => {
         content,
         issueType,
         priority,
-        estimate
+        estimate,
+        user: req.user.id
     })
 
     const savedTicket = await ticket.save()
@@ -53,6 +55,16 @@ const updateTicket = asyncHandler( async (req, res) => {
         issueType,
         priority,
         estimate
+    }
+
+    const user = await User.findById(req.user.id)
+
+    if(!user){
+        res.status(401).json({message: 'Not Authorized'})
+    }
+
+    if(ticket.user.toString() !== user.id){
+        res.status(401).json({message: 'Not Authorized'})
     }
  
    newTicket =  await Ticket.findByIdAndUpdate(req.params.id, ticket, { new: true })
