@@ -15,17 +15,24 @@ const protect = asyncHandler(async(req, res, next) => {
             next()
 
         } catch (error) {
-            res.status(401).json({message: 'Not Authorized'})
+            return res.status(401).json({message: 'Not Authorized'})
         }
     }
 
     if(!token){
-        res.status(401).json({message: 'Not Authorized'})
+        return res.status(401).json({message: 'Not Authorized'})
     }
 
 })
 
+function authRole(role){
+    return(req, res, next) => {
+        if(req.user.role !== role){
+            return res.status(401).json({message: 'Not Admin'})
+        }
 
+      next()
+    }
+}
 
-
-module.exports = {protect}
+module.exports = {protect, authRole}
