@@ -8,6 +8,7 @@
   }
   .navbar h1 {
     color: #f1356d;
+    font-size: 30px;
   }
   .navbar .links {
     display: block;
@@ -21,3 +22,5 @@
   .navbar a:hover {
     color: #f1356d;
   }
+
+  
