@@ -1,10 +1,14 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Board from './Board';
-import Home from './Home';
-import NavBar from './NavBar';
-import Chat from './Chat';
-import Git from './Git';
+import Board from './pages/Board/Board';
+import Home from './pages/Home';
+import NavBar from './components/Navbar/NavBar';
+import Chat from './pages/Chat';
+import Git from './pages/Git';
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import Register from './pages/Register';
+
 function App() {
   return (
 
@@ -17,6 +21,11 @@ function App() {
             <Route path="/board" element={<Board/>} />
             <Route path="/chat" element={<Chat/>} />
             <Route path='/git' element={<Git/>} />
+            <Route path='/login' element={<Login/>} />
+            <Route path='/dashboard' element={<Dashboard/>} />
+            <Route path='/Register' element={<Register/>} />
+
+
           </Routes>
 
         </Router>

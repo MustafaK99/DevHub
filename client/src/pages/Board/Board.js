@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Col from "./Col";
-import Item from "./item";
-import DropWrapper from "./DropWrapper";
+import Col from "../../components/Col";
+import Item from "../../components/item";
+import DropWrapper from "../../components/DropWrapper";
+import './board.css';
 
 
 const Board = () => {
