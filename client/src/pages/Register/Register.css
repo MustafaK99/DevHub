@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+
+.page-container{
+    background-color: white;
+    margin-top: 60px;
+}
+.header {
+   
+    margin-bottom: 0px;
+  
+  }
+.form-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-color:rgba(137, 137, 137, 0.1);
+    background-color: rgba(241, 53, 109, 0.);
+    border-radius: 25px;
+  }
+
+.form-group h1{
+    color: rgba(241, 53, 109, 1);
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.form-group p{
+    color:rgba(241, 53, 109, 1);
+    font-size: 15px;
+    font-weight: bold;
+}
+.form-group input{
+    border-radius: 10px;
+}
+
+.form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 65%;
+
+}

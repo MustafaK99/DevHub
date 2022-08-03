@@ -7,7 +7,7 @@ import Chat from './pages/Chat';
 import Git from './pages/Git';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
-import Register from './pages/Register';
+import Register from './pages/Register/Register';
 
 function App() {
   return (
