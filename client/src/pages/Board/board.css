@@ -3,9 +3,7 @@
 :root {
     --primary-color: rgb(62, 100, 255);
     --complete-color: #27aa80;
-    --text-color: #8B94A7;
     --disabled-color: #fad6d6;
-    --background-color: #F1F3F5;
     --ggs: 1.1;
 }
 
@@ -80,6 +78,7 @@ select {
     padding: 10px 14px;
     border-radius: 5px;
     z-index: 1;
+    color: #8B94A7;
     background-color: white;
 }
 
@@ -108,7 +107,7 @@ select {
     flex-direction: column;
     margin: 20px;
     padding: 20px;
-    background-color: var(--background-color);
+    background-color:rgb(220, 219, 219);
     border-radius: 5px;
 }
 
@@ -226,5 +225,16 @@ select {
     border-radius: 25px;
     padding: 2px 6px;
     font-weight: 600;
+}
+
+.project-list{
+    position: relative;
+    padding: 10px;
+    border: none;
+    border-right: 10px solid #fff;
+    outline: none;
+    width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
 }
 

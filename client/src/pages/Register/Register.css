@@ -2,7 +2,7 @@
 
 
 .page-container{
-    background-color: white;
+    background-color: black;
     margin-top: 60px;
 }
 .header {
@@ -19,20 +19,19 @@
     width: 100%;
     margin: 0 auto;
     position: relative;
-    background-color:rgba(137, 137, 137, 0.1);
-    background-color: rgba(241, 53, 109, 0.);
+    background-color:rgb(220, 219, 219);
     border-radius: 25px;
   }
 
 .form-group h1{
-    color: rgba(241, 53, 109, 1);
+    color: rgba(30, 215,96,1);
     font-size: 35px;
     font-weight: bold;
     margin-top: 20px;
 }
 
 .form-group p{
-    color:rgba(241, 53, 109, 1);
+    color: rgba(30, 215,96,1);
     font-size: 15px;
     font-weight: bold;
 }
@@ -46,5 +45,5 @@
     justify-content: center;
     flex-direction: column;
     width: 65%;
-
 }
+

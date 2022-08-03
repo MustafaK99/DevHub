@@ -9,6 +9,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
+  background-color: #000;
 }
 
 a {
@@ -44,20 +45,20 @@ h3 {
 }
 
 .logo {
-  color: #f1356d;
+  color: rgba(30, 215,96,1);
   font-size: 40px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
 
 .middleLinks{
-  color: #f1356d;
+  color: rgba(30, 215,96,1);
   font-size: 20px;
   font-weight:lighter;
 }
 
 .middleLinks:hover{
-  color:rgb(0, 0, 0)
+  color:rgb(255,255,255,1)
 }
 
 .header {
@@ -65,7 +66,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid rgba(30, 215,96,1);
   margin-bottom: 60px;
 
 }
@@ -83,12 +84,12 @@ h3 {
 .header ul li a {
   display: flex;
   align-items: center;
-  color:#f1356d;
+  color: rgba(30, 215,96,1);
 
 }
 
 .header ul li a:hover {
-  color: rgb(0, 0, 0);
+  color: white;
 }
 
 .header ul li a svg {
@@ -157,10 +158,9 @@ h3 {
 
 .btn {
   padding: 10px 20px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  background: #000;
-  color: #fff;
+  border-radius: 25px;
+  background:  rgba(30, 215,96,1);
+  color: rgba(255,255,255,1);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
@@ -181,7 +181,7 @@ h3 {
 }
 
 .btn-block {
-  width: 100%;
+  width: 65%;
   margin-bottom: 20px;
 }
 

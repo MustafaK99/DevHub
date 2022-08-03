@@ -17,7 +17,16 @@ const Register = ()=> {
 
     const {organisation, organisationEmail, name, email, password, password2} = formData
     
-    const onChange = () => {}
+    const onChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState, 
+            [e.target.name]: e.target.value,
+        }) )
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+    } 
 
     return(
     <div className='page-container'>
@@ -26,7 +35,7 @@ const Register = ()=> {
                     <FaUser /> Register
                 </h1>
                 <p>Create Account</p>
-                <form className='form-container'>
+                <form className='form-container' onSubmit={onSubmit}>
                     <input type="text" id='organisation' 
                     name='organisation' value={organisation} placeholder='Enter org'
                     onChange={onChange}
@@ -53,8 +62,8 @@ const Register = ()=> {
                     <input type="password" id='password2' 
                     name='password2' value={password2} placeholder='Re-enter password'
                     onChange={onChange}
-                    />                        
-
+                    />
+                     <button type="submit" className='btn btn-block'>Submit</button>
                 </form>    
         </section>
     </div>
