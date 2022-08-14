@@ -1,4 +1,4 @@
-import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
+import {FaSignInAlt, FaSignOutAlt, FaUser, FaUserShield} from 'react-icons/fa'
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -29,6 +29,11 @@ const NavBar = () => {
                         <FaUser /> Register
                      </Link>
                    </li> 
+                   <li>
+                     <Link to='#'>
+                       <FaUserShield /> Admin
+                     </Link>
+                   </li>
                 </ul>      
             </header>
      )
