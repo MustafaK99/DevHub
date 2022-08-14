@@ -6,7 +6,7 @@ import NavBar from './components/Navbar/NavBar';
 import Chat from './pages/Chat';
 import Git from './pages/Git';
 import Dashboard from './pages/Dashboard';
-import Login from './pages/Login';
+import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
             <Route path='/login' element={<Login/>} />
             <Route path='/dashboard' element={<Dashboard/>} />
             <Route path='/Register' element={<Register/>} />
+            
 
 
           </Routes>

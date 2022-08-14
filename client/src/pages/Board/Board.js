@@ -81,19 +81,13 @@ const Board = () => {
 
     return (
        <>
-         <select className='project-list' name="projects" id="projects">
-           <option value="project1">Prj1</option>
-            <option value="project2">Prj2</option>
-            <option value="project3">Prj3</option>
-            <option value="project4">Prj4</option>
-         </select>           
         <div className={"row"}>
             {["open", "in progress", "in review", "done"].map(status => {
                 return (
                     <div key={status} className={"col-wrapper"}>
                         <div className={"col-group"}>
                             <h5 className={"col-header"}>{status.toUpperCase()}</h5>
-                            <p className={"col-count"}>{items.filter(i => i.status === status).length}</p>
+                            <h5 className={"col-count"}>{items.filter(i => i.status === status).length}</h5>
                         </div>
                         <DropWrapper onDrop={onDrop} status={status}>
                             <Col>
