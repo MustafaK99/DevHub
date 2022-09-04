@@ -17,12 +17,18 @@ export const register = createAsyncThunk('auth/register',  async (user, thunkAPI
        
       return await authService.register(user)   
     } catch (error) {
-        const message = (error.response && error.response.data && error.respone.data.message || 
+        const message = ((error.response && error.response.data && error.respone.data.message) || 
             error.message || error.toString())
 
         return thunkAPI.rejectWithValue(message)
     }
 })
+
+export const logout = createAsyncThunk('auth/logout',  
+async () => {
+    await authService.logout()
+})
+
 
 export const authSlice = createSlice({
     name: 'auth',

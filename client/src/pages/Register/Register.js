@@ -6,7 +6,7 @@ import {register, reset} from '../../features/auth/authSlice'
 import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import './Register.css'
-
+import Spinner from '../../components/Spinner'
 const Register = ()=> {
 
     const[formData, setFormData] = useState({
@@ -49,7 +49,7 @@ const Register = ()=> {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        if(password != password2){
+        if(password !== password2){
             toast.error('Password do not match')
         } else {
             const UserData = {
@@ -63,7 +63,11 @@ const Register = ()=> {
             dispatch(register(UserData))
         }
 
-    } 
+    }
+    
+    if(isLoading){
+        return <Spinner/>
+    }
 
     return(
     <div className='page-container'>
