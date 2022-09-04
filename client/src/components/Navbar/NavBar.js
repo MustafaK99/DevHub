@@ -10,6 +10,12 @@ const NavBar = () => {
     const dispatch = useDispatch()
     const {user} = useSelector((state) => state.auth)
 
+    const onLogout = () => {
+        dispatch(logout())
+        dispatch(reset())
+        naviagte('/')
+    }
+
     return (
             <header className='header'>
                 <div className='logo'>
@@ -25,22 +31,27 @@ const NavBar = () => {
                     Git
                 </Link>
                 <ul>
-                  
-                   <li>
-                     <Link to='/login'>
-                        <FaSignInAlt /> Login
-                     </Link>
-                   </li> 
+                  {user ? (
+                  <li> 
+                       <button className='btn' onClick={onLogout}>
+                          <FaSignOutAlt /> Logout
+                       </button>
+                   </li>) :(
+                  <> 
                    <li>
                      <Link to='/register'>
                         <FaUser /> Register
                      </Link>
-                   </li> 
-                   <li>
-                     <Link to='#'>
-                       <FaUserShield /> Admin
-                     </Link>
                    </li>
+                   <li>
+                    <Link to='/login'>
+                        <FaSignInAlt /> Login
+                    </Link>
+                   </li>                    
+                  </>
+
+                  )}
+
                 </ul>      
             </header>
      )
