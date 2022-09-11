@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
+import './Register.css'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import {register, reset} from '../../features/auth/authSlice'
-import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
-import './Register.css'
 import Spinner from '../../components/Spinner'
 const Register = ()=> {
 
