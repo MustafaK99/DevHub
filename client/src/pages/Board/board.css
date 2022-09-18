@@ -5,6 +5,7 @@
     --complete-color: #27aa80;
     --disabled-color: #fad6d6;
     --ggs: 1.1;
+    --speed: 500ms;
 }
 
 body {
@@ -227,14 +228,13 @@ select {
     font-weight: 600;
 }
 
-.project-list{
-    position: relative;
-    padding: 10px;
-    border: none;
-    border-right: 10px solid #fff;
-    outline: none;
-    width: 200px;
-    border-radius: 4px;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+ul  {
+   list-style: none;
+   margin: 0;
+   padding: 0; 
 }
 
+a {
+    color: #dadce1;
+    text-decoration: none;
+}

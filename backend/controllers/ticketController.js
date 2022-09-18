@@ -1,5 +1,6 @@
 const { response } = require('express')
 const asyncHandler = require('express-async-handler')
+const { trusted } = require('mongoose')
 
 const Ticket = require('../models/ticketModel')
 const User = require('../models/userModel')
@@ -57,13 +58,12 @@ const updateTicket = asyncHandler( async (req, res) => {
         estimate
     }
 
-    const user = await User.findById(req.user.id)
 
-    if(!user){
+    if(!req.user){
         res.status(401).json({message: 'Not Authorized'})
     }
 
-    if(ticket.user.toString() !== user.id){
+    if(ticket.user.toString() !== req.user.id){
         res.status(401).json({message: 'Not Authorized'})
     }
  
@@ -75,9 +75,25 @@ const updateTicket = asyncHandler( async (req, res) => {
 
 
 const deleteTicket = asyncHandler (async (req, res) => {
-    await Ticket.findByIdAndRemove(req.params.id)
-    res.status(204).end()
+   const ticket =  await Ticket.findByIdAndRemove(req.params.id)
+   if(!ticket) {
+        res.status(400)
+   }
+
+   if(!req.user){
+        res.status(401)
+   }
+
+   if(ticket.user.toString() !== req.user.id){
+        res.status(401)
+   }
+   
+   await ticket.remove()
+   res.status(200).json({id: req.params.id})
 })
+
+
+
 
 
 
