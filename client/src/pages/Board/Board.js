@@ -6,6 +6,23 @@ import Item from "../../components/item";
 import DropWrapper from "../../components/DropWrapper";
 import './board.css';
 
+function Navbar(props){
+    return (
+        <nav className="board-navbar">
+        <ul className="board-nav">{props.children}</ul>
+    </nav>
+    )
+}
+
+function NavItem(props) {
+    return(
+        <li className="nav-item">
+            <a href="" className="icon-button">
+                {props.icon}
+            </a>
+        </li>
+    );
+}
 
 const Board = () => {
 
@@ -83,6 +100,12 @@ const Board = () => {
 
     return (
        <>
+        <Navbar>
+            <NavItem icon="🤓"></NavItem>
+            <NavItem icon="🤓"></NavItem>
+            <NavItem icon="🤓"></NavItem>
+
+        </Navbar>
         <div className={"row"}>
             {["open", "in progress", "in review", "done"].map(status => {
                 return (
