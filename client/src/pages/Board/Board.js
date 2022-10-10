@@ -5,24 +5,8 @@ import Col from "../../components/Col";
 import Item from "../../components/item";
 import DropWrapper from "../../components/DropWrapper";
 import './board.css';
-
-function Navbar(props){
-    return (
-        <nav className="board-navbar">
-        <ul className="board-nav">{props.children}</ul>
-    </nav>
-    )
-}
-
-function NavItem(props) {
-    return(
-        <li className="nav-item">
-            <a href="" className="icon-button">
-                {props.icon}
-            </a>
-        </li>
-    );
-}
+import DropDown from "../../components/boardTaskBar/Dropdown"
+import MiniDrawer from "../../components/drawer/MiniDrawer";
 
 const Board = () => {
 
@@ -99,16 +83,11 @@ const Board = () => {
     };
 
     return (
-       <>
-        <Navbar>
-            <NavItem icon="🤓"></NavItem>
-            <NavItem icon="🤓"></NavItem>
-            <NavItem icon="🤓"></NavItem>
-
-        </Navbar>
-        <div className={"row"}>
-            {["open", "in progress", "in review", "done"].map(status => {
-                return (
+        <>
+        <MiniDrawer />
+        <DropDown />
+        <div className={"row"}> 
+            {["open", "in progress", "in review", "done"].map(status => { return (
                     <div key={status} className={"col-wrapper"}>
                         <div className={"col-group"}>
                             <h5 className={"col-header"}>{status.toUpperCase()}</h5>
@@ -133,10 +112,10 @@ const Board = () => {
                             </Col>
                         </DropWrapper>
                     </div>
-                );
-            })}
+            )})}
         </div>
-     </> 
+        </>
+
     );
 };
 
