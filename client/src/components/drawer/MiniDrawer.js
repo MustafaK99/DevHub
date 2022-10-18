@@ -18,7 +18,10 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-
+import AddIcon from '@mui/icons-material/Add';
+import QueueIcon from '@mui/icons-material/Queue';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -92,6 +95,7 @@ export default function MiniDrawer() {
 
   const handleDrawerOpen = () => {
     setOpen(!open);
+    console.log(open)
   };
 
 
@@ -101,12 +105,13 @@ export default function MiniDrawer() {
 
         <DrawerHeader>
           <IconButton onClick={handleDrawerOpen}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {open === true ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Home', 'New Board', 'Active Sprints', 'Backlog'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -122,7 +127,10 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index === 0 && <KeyboardArrowUpIcon />}
+                  {index === 1 &&  <AddIcon /> }
+                  {index === 2 && <DashboardIcon />}
+                  {index === 3 && <QueueIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>

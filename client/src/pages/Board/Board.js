@@ -114,6 +114,9 @@ const Board = () => {
                     </div>
             )})}
         </div>
+
+        <h1>Active sprint stuff here with link</h1>
+        <h1>Backlog here with link</h1>
         </>
 
     );
