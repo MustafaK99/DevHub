@@ -16,12 +16,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import SettingsIcon from '@mui/icons-material/Settings';
 import AddIcon from '@mui/icons-material/Add';
 import QueueIcon from '@mui/icons-material/Queue';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Window from "./Window";
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -92,12 +92,16 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [show, setShow] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(!open);
     console.log(open)
   };
 
+  const onOpen = () => setShow(true);
+
+  const onClose = () => setShow(false);
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -111,9 +115,54 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Home', 'New Board', 'Active Sprints', 'Backlog'].map((text, index) => (
+          <ListItem disablePadding sx={{display: 'block'}}>
+            <ListItemButton
+                onClick={onOpen}
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}              
+            >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                    <AddIcon />
+                </ListItemIcon>
+                <ListItemText primary='New Board' sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+
+          </ListItem>
+
+        <ListItem disablePadding sx={{ display: 'block' }}>  
+          <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}              
+            >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                    <DashboardIcon />
+                </ListItemIcon>
+                <ListItemText primary='Active Sprints' sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+
+          {['New Board', 'Active Sprints', 'Backlog'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+                onClick={onOpen}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -127,19 +176,25 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index === 0 && <KeyboardArrowUpIcon />}
-                  {index === 1 &&  <AddIcon /> }
-                  {index === 2 && <DashboardIcon />}
-                  {index === 3 && <QueueIcon />}
+                  {index === 0 &&  <AddIcon /> }
+                  {index === 1 && <DashboardIcon />}
+                  {index === 2 && <QueueIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
+                
+              <Window
+                onClose={onClose}
+                show={show}
+            />
+
+
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['New Project', 'Project Settings'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -155,7 +210,9 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index === 0  && <AddIcon/>}
+                  {index === 1 && <SettingsIcon/> }
+
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
