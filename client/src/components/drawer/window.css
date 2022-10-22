@@ -3,6 +3,7 @@
     border-radius: 2px;
     margin: 48px 0 80px;
     min-height: 450px;
+    height: 600px;
     width: 800px;
     outline: none;
     padding: 20px;
@@ -35,3 +36,15 @@
 .close-btn:hover {
     background-color: #DCDCDC;
 }
+
+.new-project-form-content{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+
+}
+.center {
+    position: relative;
+    top: 10px;
+    left: 120px;
+  }
