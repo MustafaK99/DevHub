@@ -64,7 +64,6 @@ const Login = ()=> {
         return <Spinner />
     }
     return(
-    <div className='page-container'>
         <section className='form-group'>
                 <h1>
                 <FaSignInAlt /> Login
@@ -86,7 +85,6 @@ const Login = ()=> {
                      <button type="submit" className='btn btn-block'>Submit</button>
                 </form>    
         </section>
-    </div>
   );
 }
 

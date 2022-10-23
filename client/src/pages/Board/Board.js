@@ -8,11 +8,13 @@ import './board.css';
 import DropDown from "../../components/boardTaskBar/Dropdown"
 import MiniDrawer from "../../components/drawer/MiniDrawer";
 
+
 const Board = () => {
 
     const [items, setItems] = useState([]);
     const [dragEl, setDragEl] = useState(null);
     const[statusIcons, setStatusIcons] = useState([]);
+
 
     useEffect(() => {
           fetch('http://localhost:8000/data')
@@ -85,9 +87,11 @@ const Board = () => {
     return (
         <>
         <MiniDrawer />
-        <DropDown />
+ 
+        <div className="board-content">
+        <button className='button-column'>Create new column</button>
         <div className={"row"}> 
-            {["open", "in progress", "in review", "done"].map(status => { return (
+            {["open", "in progress", "done"].map(status => { return (
                     <div key={status} className={"col-wrapper"}>
                         <div className={"col-group"}>
                             <h5 className={"col-header"}>{status.toUpperCase()}</h5>
@@ -114,9 +118,7 @@ const Board = () => {
                     </div>
             )})}
         </div>
-
-        <h1>Active sprint stuff here with link</h1>
-        <h1>Backlog here with link</h1>
+        </div>
         </>
 
     );

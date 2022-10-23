@@ -2,7 +2,7 @@
 
 
 .page-container{
-    background-color: white;
+    background-color: #484a4d;
     margin-top: 60px;
 }
 .header {
@@ -19,7 +19,7 @@
     width: 100%;
     margin: 0 auto;
     position: relative;
-    background-color:white;
+    background-color:#484a4d;
     border-radius: 25px;
   }
   /* rgb(220, 219, 219) */
@@ -38,6 +38,8 @@
 }
 .form-group input{
     border-radius: 10px;
+    background-color:rgb(220, 219, 219);
+
 }
 
 .form-container{

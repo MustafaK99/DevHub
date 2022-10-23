@@ -49,6 +49,9 @@
   }, {
       "status": "done",
       "icon": "✅"
+  },{
+      "status":"testing",
+      "icon":"✅"
   }]
 
 }

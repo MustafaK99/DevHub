@@ -69,7 +69,6 @@ const Register = ()=> {
     }
 
     return(
-    <div className='page-container'>
         <section className='form-group'>
                 <h1>
                     <FaUser /> Register
@@ -106,7 +105,6 @@ const Register = ()=> {
                      <button type="submit" className='btn btn-block'>Submit</button>
                 </form>    
         </section>
-    </div>
   );
 }
 

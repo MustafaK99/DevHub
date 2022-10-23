@@ -70,7 +70,7 @@ select {
 .row {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    overflow: auto;
 }
 
 .item {
@@ -237,4 +237,37 @@ ul  {
 .links-for-list{
     color:#dadce1;
     text-decoration: none;
+}
+
+.button-column{
+    padding: 10px 20px;
+    margin-left: 15px;
+    border-radius: 25px;
+    background:  rgba(30, 215,96,1);
+    border-color:rgba(30, 215,96,1) ;
+    color: rgba(255,255,255,1);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    appearance: button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.auto-complete{
+    background-color:rgb(220, 219, 219);
+    border-color: rgba(30, 215,96,1);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.board-content{
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow: auto;
 }
