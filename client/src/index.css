@@ -44,55 +44,6 @@ h3 {
   text-align: center;
 }
 
-.logo {
-  color: rgba(30, 215,96,1);
-  font-size: 40px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-}
-
-.middleLinks{
-  color: rgba(30, 215,96,1);
-  font-size: 20px;
-  font-weight:lighter;
-}
-
-.middleLinks:hover{
-    font-weight: bolder;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(30, 215,96,1);
-  margin-bottom: 60px;
-
-}
-
-.header ul {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.header ul li {
-  margin-left: 20px;
-}
-
-.header ul li a {
-  display: flex;
-  align-items: center;
-  color: rgba(30, 215,96,1);
-
-}
-
-
-
-.header ul li a svg {
-  margin-right: 5px;
-}
 
 .heading {
   font-size: 2rem;
