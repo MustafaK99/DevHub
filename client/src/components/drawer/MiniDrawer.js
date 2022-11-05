@@ -22,7 +22,9 @@ import QueueIcon from '@mui/icons-material/Queue';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import Window from "./Window";
 
+
 const drawerWidth = 240;
+
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -73,6 +75,8 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+
+  
   ({ theme, open }) => ({
     width: drawerWidth,
     flexShrink: 0,
@@ -94,6 +98,9 @@ export default function MiniDrawer() {
   const [open, setOpen] = React.useState(false);
   const [show, setShow] = React.useState(false);
 
+
+ 
+
   const handleDrawerOpen = () => {
     setOpen(!open);
     console.log(open)
@@ -105,15 +112,15 @@ export default function MiniDrawer() {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} PaperProps={{ sx: {backgroundColor: "#24292f" , color: "white"}}}>
 
         <DrawerHeader>
-          <IconButton onClick={handleDrawerOpen}>
+          <IconButton onClick={handleDrawerOpen} sx={{ color: 'white',}}>
             {open === true ? <ChevronRightIcon /> : <ChevronLeftIcon />}
 
           </IconButton>
         </DrawerHeader>
-        <Divider />
+        <Divider sx={{borderColor: 'white'}}/>
         <List>
           <ListItem disablePadding sx={{display: 'block'}}>
             <ListItemButton
@@ -129,6 +136,7 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color: 'white'
                   }}
                 >
                     <AddIcon />
@@ -151,6 +159,7 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color: 'white',
                   }}
                 >
                     <DashboardIcon />
@@ -174,6 +183,8 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color: 'white',
+
                   }}
                 >
                   {index === 0 &&  <AddIcon /> }
@@ -192,7 +203,7 @@ export default function MiniDrawer() {
             </ListItem>
           ))}
         </List>
-        <Divider />
+        <Divider sx={{borderColor: 'white'}}/>
         <List>
           {['New Project', 'Project Settings'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
@@ -208,6 +219,7 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color: 'white',
                   }}
                 >
                   {index === 0  && <AddIcon/>}

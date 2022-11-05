@@ -3,7 +3,7 @@
 :root {
     --primary-color: rgb(62, 100, 255);
     --complete-color: #27aa80;
-    --disabled-color: #fad6d6;
+    --disabled-color: #24292f;
     --ggs: 1.1;
     --speed: 500ms;
 }
@@ -79,8 +79,8 @@ select {
     padding: 10px 14px;
     border-radius: 5px;
     z-index: 1;
-    color: #8B94A7;
-    background-color: white;
+    color: #a8b0c2;
+    background-color: #0d1116;
 }
 
 .item:hover {
@@ -108,7 +108,7 @@ select {
     flex-direction: column;
     margin: 20px;
     padding: 20px;
-    background-color:rgb(220, 219, 219);
+    background-color:#24292f;
     border-radius: 5px;
 }
 
@@ -222,7 +222,7 @@ select {
 }
 
 .est-tag {
-    background-color: #DEE0E6;
+    background-color: #252627;
     border-radius: 25px;
     padding: 2px 6px;
     font-weight: 600;

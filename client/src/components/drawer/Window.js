@@ -26,14 +26,14 @@ const Window = ({ show, onClose}) => {
             <div className="new-project-form-content">
 
                 
-                <TextField fullWidth multiline rows={10}  id="fullWidth"  label='Description'/>
+                <TextField fullWidth multiline rows={10}  id="fullWidth"  label='Description' sx={{ borderRadius: 3, backgroundColor: 'white'}}/>
                 
                 <div>
-                    <DateTimePicker onChange={onChange} value={value} />
+                    <DateTimePicker onChange={onChange} value={value} className='date-picker'/>
                  </div>
            
                 <div>
-                    <DateTimePicker onChange={onChange} value={value} />
+                    <DateTimePicker onChange={onChange} value={value} className='date-picker' />
                 </div>
 
       
@@ -41,7 +41,7 @@ const Window = ({ show, onClose}) => {
                  <Autocomplete 
                     multiple
                     options={users} 
-                    renderInput={(params) => <TextField {...params}  label='Collabrators' placeholder="Select team mates for your project" sx={{borderRadius: 3}}/>}/>
+                    renderInput={(params) => <TextField {...params}  label='Collabrators' placeholder="Select team mates for your project" sx={{ borderRadius: 3, backgroundColor: 'White'}}/>}/>
                  </div>
 
                  <button type="submit" className='btn btn-block center'>Submit</button>

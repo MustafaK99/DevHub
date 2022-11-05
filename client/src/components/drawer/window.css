@@ -1,5 +1,5 @@
 .modal {
-    background-color: #F4F5F7;
+    background-color: #24292f;
     border-radius: 2px;
     margin: 48px 0 80px;
     min-height: 450px;
@@ -7,6 +7,11 @@
     width: 800px;
     outline: none;
     padding: 20px;
+}
+
+h1{
+    color: white;
+
 }
 
 .overlay {
@@ -28,13 +33,13 @@
     height: 40px;
     width: 35px;
     font-size: 20px;
-    color: #031D2C;
+    color: white;
     border: none;
     border-radius: 25px;
 }
 
 .close-btn:hover {
-    background-color: #DCDCDC;
+    background-color: #726c6c;
 }
 
 .new-project-form-content{
@@ -47,4 +52,8 @@
     position: relative;
     top: 10px;
     left: 120px;
+  }
+
+  .date-picker{
+    background-color: white;
   }

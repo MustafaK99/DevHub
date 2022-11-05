@@ -111,7 +111,7 @@ const Board = () => {
                                     ))
                                 }
                                 <button onClick={e => onAddItem(status)}>
-                                    Add ticket
+                                    + Add ticket
                                 </button>
                             </Col>
                         </DropWrapper>
