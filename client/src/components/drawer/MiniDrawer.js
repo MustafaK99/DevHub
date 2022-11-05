@@ -168,7 +168,7 @@ export default function MiniDrawer() {
             </ListItemButton>
           </ListItem>
 
-          {['New Board', 'Active Sprints', 'Backlog'].map((text, index) => (
+          {['Backlog'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 onClick={onOpen}
@@ -187,9 +187,7 @@ export default function MiniDrawer() {
 
                   }}
                 >
-                  {index === 0 &&  <AddIcon /> }
-                  {index === 1 && <DashboardIcon />}
-                  {index === 2 && <QueueIcon />}
+                  {index === 0 && <QueueIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
