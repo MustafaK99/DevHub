@@ -29,8 +29,8 @@
       "estimate": "1d"
   }, {
       "id": 4,
-      "icon": "⭕️",
-      "status": "open",
+      "icon": "✅",
+      "status": "done",
       "title": "Daily reading",
       "content": "Finish reading Intro to UI/UX",
       "priority": "gg-chevron-up",
