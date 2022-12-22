@@ -1,30 +1,27 @@
-import React, { useState, useEffect } from "react";
-import {useNavigate} from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import React, { useEffect, useState } from "react";
 import Col from "../../components/Col";
-import Item from "../../components/item";
-import DropWrapper from "../../components/DropWrapper";
-import './board.css';
-import DropDown from "../../components/boardTaskBar/Dropdown"
 import MiniDrawer from "../../components/drawer/MiniDrawer";
+import DropWrapper from "../../components/DropWrapper";
+import Item from "../../components/item";
+import './board.css';
 
 
 const Board = () => {
 
     const [items, setItems] = useState([]);
     const [dragEl, setDragEl] = useState(null);
-    const[statusIcons, setStatusIcons] = useState([]);
+    const [statusIcons, setStatusIcons] = useState([]);
 
 
     useEffect(() => {
-          fetch('http://localhost:8000/data')
-          .then(res => {
-            return res.json();
-          })
-          .then(info => {
-            setItems(info)
-          })
-          fetch('http://localhost:8000/statusIcons')
+        fetch('http://localhost:3001/data')
+            .then(res => {
+                return res.json();
+            })
+            .then(info => {
+                setItems(info)
+            })
+        fetch('http://localhost:3001/statusIcons')
             .then(res => {
                 return res.json();
             })
@@ -32,7 +29,7 @@ const Board = () => {
                 setStatusIcons(info)
             })
 
-      }, [])
+    }, [])
 
     const onDrop = (item, status) => {
         if (item.status === status) {
@@ -44,7 +41,7 @@ const Board = () => {
             const newItems = prevState
                 .filter(i => i.id !== item.id)
                 .concat({ ...item, status, icon: mapping.icon });
-            return [ ...newItems ];
+            return [...newItems];
         });
     };
 
@@ -52,11 +49,11 @@ const Board = () => {
         setItems(prevState => {
             const itemIndex = prevState.findIndex(i => i.content === dragEl.content);
             const hoverIndex = prevState.findIndex(i => i.content === el);
-            const newState = [ ...prevState ];
+            const newState = [...prevState];
 
             newState.splice(itemIndex, 1);
             newState.splice(hoverIndex, 0, dragEl);
-            return [ ...newState ];
+            return [...newState];
         });
     };
 
@@ -86,39 +83,41 @@ const Board = () => {
 
     return (
         <>
-        <MiniDrawer />
- 
-        <div className="board-content">
-        <button className='button-column'>Create new column</button>
-        <div className={"row"}> 
-            {["open", "in progress", "done"].map(status => { return (
-                    <div key={status} className={"col-wrapper"}>
-                        <div className={"col-group"}>
-                            <h5 className={"col-header"}>{status.toUpperCase()}</h5>
-                            <h5 className={"col-count"}>{items.filter(i => i.status === status).length}</h5>
-                        </div>
-                        <DropWrapper onDrop={onDrop} status={status}>
-                            <Col>
-                                {items
-                                    .filter(i => i.status === status)
-                                    .map(i => (
-                                        <Item
-                                            key={i.id}
-                                            item={i}
-                                            moveItem={moveItem}
-                                            setDragElement={setDragElement}
-                                        />
-                                    ))
-                                }
-                                <button onClick={e => onAddItem(status)}>
-                                    + Add ticket
-                                </button>
-                            </Col>
-                        </DropWrapper>
-                    </div>
-            )})}
-        </div>
-        </div>
+            <MiniDrawer />
+
+            <div className="board-content">
+                <button className='button-column'>Create new column</button>
+                <div className={"row"}>
+                    {["open", "in progress", "done"].map(status => {
+                        return (
+                            <div key={status} className={"col-wrapper"}>
+                                <div className={"col-group"}>
+                                    <h5 className={"col-header"}>{status.toUpperCase()}</h5>
+                                    <h5 className={"col-count"}>{items.filter(i => i.status === status).length}</h5>
+                                </div>
+                                <DropWrapper onDrop={onDrop} status={status}>
+                                    <Col>
+                                        {items
+                                            .filter(i => i.status === status)
+                                            .map(i => (
+                                                <Item
+                                                    key={i.id}
+                                                    item={i}
+                                                    moveItem={moveItem}
+                                                    setDragElement={setDragElement}
+                                                />
+                                            ))
+                                        }
+                                        <button onClick={e => onAddItem(status)}>
+                                            + Add ticket
+                                        </button>
+                                    </Col>
+                                </DropWrapper>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
         </>
 
     );
