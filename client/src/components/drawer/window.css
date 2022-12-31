@@ -3,13 +3,13 @@
     border-radius: 2px;
     margin: 48px 0 80px;
     min-height: 450px;
-    height: 600px;
+    height: 700px;
     width: 800px;
     outline: none;
     padding: 20px;
 }
 
-h1{
+h1 {
     color: #24292f;
 
 }
@@ -22,7 +22,8 @@ h1{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5);;
+    background-color: rgba(0, 0, 0, 0.5);
+    ;
 }
 
 .close-btn-ctn {
@@ -43,16 +44,16 @@ h1{
     color: white;
 }
 
-.new-project-form-content{
+.new-project-form-content {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
     color: white;
 
 }
+
 .center {
     position: relative;
     top: 10px;
     left: 120px;
-  }
-
+}

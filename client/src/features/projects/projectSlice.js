@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     projects: [],
@@ -9,6 +9,24 @@ const initialState = {
 }
 
 
+// create new project
+
+export const createProject = createAsyncThunk('projects/create', async (projectData, thunkAPI) => {
+    try {
+
+        const token = thunkAPI.getState().auth.user.token
+        return await projectService(projectData, token)
+
+    } catch (error) {
+        const message = ((error.response && error.response.data && error.respone.data.message) ||
+            error.message || error.toString())
+
+        return thunkAPI.rejectWithValue(message)
+
+    }
+
+})
+
 export const projectSlice = createSlice({
     name: 'project',
     initialState,
@@ -17,5 +35,5 @@ export const projectSlice = createSlice({
     }
 })
 
-export const {reset} = projectSlice.actions
+export const { reset } = projectSlice.actions
 export default projectSlice.reducer
