@@ -2,25 +2,30 @@ const mongoose = require('mongoose')
 
 const projectSchema = mongoose.Schema({
 
-    project: {
+    name: {
         type: String,
         required: True
     },
     description: {
-        type:String,
+        type: String,
     },
     start_time: {
         type: Date
     },
-    end_time:{
+    end_time: {
         type: Date
     },
     organisation: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Organisation'
+    },
+    collaborators: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
     }
-},{
+}, {
     timestamps: true
 })
 
