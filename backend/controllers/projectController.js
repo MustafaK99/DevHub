@@ -74,9 +74,9 @@ const updateProject = asyncHandler(async (req, res) => {
 
 
 
-const deleteTicket = asyncHandler(async (req, res) => {
-    const ticket = await Ticket.findByIdAndRemove(req.params.id)
-    if (!ticket) {
+const deleteProject = asyncHandler(async (req, res) => {
+    const project = await Project.findByIdAndRemove(req.params.id)
+    if (!project) {
         res.status(400)
     }
 
@@ -84,11 +84,11 @@ const deleteTicket = asyncHandler(async (req, res) => {
         res.status(401)
     }
 
-    if (ticket.user.toString() !== req.user.id) {
+    if (!project.find({ collaborators: 'req.user.id' })) {
         res.status(401)
     }
 
-    await ticket.remove()
+    await project.remove()
     res.status(200).json({ id: req.params.id })
 })
 
