@@ -40,35 +40,35 @@ const setProject = asyncHandler(async (req, res) => {
     res.status(201).json(savedProject)
 })
 
-const updateTicket = asyncHandler(async (req, res) => {
-    const givenTicket = Ticket.findById(req.params.id)
+const updateProject = asyncHandler(async (req, res) => {
+    const givenProject = Project.findById(req.params.id)
 
-    if (!givenTicket) {
+    if (!givenProject) {
         res.status(400)
         next(error)
     }
 
-    const { status, title, content, issueType, priority, estimate } = req.body
-    const ticket = {
-        status,
-        title,
-        content,
-        issueType,
-        priority,
-        estimate
-    }
+    const { name, description, start_time, end_time, collaborators } = req.body
+    const project = new Project({
+        name,
+        description,
+        start_time,
+        end_time,
+        collaborators,
+        organisation: req.user.organisation
+    })
 
 
     if (!req.user) {
         res.status(401).json({ message: 'Not Authorized' })
     }
 
-    if (ticket.user.toString() !== req.user.id) {
+    if (!project.find({ collaborators: 'req.user.id' })) {
         res.status(401).json({ message: 'Not Authorized' })
     }
 
-    newTicket = await Ticket.findByIdAndUpdate(req.params.id, ticket, { new: true })
-    res.status(400).json(newTicket)
+    newProject = await Project.findByIdAndUpdate(req.params.id, project, { new: true })
+    res.status(400).json(newProject)
 
 })
 
