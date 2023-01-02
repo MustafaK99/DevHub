@@ -15,7 +15,7 @@ export const createProject = createAsyncThunk('projects/create', async (projectD
     try {
 
         const token = thunkAPI.getState().auth.user.token
-        return await projectService(projectData, token)
+        //return await projectService(projectData, token)
 
     } catch (error) {
         const message = ((error.response && error.response.data && error.respone.data.message) ||

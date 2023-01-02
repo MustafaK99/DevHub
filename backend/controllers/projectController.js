@@ -98,9 +98,10 @@ const deleteProject = asyncHandler(async (req, res) => {
 
 
 module.exports = {
-    getTickets,
-    setTicket,
-    updateTicket,
-    deleteTicket,
-    getTicket
+    deleteProject,
+    setProject,
+    updateProject,
+    deleteProject,
+    getProject,
+    getProjects
 }
