@@ -14,14 +14,14 @@ const Board = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:3001/data')
+        fetch('http://localhost:8000/data')
             .then(res => {
                 return res.json();
             })
             .then(info => {
                 setItems(info)
             })
-        fetch('http://localhost:3001/statusIcons')
+        fetch('http://localhost:8000/statusIcons')
             .then(res => {
                 return res.json();
             })

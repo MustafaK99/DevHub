@@ -19,7 +19,7 @@ const Window = ({ show, onClose }) => {
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [collabrators, setCollabrators] = useState('');
+    const [collabrators, setCollabrators] = useState([]);
 
     const dispatch = useDispatch()
 
@@ -44,14 +44,12 @@ const Window = ({ show, onClose }) => {
 
     const onSubmit = e => {
         e.preventDefault()
-
         dispatch(createProject({ name, description, dateAndtime1, dateAndtime2, collabrators }))
-
         setName('')
         setDescription('')
         setDateAndTime1(dayjs())
         setDateAndTime2(dayjs().date(30))
-        setCollabrators('')
+        setCollabrators([])
     }
 
 
@@ -95,11 +93,12 @@ const Window = ({ show, onClose }) => {
                         </LocalizationProvider>
                         <div>
                             <Autocomplete
+                                onChange={(event, value) => setCollabrators([...collabrators, { value }])}
                                 multiple
                                 options={users}
                                 renderInput={(params) => <TextField {...params} label='Collabrators' placeholder="Select team mates for your project" sx={{ borderRadius: 3 }}
-                                    onChange={(e) => setCollabrators(e.target.value)}
-                                />} />
+                                />}
+                            />
                         </div>
 
                         <button type="submit" className='btn btn-block center'>Submit</button>
