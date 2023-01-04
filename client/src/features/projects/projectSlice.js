@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import projectService from './projectService'
 
 const initialState = {
     projects: [],
@@ -15,7 +16,7 @@ export const createProject = createAsyncThunk('projects/create', async (projectD
     try {
 
         const token = thunkAPI.getState().auth.user.token
-        //return await projectService(projectData, token)
+        return await projectService.createProject(projectData, token)
 
     } catch (error) {
         const message = ((error.response && error.response.data && error.respone.data.message) ||

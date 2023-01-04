@@ -9,13 +9,19 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs from 'dayjs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createProject } from '../../features/projects/projectSlice';
 
 Modal.setAppElement("body");
 
 const Window = ({ show, onClose }) => {
+
+    useEffect(() => {
+        fetch()
+
+
+    }, [])
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
