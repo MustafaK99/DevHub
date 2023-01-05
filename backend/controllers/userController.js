@@ -7,24 +7,24 @@ const Organisation = require('../models/organisationModel')
 const { error } = require('../middleware/logger')
 
 
-const registerAdminUser = asyncHandler(async(req, res) => {
-    const {organisation, organisationEmail, name, email, password } = req.body
+const registerAdminUser = asyncHandler(async (req, res) => {
+    const { organisation, organisationEmail, name, email, password } = req.body
 
-    if(!name || !email || !password  || !organisation || !organisationEmail){
+    if (!name || !email || !password || !organisation || !organisationEmail) {
         res.status(400)
         next(error)
     }
 
-    const organisationExists = await Organisation.findOne({organisationEmail})
+    const organisationExists = await Organisation.findOne({ organisationEmail })
 
-    if(organisationExists){
+    if (organisationExists) {
         res.status(400)
         next(error)
     }
 
-    const userExists = await User.findOne({email})
+    const userExists = await User.findOne({ email })
 
-    if(userExists){
+    if (userExists) {
         res.status(400)
         next(error)
     }
@@ -40,7 +40,7 @@ const registerAdminUser = asyncHandler(async(req, res) => {
 
 
     const user = await User.create({
-        name, 
+        name,
         email,
         password: hashedPassword,
         role: 'Admin',
@@ -48,7 +48,7 @@ const registerAdminUser = asyncHandler(async(req, res) => {
     })
 
 
-    if(user && organisationCreated){
+    if (user && organisationCreated) {
         res.status(201).json({
             _id: user.id,
             name: user.name,
@@ -59,22 +59,22 @@ const registerAdminUser = asyncHandler(async(req, res) => {
 
     } else {
         res.status(400),
-        next(error)
+            next(error)
     }
 
 })
 
-const registerUser = asyncHandler(async(req, res) => {
-    const {name, email, password, role} = req.body
+const registerUser = asyncHandler(async (req, res) => {
+    const { name, email, password, role } = req.body
 
-    if(!name || !email || !password || !role){
+    if (!name || !email || !password || !role) {
         res.status(400)
         next(error)
     }
 
-    const userExists = await User.findOne({email})
+    const userExists = await User.findOne({ email })
 
-    if(userExists){
+    if (userExists) {
         res.status(400)
         next(error)
     }
@@ -85,14 +85,14 @@ const registerUser = asyncHandler(async(req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt)
 
     const user = await User.create({
-        name, 
+        name,
         email,
         password: hashedPassword,
         role,
         organisation: req.user.organisation
     })
 
-    if(user){
+    if (user) {
         res.status(201).json({
             _id: user.id,
             name: user.name,
@@ -108,40 +108,48 @@ const registerUser = asyncHandler(async(req, res) => {
 
 })
 
-const loginUser = asyncHandler(async(req, res) => {
-    const {email, password} = req.body
+const loginUser = asyncHandler(async (req, res) => {
+    const { email, password } = req.body
 
-    const user = await User.findOne({email})
+    const user = await User.findOne({ email })
 
-    if(user && (await bcrypt.compare(password, user.password))){
+    if (user && (await bcrypt.compare(password, user.password))) {
         res.status(201).json({
             _id: user.id,
             name: user.name,
             email: user.email,
             token: generateToken(user._id)
         })
-    } 
-    else{
+    }
+    else {
         res.status(400)
     }
 
 })
 
 
-const getMe = asyncHandler(async(req, res) => {
+const getMe = asyncHandler(async (req, res) => {
     res.status(200).json(req.user)
 })
 
 
 const generateToken = (id) => {
-    return jwt.sign( { id }, process.env.JWT_SECRET, {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: '30d'
     })
 }
+
+const getAllUsersInOrg = asyncHandler(async (req, res) => {
+    const currentUserOrg = await User.Organisation
+    res.status(201).json({
+        currentUserOrg
+    })
+})
 
 module.exports = {
     registerUser,
     loginUser,
     getMe,
-    registerAdminUser
+    registerAdminUser,
+    getAllUsersInOrg
 }
