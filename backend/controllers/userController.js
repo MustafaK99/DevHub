@@ -140,9 +140,12 @@ const generateToken = (id) => {
 }
 
 const getAllUsersInOrg = asyncHandler(async (req, res) => {
-    const currentUserOrg = await User.Organisation
+    currentUserOrg = req.user.organisation
+    const allUsersInOrg = await User.find({ organisation: currentUserOrg }, { _id: 1, name: 1 })
+
+
     res.status(201).json({
-        currentUserOrg
+        allUsersInOrg
     })
 })
 

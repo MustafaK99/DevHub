@@ -17,8 +17,18 @@ Modal.setAppElement("body");
 
 const Window = ({ show, onClose }) => {
 
+    const [users, setUsers] = useState([]);
+
     useEffect(() => {
-        fetch()
+        fetch("http://localhost:5000/api/users/org")
+            .then(res => {
+                console.log("hello")
+                return res.json();
+            })
+            .then(users => {
+                setUsers(users)
+            }
+            )
 
 
     }, [])
@@ -60,7 +70,6 @@ const Window = ({ show, onClose }) => {
 
 
 
-    const users = ['Jane Doe', 'John Doe', 'James Doe Jr', 'James Doe Sr', 'James Doe III']
     return (
         <Modal
             isOpen={show}
