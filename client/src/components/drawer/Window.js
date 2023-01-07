@@ -22,7 +22,6 @@ const Window = ({ show, onClose }) => {
     useEffect(() => {
         fetch("http://localhost:5000/api/users/org")
             .then(res => {
-                console.log("hello")
                 return res.json();
             })
             .then(users => {
@@ -110,7 +109,7 @@ const Window = ({ show, onClose }) => {
                             <Autocomplete
                                 onChange={(event, value) => setCollabrators([...collabrators, { value }])}
                                 multiple
-                                options={users}
+                                options={[]}
                                 renderInput={(params) => <TextField {...params} label='Collabrators' placeholder="Select team mates for your project" sx={{ borderRadius: 3 }}
                                 />}
                             />
