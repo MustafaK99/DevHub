@@ -25,7 +25,14 @@ const getProject = asyncHandler(async (req, res) => {
 
 
 const setProject = asyncHandler(async (req, res) => {
+    console.log(req.body)
     const { name, description, start_time, end_time, collaborators } = req.body
+
+    collabs = collaborators[0]
+    console.log(collabs)
+
+    console.log(collaborators)
+    console.log(collaborators[0])
     const project = new Project({
         name,
         description,

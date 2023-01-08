@@ -33,7 +33,27 @@ export const projectSlice = createSlice({
     initialState,
     reducers: {
         reset: (state) => initialState
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(createProject.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(createProject.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.projects.push(action.payload)
+            })
+            .addCase(createProject.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+
+    },
+
+
+
 })
 
 export const { reset } = projectSlice.actions

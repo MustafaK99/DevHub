@@ -11,6 +11,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { createProject } from '../../features/projects/projectSlice';
 import { getUsers, reset } from '../../features/users/userSlice';
 
 Modal.setAppElement("body");
@@ -62,8 +63,7 @@ const Window = ({ show, onClose }) => {
 
     const onSubmit = e => {
         e.preventDefault()
-        console.log(collabrators)
-        //dispatch(createProject({ name, description, dateAndtime1, dateAndtime2, collabrators }))
+        dispatch(createProject({ name, description, dateAndtime1, dateAndtime2, collabrators }))
         setName('')
         setDescription('')
         setDateAndTime1(dayjs())
