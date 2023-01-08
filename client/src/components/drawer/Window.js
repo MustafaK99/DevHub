@@ -10,33 +10,36 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { createProject } from '../../features/projects/projectSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsers, reset } from '../../features/users/userSlice';
 
 Modal.setAppElement("body");
 
 const Window = ({ show, onClose }) => {
 
-    const [users, setUsers] = useState([]);
+
+    const dispatch = useDispatch()
+    const { users, isLoading, isError, message } = useSelector((state) => state.users)
+
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/users/org")
-            .then(res => {
-                return res.json();
-            })
-            .then(users => {
-                setUsers(users)
-            }
-            )
+        if (isError) {
+            console.log(message)
 
+        }
 
-    }, [])
+        dispatch(getUsers())
+        return () => {
+            dispatch(reset())
+
+        }
+
+    }, [isError, message, dispatch])
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [collabrators, setCollabrators] = useState([]);
 
-    const dispatch = useDispatch()
 
     const [dateAndtime1, setDateAndTime1] = useState(dayjs());
     const [dateAndtime2, setDateAndTime2] = useState(dayjs().date(30))
@@ -59,7 +62,8 @@ const Window = ({ show, onClose }) => {
 
     const onSubmit = e => {
         e.preventDefault()
-        dispatch(createProject({ name, description, dateAndtime1, dateAndtime2, collabrators }))
+        console.log(collabrators)
+        //dispatch(createProject({ name, description, dateAndtime1, dateAndtime2, collabrators }))
         setName('')
         setDescription('')
         setDateAndTime1(dayjs())
@@ -107,12 +111,13 @@ const Window = ({ show, onClose }) => {
                         </LocalizationProvider>
                         <div>
                             <Autocomplete
-                                onChange={(event, value) => setCollabrators([...collabrators, { value }])}
+                                onChange={(event, value) => setCollabrators([{ value }])}
                                 multiple
-                                options={[]}
+                                options={users.map((user) => ({ id: user._id, label: user.name }))}
                                 renderInput={(params) => <TextField {...params} label='Collabrators' placeholder="Select team mates for your project" sx={{ borderRadius: 3 }}
                                 />}
                             />
+
                         </div>
 
                         <button type="submit" className='btn btn-block center'>Submit</button>
