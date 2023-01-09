@@ -63,12 +63,16 @@ const Window = ({ show, onClose }) => {
 
     const onSubmit = e => {
         e.preventDefault()
-        dispatch(createProject({ name, description, dateAndtime1, dateAndtime2, collabrators }))
+        let collabs_id = []
+        collabrators[0].value.forEach(x => collabs_id.push(x.id))
+        dispatch(createProject({ name, description, dateAndtime1, dateAndtime2, collabs_id }))
         setName('')
         setDescription('')
         setDateAndTime1(dayjs())
         setDateAndTime2(dayjs().date(30))
         setCollabrators([])
+        collabs_id = []
+        onClose()
     }
 
 

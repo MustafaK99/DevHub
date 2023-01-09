@@ -20,11 +20,11 @@ const projectSchema = mongoose.Schema({
         required: true,
         ref: 'Organisation'
     },
-    collaborators: {
+    collaborators: [{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
-    }
+    }]
 }, {
     timestamps: true
 })
