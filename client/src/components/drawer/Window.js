@@ -11,8 +11,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Spinner from '../../components/Spinner';
 import { createProject } from '../../features/projects/projectSlice';
 import { getUsers, reset } from '../../features/users/userSlice';
+
 
 Modal.setAppElement("body");
 
@@ -20,8 +23,10 @@ const Window = ({ show, onClose }) => {
 
 
     const dispatch = useDispatch()
-    const { users, isLoading, isError, message } = useSelector((state) => state.users)
+    const navigate = useNavigate()
 
+    const { users, isError, message } = useSelector((state) => state.users)
+    const { isSuccess, isLoading } = useSelector((state) => state.projects)
 
     useEffect(() => {
         if (isError) {
@@ -29,11 +34,15 @@ const Window = ({ show, onClose }) => {
 
         }
 
+
+
         dispatch(getUsers())
         return () => {
             dispatch(reset())
 
         }
+
+
 
     }, [isError, message, dispatch])
 
@@ -72,12 +81,18 @@ const Window = ({ show, onClose }) => {
         setDateAndTime2(dayjs().date(30))
         setCollabrators([])
         collabs_id = []
-        onClose()
+
+
+
     }
 
+    if (isLoading) {
+        return <Spinner />
 
+    }
 
     return (
+
         <Modal
             isOpen={show}
             onRequestClose={onClose}
