@@ -26,15 +26,13 @@ const Window = ({ show, onClose }) => {
     const navigate = useNavigate()
 
     const { users, isError, message } = useSelector((state) => state.users)
-    const { isSuccess, isLoading } = useSelector((state) => state.projects)
+    const { projects, isSuccess, isLoading } = useSelector((state) => state.projects)
 
     useEffect(() => {
         if (isError) {
             console.log(message)
 
         }
-
-
 
         dispatch(getUsers())
         return () => {
