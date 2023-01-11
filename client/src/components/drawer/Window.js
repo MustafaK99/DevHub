@@ -35,6 +35,15 @@ const Window = ({ show, onClose }) => {
         }
 
         dispatch(getUsers())
+
+        if (isSuccess) {
+
+
+            dispatch(reset())
+            onClose()
+
+        }
+
         return () => {
             dispatch(reset())
 
@@ -42,7 +51,7 @@ const Window = ({ show, onClose }) => {
 
 
 
-    }, [isError, message, dispatch])
+    }, [isError, message, dispatch, navigate, isSuccess,])
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -88,6 +97,7 @@ const Window = ({ show, onClose }) => {
         return <Spinner />
 
     }
+
 
     return (
 
