@@ -13,8 +13,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
-import { createProject } from '../../features/projects/projectSlice';
-import { getUsers, reset } from '../../features/users/userSlice';
+import { createProject, reset } from '../../features/projects/projectSlice';
+import { getUsers } from '../../features/users/userSlice';
 
 
 Modal.setAppElement("body");
