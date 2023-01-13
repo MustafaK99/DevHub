@@ -10,7 +10,7 @@
 
 body {
     color: var(--text-color);
-    font-family: rubik,arial;
+    font-family: rubik, arial;
     margin: 0;
 }
 
@@ -31,7 +31,8 @@ label {
     display: block;
 }
 
-button, input {
+button,
+input {
     padding: 4px;
     border: 1px solid var(--disabled-color);
 }
@@ -93,7 +94,7 @@ select {
     align-items: center;
 }
 
-.item-icons > * {
+.item-icons>* {
     margin-right: 10px;
 }
 
@@ -108,7 +109,7 @@ select {
     flex-direction: column;
     margin: 20px;
     padding: 20px;
-    background-color:#24292f;
+    background-color: #24292f;
     border-radius: 5px;
 }
 
@@ -121,7 +122,8 @@ select {
     font-size: 0.83em;
 }
 
-.col-header, .col-count {
+.col-header,
+.col-count {
     font-size: inherit;
     margin-top: inherit;
     margin-bottom: unset;
@@ -169,7 +171,8 @@ select {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5);;
+    background-color: rgba(0, 0, 0, 0.5);
+    ;
 }
 
 .close-btn-ctn {
@@ -228,46 +231,59 @@ select {
     font-weight: 600;
 }
 
-ul  {
-   list-style: none;
-   margin: 0;
-   padding: 0; 
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.links-for-list{
-    color:#dadce1;
+.links-for-list {
+    color: #dadce1;
     text-decoration: none;
 }
 
-.button-column{
+.button-column {
     padding: 10px 20px;
     margin-left: 15px;
     border-radius: 25px;
-    background:  rgba(30, 215,96,1);
-    border-color:rgba(30, 215,96,1) ;
-    color: rgba(255,255,255,1);
+    background: rgba(30, 215, 96, 1);
+    border-color: rgba(30, 215, 96, 1);
+    color: rgba(255, 255, 255, 1);
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     text-align: center;
     appearance: button;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
 }
 
 
 
-.auto-complete{
-    background-color:rgb(220, 219, 219);
-    border-color: rgba(30, 215,96,1);
+.auto-complete {
+    background-color: rgb(220, 219, 219);
+    border-color: rgba(30, 215, 96, 1);
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.board-content{
+
+.board-content {
     margin-top: 10px;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     overflow: auto;
+}
+
+.board-top-taskbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.board-top-taskbar-item {
+    margin: 10px;
+}
+
+#combo-box {
+    background-color: rgba(255, 255, 255, 1);
+
 }

@@ -1,3 +1,5 @@
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 import React, { useEffect, useState } from "react";
 import Col from "../../components/Col";
 import MiniDrawer from "../../components/drawer/MiniDrawer";
@@ -5,12 +7,25 @@ import DropWrapper from "../../components/DropWrapper";
 import Item from "../../components/item";
 import './board.css';
 
-
 const Board = () => {
 
     const [items, setItems] = useState([]);
     const [dragEl, setDragEl] = useState(null);
     const [statusIcons, setStatusIcons] = useState([]);
+
+    const top100Films = [
+        { label: 'The Shawshank Redemption', year: 1994 },
+        { label: 'The Godfather', year: 1972 },
+        { label: 'The Godfather: Part II', year: 1974 },
+        { label: 'The Dark Knight', year: 2008 },
+        { label: '12 Angry Men', year: 1957 },
+        { label: "Schindler's List", year: 1993 },
+        { label: 'Pulp Fiction', year: 1994 },
+        {
+            label: 'The Lord of the Rings: The Return of the King',
+            year: 2003,
+        }
+    ]
 
 
     useEffect(() => {
@@ -85,8 +100,24 @@ const Board = () => {
         <>
             <MiniDrawer />
 
+
             <div className="board-content">
-                <button className='button-column'>Create new column</button>
+
+                <div className='board-top-taskbar'>
+
+                    <button className='button-column board-top-taskbar-item'>Create new column</button>
+                    <Autocomplete
+                        className='board-top-taskbar-item'
+                        disablePortal
+                        id="combo-box"
+                        options={top100Films}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Movie" />}
+                    />
+
+
+                </div>
+
                 <div className={"row"}>
                     {["open", "in progress", "done"].map(status => {
                         return (
