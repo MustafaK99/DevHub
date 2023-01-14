@@ -1,5 +1,4 @@
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
+
 import React, { useEffect, useState } from "react";
 import Col from "../../components/Col";
 import MiniDrawer from "../../components/drawer/MiniDrawer";
@@ -26,6 +25,10 @@ const Board = () => {
             year: 2003,
         }
     ]
+
+
+
+
 
 
     useEffect(() => {
@@ -106,14 +109,6 @@ const Board = () => {
                 <div className='board-top-taskbar'>
 
                     <button className='button-column board-top-taskbar-item'>Create new column</button>
-                    <Autocomplete
-                        className='board-top-taskbar-item'
-                        disablePortal
-                        id="combo-box"
-                        options={top100Films}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Movie" />}
-                    />
 
 
                 </div>
