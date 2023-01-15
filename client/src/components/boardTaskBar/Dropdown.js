@@ -1,16 +1,15 @@
-import React from 'react'
-import './dropdown.css'
+import React from 'react';
+import './dropdown.css';
 
 
 
 
 
-
-export default function Dropdown() {
+export default function Dropdown(props) {
   return (
-    <nav className='navbar'>
+    <nav className='navbar-board'>
       <ul className='navbar-nav'>
-
+        {props.children}
       </ul>
     </nav>
   )

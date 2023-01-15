@@ -1,10 +1,16 @@
 
 import React, { useEffect, useState } from "react";
+import Dropdown from "../../components/boardTaskBar/Dropdown";
+import NavItem from "../../components/boardTaskBar/Navitem";
 import Col from "../../components/Col";
 import MiniDrawer from "../../components/drawer/MiniDrawer";
 import DropWrapper from "../../components/DropWrapper";
 import Item from "../../components/item";
 import './board.css';
+import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
+import { ReactComponent as BellIcon } from './icons/bell.svg';
+import { ReactComponent as PlusIcon } from './icons/plus.svg';
+
 
 const Board = () => {
 
@@ -105,13 +111,12 @@ const Board = () => {
 
 
             <div className="board-content">
+                <Dropdown>
+                    <NavItem icon={<PlusIcon />} />
+                    <NavItem icon={<ArrowIcon />} />
+                    <NavItem icon={<BellIcon />} />
 
-                <div className='board-top-taskbar'>
-
-                    <button className='button-column board-top-taskbar-item'>Create new column</button>
-
-
-                </div>
+                </Dropdown>
 
                 <div className={"row"}>
                     {["open", "in progress", "done"].map(status => {
