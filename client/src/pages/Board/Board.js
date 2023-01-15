@@ -9,8 +9,8 @@ import Item from "../../components/item";
 import './board.css';
 import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
 import { ReactComponent as BellIcon } from './icons/bell.svg';
+import { ReactComponent as CaretIcon } from './icons/caret.svg';
 import { ReactComponent as PlusIcon } from './icons/plus.svg';
-
 
 const Board = () => {
 
@@ -115,6 +115,10 @@ const Board = () => {
                     <NavItem icon={<PlusIcon />} />
                     <NavItem icon={<ArrowIcon />} />
                     <NavItem icon={<BellIcon />} />
+
+                    <NavItem icon={<CaretIcon />}>
+                        <p>wqirefjkl</p>
+                    </NavItem>
 
                 </Dropdown>
 
