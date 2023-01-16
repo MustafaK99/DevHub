@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import Dropdown from "../../components/boardTaskBar/Dropdown";
+import DropdownMenu from "../../components/boardTaskBar/DropdownMenu";
 import NavItem from "../../components/boardTaskBar/Navitem";
 import Col from "../../components/Col";
 import MiniDrawer from "../../components/drawer/MiniDrawer";
@@ -114,10 +115,11 @@ const Board = () => {
                 <Dropdown>
                     <NavItem icon={<PlusIcon />} />
                     <NavItem icon={<ArrowIcon />} />
-                    <NavItem icon={<BellIcon />} />
+                    <NavItem icon={<BellIcon />} >
+                    </NavItem>
 
                     <NavItem icon={<CaretIcon />}>
-                        <p>wqirefjkl</p>
+                        <DropdownMenu />
                     </NavItem>
 
                 </Dropdown>

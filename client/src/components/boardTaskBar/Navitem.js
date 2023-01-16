@@ -3,10 +3,6 @@ import './dropdown.css';
 
 import { useState } from 'react';
 
-function DropdownMenu() {
-
-}
-
 function NavItem(props) {
 
     const [open, setOpen] = useState(false);
