@@ -8,7 +8,7 @@ function DropdownMenu() {
         return (
             <a href='#' className="menu-item">
 
-                <span className="icon-button">{props.leftIcon}</span>
+                <span className="icon-left">{props.leftIcon}</span>
 
                 {props.children}
 
