@@ -1,4 +1,6 @@
 
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 import React, { useEffect, useState } from "react";
 import Dropdown from "../../components/boardTaskBar/Dropdown";
 import DropdownMenu from "../../components/boardTaskBar/DropdownMenu";
@@ -8,11 +10,8 @@ import MiniDrawer from "../../components/drawer/MiniDrawer";
 import DropWrapper from "../../components/DropWrapper";
 import Item from "../../components/item";
 import './board.css';
-import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
-import { ReactComponent as BellIcon } from './icons/bell.svg';
 import { ReactComponent as CaretIcon } from './icons/caret.svg';
 import { ReactComponent as PlusIcon } from './icons/plus.svg';
-
 const Board = () => {
 
     const [items, setItems] = useState([]);
@@ -112,18 +111,26 @@ const Board = () => {
 
 
             <div className="board-content">
-                <Dropdown>
-                    <NavItem icon={<PlusIcon />} />
-                    <NavItem icon={<ArrowIcon />} />
-                    <NavItem icon={<BellIcon />} >
-                    </NavItem>
 
-                    <NavItem icon={<CaretIcon />}>
-                        <DropdownMenu />
-                    </NavItem>
+                <div>
+                    <Dropdown>
 
-                </Dropdown>
+                        <NavItem icon={<PlusIcon />} />
 
+                        <NavItem icon={<CaretIcon />}>
+                            <DropdownMenu />
+                        </NavItem>
+
+                    </Dropdown>
+
+                    <Autocomplete
+
+                        multiple
+                        options={['ticket 1', 'ticket 2']}
+                        renderInput={(params) => <TextField {...params} label='Ticket' placeholder="Select team mates for your project" sx={{ borderRadius: 3 }}
+                        />}
+                    />
+                </div>
                 <div className={"row"}>
                     {["open", "in progress", "done"].map(status => {
                         return (
