@@ -1,6 +1,4 @@
 
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
 import React, { useEffect, useState } from "react";
 import Dropdown from "../../components/boardTaskBar/Dropdown";
 import DropdownMenu from "../../components/boardTaskBar/DropdownMenu";
@@ -12,7 +10,12 @@ import Item from "../../components/item";
 import './board.css';
 import { ReactComponent as CaretIcon } from './icons/caret.svg';
 import { ReactComponent as PlusIcon } from './icons/plus.svg';
+
+
+
 const Board = () => {
+
+
 
     const [items, setItems] = useState([]);
     const [dragEl, setDragEl] = useState(null);
@@ -112,7 +115,7 @@ const Board = () => {
 
             <div className="board-content">
 
-                <div>
+                <div className='taskbar-board'>
                     <Dropdown>
 
                         <NavItem icon={<PlusIcon />} />
@@ -123,13 +126,6 @@ const Board = () => {
 
                     </Dropdown>
 
-                    <Autocomplete
-
-                        multiple
-                        options={['ticket 1', 'ticket 2']}
-                        renderInput={(params) => <TextField {...params} label='Ticket' placeholder="Select team mates for your project" sx={{ borderRadius: 3 }}
-                        />}
-                    />
                 </div>
                 <div className={"row"}>
                     {["open", "in progress", "done"].map(status => {

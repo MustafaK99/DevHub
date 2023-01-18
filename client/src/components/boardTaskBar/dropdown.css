@@ -95,7 +95,7 @@ a {
     position: absolute;
     top: 150px;
     width: 300px;
-    transform: translateX(-45%);
+    transform: translateX(45%);
     background-color: var(--bg);
     border: var(--border);
     border-radius: var(--border-radius);
