@@ -25,12 +25,12 @@ const Board = () => {
     const filter = (button) => {
 
         if (button === 'All') {
-            setMenuItem(items);
+            setItems(items);
             return;
         }
 
         const filteredData = items.filter(item => item.category === button);
-        setMenuItem(filteredData)
+        setItems(filteredData)
     }
 
 
@@ -122,6 +122,8 @@ const Board = () => {
                         </NavItem>
 
                     </Dropdown>
+
+                    <span>filter</span>
 
                 </div>
                 <div className={"row"}>
