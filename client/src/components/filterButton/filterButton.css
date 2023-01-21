@@ -1,12 +1,12 @@
 .filterButtons {
-    width: 70%;
-    margin: 3rem auto;
-    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+
 }
 
 .filterbtn {
-    padding: .5rem 2rem;
     background-color: #0C3564;
+    margin: 80px;
     border: none;
     font-family: inherit;
     font-size: inherit;
@@ -14,9 +14,6 @@
     transition: all 0.4s cubic-bezier(1, -0.16, .6, 1.35);
 }
 
-.filterbtn:not(:last-child) {
-    margin-right: 1rem;
-}
 
 .filterbtn:hover {
     background-color: #037FFf;
