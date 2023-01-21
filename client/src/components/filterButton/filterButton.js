@@ -1,13 +1,15 @@
 import React from "react";
+import './filterButton.css';
 
-function filterButton({ button, filter }) {
+function FilterButton({ button, filter }) {
     return (
-        <div className="buttons">
+        <div className="filterButtons">
             {
                 button.map((status, i) => {
-                    return <button type="button" onClick={() => filter(status)} className="btn">{status}</button>
+                    return <button type="button" onClick={() => filter(status)} className="filterBtn">{status}</button>
                 })
             }
         </div>
     )
 }
+export default FilterButton

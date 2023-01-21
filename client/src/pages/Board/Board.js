@@ -6,30 +6,33 @@ import NavItem from "../../components/boardTaskBar/Navitem";
 import Col from "../../components/Col";
 import MiniDrawer from "../../components/drawer/MiniDrawer";
 import DropWrapper from "../../components/DropWrapper";
+import FilterButton from "../../components/filterButton/filterButton";
 import Item from "../../components/item";
 import './board.css';
 import { ReactComponent as CaretIcon } from './icons/caret.svg';
 import { ReactComponent as PlusIcon } from './icons/plus.svg';
-
-
 
 const Board = () => {
 
 
 
     const [items, setItems] = useState([]);
+    const [allItems, setAllItems] = useState([]);
     const [dragEl, setDragEl] = useState(null);
     const [statusIcons, setStatusIcons] = useState([]);
+    const [categories, setCategories] = useState([]);
 
 
     const filter = (button) => {
 
         if (button === 'All') {
-            setItems(items);
+            setItems(allItems.filter(item => item));
             return;
         }
 
-        const filteredData = items.filter(item => item.category === button);
+        const filteredData = allItems.filter(item => item.status === button);
+        console.log(button)
+        console.log(filteredData)
         setItems(filteredData)
     }
 
@@ -44,6 +47,9 @@ const Board = () => {
             })
             .then(info => {
                 setItems(info)
+                setAllItems(info)
+                setCategories(['All', ...new Set(info.map(info => info.status))])
+                console.log(setCategories)
             })
         fetch('http://localhost:8000/statusIcons')
             .then(res => {
@@ -123,8 +129,10 @@ const Board = () => {
 
                     </Dropdown>
 
-                    <span>filter</span>
-
+                    <div className="filter">
+                        <span>filter</span>
+                        <FilterButton button={categories} filter={filter} />
+                    </div>
                 </div>
                 <div className={"row"}>
                     {["open", "in progress", "done"].map(status => {
