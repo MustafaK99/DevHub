@@ -130,9 +130,10 @@ const Board = () => {
                     </Dropdown>
 
                     <div className="filter">
-                        <span>filter</span>
+                        <span>Filter columns</span>
                         <FilterButton button={categories} filter={filter} />
                     </div>
+
                 </div>
                 <div className={"row"}>
                     {["open", "in progress", "done"].map(status => {
@@ -155,7 +156,7 @@ const Board = () => {
                                                 />
                                             ))
                                         }
-                                        <button onClick={e => onAddItem(status)}>
+                                        <button className={"add-ticket"} onClick={e => onAddItem(status)}>
                                             + Add ticket
                                         </button>
                                     </Col>

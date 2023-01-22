@@ -1,7 +1,7 @@
 @import url('https://css.gg/css');
 
 :root {
-    --primary-color: rgb(62, 100, 255);
+    --primary-color: rgba(30, 215, 96, 1);
     --complete-color: #27aa80;
     --disabled-color: #24292f;
     --ggs: 1.1;
@@ -31,13 +31,13 @@ label {
     display: block;
 }
 
-button,
+.add-ticket,
 input {
     padding: 4px;
     border: 1px solid var(--disabled-color);
 }
 
-button {
+.add-ticket {
     outline: none;
     background: transparent;
     border-radius: 5px;
@@ -46,11 +46,16 @@ button {
     cursor: pointer;
 }
 
-button.active {
+.add-ticket:hover {
+    color: var(--primary-color);
+    background: transparent;
+}
+
+.add-ticket.active {
     color: var(--primary-color);
 }
 
-button.active:after {
+.add-ticket.active:after {
     content: "";
     display: block;
     margin: 0 auto;
@@ -288,4 +293,10 @@ ul {
     height: 100%;
     display: flex;
     justify-content: flex-start;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }

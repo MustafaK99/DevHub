@@ -3,10 +3,10 @@ import './filterButton.css';
 
 function FilterButton({ button, filter }) {
     return (
-        <div className="filterButtons">
+        <div className={"filterButtons"}>
             {
                 button.map((status, i) => {
-                    return <button type="button" onClick={() => filter(status)} className="filterBtn">{status}</button>
+                    return <button className={"filterBtn"} onClick={() => filter(status)} >{status}</button>
                 })
             }
         </div>
