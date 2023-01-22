@@ -20,8 +20,8 @@ function DropdownMenu() {
 
     return (
         <div className='dropdown'>
-            <DropdownItem leftIcon="🦘">Project 1</DropdownItem>
-            <DropdownItem leftIcon="🐸">Project 2</DropdownItem>
+            <DropdownItem leftIcon="🦘">Board 1</DropdownItem>
+            <DropdownItem leftIcon="🐸">Board 2</DropdownItem>
         </div>
     )
 

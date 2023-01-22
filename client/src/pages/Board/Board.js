@@ -134,6 +134,11 @@ const Board = () => {
                         <FilterButton button={categories} filter={filter} />
                     </div>
 
+                    <div className="labels">
+                        <span>Filter labels</span>
+
+                    </div>
+
                 </div>
                 <div className={"row"}>
                     {["open", "in progress", "done"].map(status => {
