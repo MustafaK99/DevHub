@@ -300,4 +300,6 @@ ul {
     flex-direction: column;
     align-items: flex-start;
     margin-right: 30px;
+    max-width: 285px;
+    overflow: scroll;
 }

@@ -8,7 +8,12 @@
             "content": "Fill out human interest distribution form",
             "issueType": "gg-bookmark",
             "priority": "gg-chevron-double-down",
-            "estimate": "30m"
+            "estimate": "30m",
+            "labels": [
+                "Tango",
+                "release 2",
+                "release 3"
+            ]
         },
         {
             "id": 2,
@@ -18,7 +23,11 @@
             "content": "Get an anniversary gift",
             "issueType": "gg-copy",
             "priority": "gg-chevron-down",
-            "estimate": "4h"
+            "estimate": "4h",
+            "labels": [
+                "Pepsi",
+                "release 1"
+            ]
         },
         {
             "id": 3,
@@ -28,7 +37,11 @@
             "content": "Call the bank to talk about investments",
             "issueType": "gg-pentagon-down",
             "priority": "gg-chevron-double-up",
-            "estimate": "1d"
+            "estimate": "1d",
+            "labels": [
+                "Pepsi",
+                "release 2"
+            ]
         },
         {
             "id": 4,
@@ -38,7 +51,11 @@
             "content": "Finish reading Intro to UI/UX",
             "priority": "gg-chevron-up",
             "issueType": "gg-remove",
-            "estimate": "2w"
+            "estimate": "2w",
+            "labels": [
+                "Tango",
+                "release 2"
+            ]
         },
         {
             "id": 4,
@@ -48,7 +65,10 @@
             "content": "Finish reading Intro to UI/UX",
             "priority": "gg-chevron-up",
             "issueType": "gg-remove",
-            "estimate": "2w"
+            "estimate": "2w",
+            "labels": [
+                "release 1"
+            ]
         }
     ],
     "statusIcons": [

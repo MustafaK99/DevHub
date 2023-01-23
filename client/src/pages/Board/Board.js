@@ -21,20 +21,23 @@ const Board = () => {
     const [dragEl, setDragEl] = useState(null);
     const [statusIcons, setStatusIcons] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [labels, setLabels] = useState([]);
 
 
     const filter = (button) => {
 
         if (button === 'All') {
             setItems(allItems.filter(item => item));
+
             return;
         }
 
         const filteredData = allItems.filter(item => item.status === button);
-        console.log(button)
-        console.log(filteredData)
         setItems(filteredData)
+
     }
+
+
 
 
 
@@ -49,7 +52,12 @@ const Board = () => {
                 setItems(info)
                 setAllItems(info)
                 setCategories(['All', ...new Set(info.map(info => info.status))])
-                console.log(setCategories)
+                const arr = ((info.map(info => info.labels)))
+                const setArray = new Set(arr.map(x => JSON.stringify(x)))
+                const uniqArray = [...setArray].map(x => JSON.parse(x))
+                const flatArray = uniqArray.flat(1)
+                const uniq = [...new Set(flatArray)]
+                setLabels(uniq)
             })
         fetch('http://localhost:8000/statusIcons')
             .then(res => {
@@ -134,8 +142,11 @@ const Board = () => {
                         <FilterButton button={categories} filter={filter} />
                     </div>
 
-                    <div className="labels">
+
+                    <div className="filter">
                         <span>Filter labels</span>
+                        <FilterButton button={labels} filter={filter} />
+
 
                     </div>
 
