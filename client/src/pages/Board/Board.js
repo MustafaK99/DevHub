@@ -38,6 +38,10 @@ const Board = () => {
     }
 
     const filterLabel = (button) => {
+        if (button === "All") {
+            setItems(allItems.filter(item => item));
+            return
+        }
         const value = allItems.filter(item => item.labels.some(label => label === button)).map(item => item)
         setItems(value)
     }
@@ -60,7 +64,7 @@ const Board = () => {
                 const setArray = new Set(arr.map(x => JSON.stringify(x)))
                 const uniqArray = [...setArray].map(x => JSON.parse(x))
                 const flatArray = uniqArray.flat(1)
-                const uniq = [...new Set(flatArray)]
+                const uniq = ['All', ...new Set(flatArray)]
                 setLabels(uniq)
             })
         fetch('http://localhost:8000/statusIcons')
