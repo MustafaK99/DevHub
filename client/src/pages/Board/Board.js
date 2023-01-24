@@ -37,6 +37,10 @@ const Board = () => {
 
     }
 
+    const filterLabel = (button) => {
+        const value = allItems.filter(item => item.labels.some(label => label === button)).map(item => item)
+        setItems(value)
+    }
 
 
 
@@ -145,7 +149,7 @@ const Board = () => {
 
                     <div className="filter">
                         <span>Filter labels</span>
-                        <FilterButton button={labels} filter={filter} />
+                        <FilterButton button={labels} filter={filterLabel} />
 
 
                     </div>
