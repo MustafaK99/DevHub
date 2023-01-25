@@ -158,6 +158,11 @@ const Board = () => {
 
                     </div>
 
+                    <div className="sprint-taskbar">
+                        <p>Days left till sprint end: 5</p>
+                        <button className="button-column "> Complete Sprint</button>
+                    </div>
+
                 </div>
                 <div className={"row"}>
                     {["open", "in progress", "done"].map(status => {
