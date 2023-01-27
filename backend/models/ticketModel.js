@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const ticketSchema = mongoose.Schema({
-    
+
     created_by_user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -31,8 +31,8 @@ const ticketSchema = mongoose.Schema({
         type: Number,
         required: true
     }
-},{
+}, {
     timestamps: true
 })
 
-module.exports = mongoose.model('ticket', ticketSchema)
+module.exports = mongoose.model('Ticket', ticketSchema)
