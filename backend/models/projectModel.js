@@ -24,6 +24,16 @@ const projectSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
+    }],
+    epics: [{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Epic'
+    }],
+    sprints: [{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Sprint'
     }]
 }, {
     timestamps: true

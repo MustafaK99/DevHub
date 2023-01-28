@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 
 const sprintSchema = mongoose.Schema({
 
-    sprintNumber:{
-        type:Number,
+    sprintNumber: {
+        type: Number,
         required: True
     },
-    startTime:{
+    startTime: {
         type: Date,
         required: True
     },
@@ -18,10 +18,14 @@ const sprintSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Project'
-    }
+    },
+    tickets: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Ticket'
+    }]
 
-},{
+}, {
     timestamps: true
 })
 
-module.exports = mongoose.Schema('Spring', sprintSchema)
+module.exports = mongoose.Schema('Sprint', sprintSchema)
