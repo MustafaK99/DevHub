@@ -27,14 +27,19 @@ const projectSchema = mongoose.Schema({
     }],
     epics: [{
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        required: false,
         ref: 'Epic'
     }],
     sprints: [{
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        required: false,
         ref: 'Sprint'
-    }]
+    }],
+    backlog: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: false,
+        ref: 'ProductBacklog'
+    }
 }, {
     timestamps: true
 })

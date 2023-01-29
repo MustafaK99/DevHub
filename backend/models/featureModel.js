@@ -28,7 +28,7 @@ const featureSchema = mongoose.Schema({
     },
     tickets: [{
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        required: false,
         ref: 'Ticket'
     }]
 }, {

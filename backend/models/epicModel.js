@@ -26,9 +26,9 @@ const epicSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    tickets: [{
+    features: [{
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        required: false,
         ref: 'Feature'
     }]
 }, {
