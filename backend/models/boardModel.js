@@ -19,7 +19,7 @@ const boardSchema = mongoose.Schema({
     }],
     sprint: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        required: false,
         ref: 'Sprint'
     }
 }, {

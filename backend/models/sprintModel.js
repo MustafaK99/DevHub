@@ -6,6 +6,11 @@ const sprintSchema = mongoose.Schema({
         type: Number,
         required: True
     },
+    sprintActive: {
+        type: Boolean,
+        required: True
+    }
+    ,
     startTime: {
         type: Date,
         required: True
