@@ -24,6 +24,7 @@ const Board = () => {
     const [labels, setLabels] = useState([]);
 
 
+
     const filter = (button) => {
 
         if (button === 'All') {
@@ -102,6 +103,8 @@ const Board = () => {
             return [...newState];
         });
     };
+
+
 
     const setDragElement = el => setDragEl(el);
 

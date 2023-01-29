@@ -1,12 +1,15 @@
-import React, { Fragment} from "react";
+import React, { Fragment } from "react";
 const Item = ({ item, moveItem, setDragElement }) => {
 
-
+    const openTicketForm = (e) => {
+        e.preventDefault();
+        console.log('will open ticket edit form');
+    }
 
     const onDragStart = ({ dataTransfer, target }) => {
         dataTransfer.setData("item", JSON.stringify(item));
         setDragElement(item);
-        setTimeout(function() {
+        setTimeout(function () {
             target.style.visibility = "hidden";
         }, 0);
     };
@@ -29,6 +32,7 @@ const Item = ({ item, moveItem, setDragElement }) => {
                 onDragStart={onDragStart}
                 onDragOver={onDragOver}
                 onDragEnd={onDragEnd}
+                onClick={openTicketForm}
             >
                 <p>{item.content}</p>
                 <div className={"item-icons"}>
@@ -39,7 +43,7 @@ const Item = ({ item, moveItem, setDragElement }) => {
                 </div>
             </div>
         </Fragment>
-    ); 
+    );
 };
 
 export default Item;
