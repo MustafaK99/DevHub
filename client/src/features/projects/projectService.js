@@ -19,8 +19,24 @@ const createProject = async (projectData, token) => {
 
 }
 
+
+// get all projects
+const getProjects = async (token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.get(API_URL, config)
+
+    return response.data
+
+}
+
 const projectService = {
-    createProject
+    createProject,
+    getProjects
 }
 
 export default projectService
