@@ -17,8 +17,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { styled, useTheme } from '@mui/material/styles';
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Window from "./Window";
-
 
 const drawerWidth = 240;
 
@@ -92,11 +92,12 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function MiniDrawer() {
   const theme = useTheme();
+
   const [open, setOpen] = React.useState(false);
   const [show, setShow] = React.useState(false);
 
 
-
+  const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
     setOpen(!open);
@@ -200,7 +201,7 @@ export default function MiniDrawer() {
         </List>
         <Divider sx={{ borderColor: 'white' }} />
         <List>
-          {['New Project', 'Project Settings'].map((text, index) => (
+          {['New Epic', 'Epics', 'New Feature', 'Features', 'Project Settings'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -218,7 +219,10 @@ export default function MiniDrawer() {
                   }}
                 >
                   {index === 0 && <AddIcon />}
-                  {index === 1 && <SettingsIcon />}
+                  {index === 1 && <DashboardIcon />}
+                  {index === 2 && <AddIcon />}
+                  {index === 3 && <DashboardIcon />}
+                  {index === 4 && <SettingsIcon />}
 
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
@@ -229,19 +233,27 @@ export default function MiniDrawer() {
         </List>
         <Divider sx={{ borderColor: 'white' }} />
         <List>
-          <ListItem>
-            <ListItemIcon
+          <ListItem disablePadding sx={{ display: 'block' }}>
+            <ListItemButton
+              onClick={() => navigate('/projects')}
               sx={{
-                minWidth: 0,
-                mr: open ? 3 : 'auto',
-                justifyContent: 'center',
-                color: 'white',
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
               }}
             >
-              {<AccountTreeIcon />}
-
-            </ListItemIcon>
-            <ListItemText primary={"Active Projects"} sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                  color: 'white'
+                }}
+              >
+                <AccountTreeIcon />
+              </ListItemIcon>
+              <ListItemText primary='Active Projects' sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
 
           </ListItem>
         </List>
