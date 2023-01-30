@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import ProjectItem from "../components/projectItem";
+import ProjectItem from "../components/projectItem/projectItem";
 import { getProjects, reset } from '../features/projects/projectSlice';
 
 const Projects = () => {

@@ -1,0 +1,35 @@
+.item {
+    font-size: 15px;
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    border-radius: 5px;
+    z-index: 1;
+    color: #a8b0c2;
+    background-color: #0d1116;
+}
+
+.item:hover {
+    cursor: pointer;
+}
+
+.item-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.item-icons>* {
+    margin-right: 10px;
+}
+
+.col {
+    min-height: 300px;
+    max-width: 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #778399;
+    font-size: 0.83em;
+}
