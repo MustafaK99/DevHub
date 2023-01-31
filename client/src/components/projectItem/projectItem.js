@@ -1,15 +1,14 @@
-import React from 'react'
+import React from 'react';
+import './projectItem.css';
 
 function ProjectItem({ project }) {
     return (
 
-        <div className='col'>
-            <div className='item'>
-                <h1>{project.name}</h1>
-
-            </div>
+        <div className='projectItem'>
+            <h1>{project.name}</h1>
 
         </div>
+
     )
 }
 

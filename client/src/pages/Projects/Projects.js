@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import ProjectItem from "../components/projectItem/projectItem";
-import { getProjects, reset } from '../features/projects/projectSlice';
+import ProjectItem from "../../components/projectItem/projectItem";
+import { getProjects, reset } from '../../features/projects/projectSlice';
+import './projects.css';
 
 const Projects = () => {
 
@@ -28,7 +29,7 @@ const Projects = () => {
 
             <section>
                 {projects.length > 0 ? (
-                    <div>
+                    <div className="projects">
                         {projects.map((project) => (
                             <ProjectItem key={project._id} project={project} />
                         ))}
