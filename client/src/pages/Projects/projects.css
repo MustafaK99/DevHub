@@ -1,7 +1,6 @@
 .projects {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 2fr);
     gap: 10px;
-    background-color: #24292f;
     font-size: 0.83em;
 }
