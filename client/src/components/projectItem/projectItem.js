@@ -1,11 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './projectItem.css';
-
 
 function ProjectItem({ project }) {
 
+    const navigate = useNavigate();
+
     const handleClick = () => {
-        console.log('open project')
+        console.log(project._id)
+        navigate(`/project/${project._id}`)
     }
 
     return (
@@ -15,6 +18,6 @@ function ProjectItem({ project }) {
         </div>
 
     )
-}
 
+}
 export default ProjectItem
