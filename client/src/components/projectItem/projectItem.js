@@ -7,7 +7,6 @@ function ProjectItem({ project }) {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        console.log(project._id)
         navigate(`/project/${project._id}`)
     }
 
