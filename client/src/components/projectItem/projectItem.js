@@ -7,7 +7,7 @@ function ProjectItem({ project }) {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/project/${project._id}`)
+        navigate("/project", { state: { id: project._id, name: project.name } })
     }
 
     return (
