@@ -58,8 +58,8 @@ const Window = ({ show, onClose }) => {
     const [collabrators, setCollabrators] = useState([]);
 
 
-    const [dateAndtime1, setDateAndTime1] = useState(dayjs());
-    const [dateAndtime2, setDateAndTime2] = useState(dayjs().date(30))
+    const [dateAndtime1, setDateAndTime1] = useState(dayjs().toDate());
+    const [dateAndtime2, setDateAndTime2] = useState(dayjs().date(30).toDate())
     const handleChangeDT1 = (newValue) => {
 
         if (dayjs(newValue).isBefore(dayjs(dateAndtime2))) {
