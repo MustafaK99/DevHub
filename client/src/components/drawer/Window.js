@@ -81,7 +81,10 @@ const Window = ({ show, onClose }) => {
         e.preventDefault()
         let collabs_id = []
         collabrators[0].value.forEach(x => collabs_id.push(x.id))
+
         dispatch(createProject({ name, description, dateAndtime1, dateAndtime2, collabs_id }))
+        console.log(dateAndtime1)
+        console.log(dateAndtime2)
         setName('')
         setDescription('')
         setDateAndTime1(dayjs())
@@ -110,7 +113,7 @@ const Window = ({ show, onClose }) => {
             <section className="new-project-form">
                 <form onSubmit={onSubmit}>
                     <div className={"close-btn-ctn"}>
-                        <h1 style={{ flex: "1 90%" }}> Create a new project</h1>
+                        <h1 style={{ flex: "1 90%", color: 'black' }}> Create a new project</h1>
                         <button className="close-btn" onClick={onClose}>X</button>
                     </div>
                     <div className="new-project-form-content">
