@@ -58,12 +58,12 @@ const Window = ({ show, onClose }) => {
     const [collabrators, setCollabrators] = useState([]);
 
 
-    const [dateAndtime1, setDateAndTime1] = useState(dayjs().toDate());
-    const [dateAndtime2, setDateAndTime2] = useState(dayjs().date(30).toDate())
+    const [start_time, setStartTime] = useState(dayjs().toDate());
+    const [end_time, setEndTime] = useState(dayjs().date(30).toDate())
     const handleChangeDT1 = (newValue) => {
 
-        if (dayjs(newValue).isBefore(dayjs(dateAndtime2))) {
-            setDateAndTime1(newValue);
+        if (dayjs(newValue).isBefore(dayjs(end_time))) {
+            setStartTime(newValue);
         }
 
 
@@ -71,8 +71,8 @@ const Window = ({ show, onClose }) => {
 
     const handleChangeDT2 = (newValue) => {
 
-        if (dayjs(newValue).isAfter(dayjs(dateAndtime1))) {
-            setDateAndTime2(newValue);
+        if (dayjs(newValue).isAfter(dayjs(start_time))) {
+            setEndTime(newValue);
         }
     }
 
@@ -82,13 +82,11 @@ const Window = ({ show, onClose }) => {
         let collabs_id = []
         collabrators[0].value.forEach(x => collabs_id.push(x.id))
 
-        dispatch(createProject({ name, description, dateAndtime1, dateAndtime2, collabs_id }))
-        console.log(dateAndtime1)
-        console.log(dateAndtime2)
+        dispatch(createProject({ name, description, start_time, end_time, collabs_id }))
         setName('')
         setDescription('')
-        setDateAndTime1(dayjs())
-        setDateAndTime2(dayjs().date(30))
+        setStartTime(dayjs())
+        setEndTime(dayjs().date(30))
         setCollabrators([])
         collabs_id = []
 
@@ -127,13 +125,13 @@ const Window = ({ show, onClose }) => {
                             <Stack spacing={2}>
                                 <DateTimePicker
                                     label="Start Time"
-                                    value={dateAndtime1}
+                                    value={start_time}
                                     onChange={handleChangeDT1}
                                     renderInput={(params) => <TextField {...params} />}
                                 />
                                 <DateTimePicker
                                     label="End Time"
-                                    value={dateAndtime2}
+                                    value={end_time}
                                     onChange={handleChangeDT2}
                                     renderInput={(params) => <TextField {...params} />}
                                 />

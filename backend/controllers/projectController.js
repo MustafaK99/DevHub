@@ -51,6 +51,7 @@ const updateProject = asyncHandler(async (req, res) => {
     }
 
     const { name, description, start_time, end_time, collaborators } = req.body
+
     const project = new Project({
         name,
         description,
