@@ -9,7 +9,7 @@ import Dashboard from './pages/Dashboard';
 import Git from './pages/Git';
 import Home from './pages/Home';
 import Login from './pages/Login/Login';
-import Project from './pages/Project';
+import Project from './pages/Project/Project';
 import Projects from './pages/Projects/Projects';
 import Register from './pages/Register/Register';
 function App() {
