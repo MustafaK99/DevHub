@@ -1,32 +1,12 @@
-.close-btn-ctn {
+.edit-project-form {
     display: flex;
-}
-
-.close-btn {
-    height: 40px;
-    width: 35px;
-    font-size: 20px;
-    color: #24292f;
-    border: none;
-    border-radius: 25px;
-}
-
-.close-btn:hover {
-    background-color: #9e9999;
-    color: white;
-}
-
-.new-project-form-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    color: white;
+    flex-direction: column;
     background-color: white;
-
+    justify-content: center;
+    align-items: center;
 }
 
-.center {
-    position: relative;
-    top: 10px;
-    left: 120px;
+.autocomplete-edit-form {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

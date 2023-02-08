@@ -1,54 +1,54 @@
-import './Register.css'
 import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
-import {toast} from 'react-toastify'
-import {register, reset} from '../../features/auth/authSlice'
-import { FaUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import Spinner from '../../components/Spinner'
-const Register = ()=> {
+import { register, reset } from '../../features/auth/authSlice'
+import './Register.css'
+const Register = () => {
 
-    const[formData, setFormData] = useState({
+    const [formData, setFormData] = useState({
         organisation: '',
-        organisationEmail:'',
+        organisationEmail: '',
         name: '',
-        email:'',
+        email: '',
         password: '',
-        password2:'',
+        password2: '',
     })
 
-    const {organisation, organisationEmail, name, email, password, password2} = formData
+    const { organisation, organisationEmail, name, email, password, password2 } = formData
 
     const navigate = useNavigate()
-    const dispatch  = useDispatch()
+    const dispatch = useDispatch()
 
-    const {user, isLoading, isError, isSuccess, message} = useSelector(
-    (state) => state.auth)
+    const { user, isLoading, isError, isSuccess, message } = useSelector(
+        (state) => state.auth)
 
-    useEffect(() => { 
+    useEffect(() => {
 
-        if(isError) {
+        if (isError) {
             toast.error(message)
         }
 
-        if(isSuccess || user) {
-           navigate('/') 
+        if (isSuccess || user) {
+            navigate('/')
         }
 
         dispatch(reset())
 
     }, [user, isError, isSuccess, message, navigate, dispatch])
-    
+
     const onChange = (e) => {
         setFormData((prevState) => ({
-            ...prevState, 
+            ...prevState,
             [e.target.name]: e.target.value,
-        }) )
+        }))
     }
 
     const onSubmit = (e) => {
         e.preventDefault()
-        if(password !== password2){
+        if (password !== password2) {
             toast.error('Password do not match')
         } else {
             const UserData = {
@@ -63,49 +63,49 @@ const Register = ()=> {
         }
 
     }
-    
-    if(isLoading){
-        return <Spinner/>
+
+    if (isLoading) {
+        return <Spinner />
     }
 
-    return(
+    return (
         <section className='form-group'>
-                <h1>
-                    <FaUser /> Register
-                </h1>
-                <p>Create Account</p>
-                <form className='form-container' onSubmit={onSubmit}>
-                    <input type="text" id='organisation' 
+            <h1>
+                <FaUser /> Register
+            </h1>
+            <p>Create Account</p>
+            <form className='form-container' onSubmit={onSubmit}>
+                <input type="text" id='organisation'
                     name='organisation' value={organisation} placeholder='Enter org'
                     onChange={onChange}
-                    />
+                />
 
-                    <input type="email" id='organisationEmail' 
+                <input type="email" id='organisationEmail'
                     name='organisationEmail' value={organisationEmail} placeholder='Enter org email'
                     onChange={onChange}
-                    />
-                    <input type="text" id='name' 
+                />
+                <input type="text" id='name'
                     name='name' value={name} placeholder='Enter your name'
                     onChange={onChange}
-                    />
-                    <input type="email" id='email' 
+                />
+                <input type="email" id='email'
                     name='email' value={email} placeholder='Enter your email'
                     onChange={onChange}
-                    /> 
+                />
 
-                    <input type="password" id='password' 
+                <input type="password" id='password'
                     name='password' value={password} placeholder='Enter your password'
                     onChange={onChange}
-                    /> 
+                />
 
-                    <input type="password" id='password2' 
+                <input type="password" id='password2'
                     name='password2' value={password2} placeholder='Re-enter password'
                     onChange={onChange}
-                    />
-                     <button type="submit" className='btn btn-block'>Submit</button>
-                </form>    
+                />
+                <button type="submit" className='btn btn-block'>Submit</button>
+            </form>
         </section>
-  );
+    );
 }
 
 export default Register
