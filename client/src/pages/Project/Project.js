@@ -31,7 +31,7 @@ const Project = () => {
         <section className='edit-project-form'>
             <form onSubmit={onSubmit}>
                 <div>
-                    <h1 style={{ flex: "1 90%" }}> Create a new project</h1>
+                    <h1 style={{ flex: "1 90%", color: 'black' }}> Edit project</h1>
                 </div>
 
                 <TextField fullWidth id="fullWidth" label='Name' value={name} onChange={(e) => setName(e.target.value)} sx={{ marginBottom: 2 }} />
@@ -68,9 +68,11 @@ const Project = () => {
 
                 </div>
 
-                <button type="submit" className='btn btn-block'>Submit</button>
+                <div className='button-container'>
 
+                    <button type="submit" className='btn btn-block'>Submit</button>
 
+                </div>
 
             </form>
         </section>
