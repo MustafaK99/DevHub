@@ -1,26 +1,30 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import Project from '../../pages/Project/Project';
 import './projectItem.css';
 
 function ProjectItem({ project }) {
 
-    const navigate = useNavigate();
+    const [show, setShow] = useState(false);
 
-    const handleClick = () => {
-        navigate("/project", {
-            state: {
-                id: project._id, name: project.name, description: project.description,
-                start_time: project.start_time, end_time: project.end_time, organisation: project.organisation,
-                collaborators: project.collaborators, epics: project.epics, sprints: project.sprints, backlog: project.backlog
-            }
-        })
-    }
+    const onOpen = () => setShow(true);
+
+    const onClose = () => setShow(false);
+
 
     return (
 
         <div className='projectItem' onClick={handleClick}>
             <h1>{project.name}</h1>
+
+            <Project
+                onClose={onClose}
+                show={show}
+                project={project}
+            />
+
         </div>
+
+
 
     )
 
