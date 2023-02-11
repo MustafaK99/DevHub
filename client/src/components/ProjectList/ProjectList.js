@@ -1,12 +1,15 @@
 import React, { useEffect, useState }  from 'react';
 import { Alert } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProjects, reset } from '../../features/projects/projectSlice';
+
 import Pagination from '../Pagination/Pagination';
 import './projectList.css';
 import projectItem from '../projectItem/projectItem';
 
-const ProjectList = ({Projects}) => {
+const ProjectList = () => {
 
-    const { sortedProjects } = Projects.sort((a, b) => (a.name, b.name ? -1 : 1));
+    const { sortedProjects } = projects.sort((a, b) => (a.name, b.name ? -1 : 1));
 
     const [showAlert, setShowAlert] = useState(false);
 
@@ -25,6 +28,23 @@ const ProjectList = ({Projects}) => {
             setShowAlert(false);
         }, 2000)
     }
+
+    const dispatch = useDispatch()
+
+    const { projects, isLoading, isError, message } = useSelector((state) => state.projects)
+
+    useEffect(() => {
+        if (isError) {
+            console.log(message)
+        }
+
+        dispatch(getProjects())
+
+        return () => {
+            dispatch(reset())
+        }
+    }, [isError, message, dispatch])
+
 
     useEffect(() => {
         handleClose();
@@ -82,7 +102,7 @@ const ProjectList = ({Projects}) => {
 
             <Pagination pages={totalPagesNum}
                 setCurrentPage={setCurrentPage}
-                currentProjects={Projects}
+                currentProjects={projects}
                 sortedProjects={sortedProjects} />
 
         </>

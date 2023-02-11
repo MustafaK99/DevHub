@@ -31,7 +31,7 @@ const Projects = () => {
             <section>
                 {projects.length > 0 ? (
                     <div>
-                        <ProjectList Projects={projects}/>
+                        <ProjectList />
                     </div>
                 ) : (<h3>No Active Projects Currently </h3>)}
 
