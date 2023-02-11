@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import ProjectItem from "../../components/projectItem/projectItem";
 import { getProjects, reset } from '../../features/projects/projectSlice';
 import './projects.css';
 
@@ -27,12 +26,11 @@ const Projects = () => {
         <>
             <h1>Active Projects</h1>
 
+
             <section>
                 {projects.length > 0 ? (
-                    <div className="projects">
-                        {projects.map((project) => (
-                            <ProjectItem key={project._id} project={project} />
-                        ))}
+                    <div>
+                        <projectList Projects={projects} />
                     </div>
                 ) : (<h3>No Active Projects Currently </h3>)}
 
