@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getProjects, reset } from '../../features/projects/projectSlice';
 import './projects.css';
+import ProjectList from '../../components/ProjectList/ProjectList';
 
 const Projects = () => {
 
@@ -30,7 +31,7 @@ const Projects = () => {
             <section>
                 {projects.length > 0 ? (
                     <div>
-                        <projectList Projects={projects} />
+                        <ProjectList Projects={projects}/>
                     </div>
                 ) : (<h3>No Active Projects Currently </h3>)}
 

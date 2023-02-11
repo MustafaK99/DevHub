@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState }  from 'react';
 import { Alert } from 'react-bootstrap';
-import Pagination from './Pagination';
+import Pagination from '../Pagination/Pagination';
 import './projectList.css';
+import projectItem from '../projectItem/projectItem';
 
-const projectList = ({ Projects }) => {
+const ProjectList = ({Projects}) => {
 
     const { sortedProjects } = Projects.sort((a, b) => (a.name, b.name ? -1 : 1));
 
@@ -88,4 +89,4 @@ const projectList = ({ Projects }) => {
     )
 }
 
-export default projectList;
+export default ProjectList;
