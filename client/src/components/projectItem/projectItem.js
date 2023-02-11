@@ -13,7 +13,7 @@ function ProjectItem({ project }) {
 
     return (
 
-        <div className='projectItem' onClick={handleClick}>
+        <div className='projectItem' onClick={onOpen}>
             <h1>{project.name}</h1>
 
             <Project
