@@ -1,45 +1,19 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { getProjects, reset } from '../../features/projects/projectSlice';
-import './projects.css';
-import ProjectList from '../../components/ProjectList/ProjectList';
+import React, { useEffect, useState } from "react";
+import ProjectList from "../../components/ProjectList/ProjectList";
+import "./projects.css";
 
 const Projects = () => {
+  return (
+    <>
+      <div className="container-xl">
+        <div className="table-responsive">
+          <div className="table-wrapper">
+            <ProjectList />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-    const dispatch = useDispatch()
-
-    const { projects, isLoading, isError, message } = useSelector((state) => state.projects)
-
-    useEffect(() => {
-        if (isError) {
-            console.log(message)
-        }
-
-        dispatch(getProjects())
-
-        return () => {
-            dispatch(reset())
-        }
-    }, [isError, message, dispatch])
-
-    return (
-
-        <>
-            <h1>Active Projects</h1>
-
-
-            <section>
-                {projects.length > 0 ? (
-                    <div>
-                        <ProjectList />
-                    </div>
-                ) : (<h3>No Active Projects Currently </h3>)}
-
-            </section>
-        </>
-
-    )
-
-}
-
-export default Projects
+export default Projects;

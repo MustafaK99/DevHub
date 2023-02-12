@@ -1,0 +1,27 @@
+import React, { useEffect, useState } from "react";
+
+const ProjectItem = ({ project }) => {
+  return (
+    <>
+      <td>{project.name}</td>
+      <td>{project.description}</td>
+      <td>{project.start_time}</td>
+      <td>{project.end_time}</td>
+      <td>{project.collaborators}</td>
+      <td>
+        <button className="btn-edit">
+          <i className="material-icons" data-toggle="tooltip" title="Edit">
+            &#xE254;
+          </i>
+        </button>
+        <button className="btn-delete">
+          <i className="material-icons" data-toggle="tooltip" title="Delete">
+            &#xE872;
+          </i>
+        </button>
+      </td>
+    </>
+  );
+};
+
+export default ProjectItem;
