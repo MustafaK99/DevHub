@@ -109,6 +109,8 @@ table.table .avatar {
 .pagination {
   float: right;
   margin: 0 0 5px;
+  display: flex;
+  flex-direction: row;
 }
 .pagination li a {
   border: none;
@@ -123,14 +125,14 @@ table.table .avatar {
   padding: 0 6px;
 }
 .pagination li a:hover {
-  color: #666;
+  background-color: #4c4f50;
 }
 .pagination li.active a,
 .pagination li.active a.page-link {
-  background: #03a9f4;
+  background: #69696b;
 }
 .pagination li.active a:hover {
-  background: #0397d6;
+  background: #4c4f50;
 }
 .pagination li.disabled i {
   color: #ccc;

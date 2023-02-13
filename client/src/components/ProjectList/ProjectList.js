@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjects, reset } from "../../features/projects/projectSlice";
 import ProjectItem from "../projectItem/ProjectItem";
+import Pagination from "../Pagination/Pagination";
 
 const ProjectList = () => {
   const dispatch = useDispatch();
@@ -9,6 +10,9 @@ const ProjectList = () => {
   const { projects, isLoading, isError, message } = useSelector(
     (state) => state.projects
   );
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [projectsPerPage, setProjectsPerPage] = useState(5);
 
   useEffect(() => {
     if (isError) {
@@ -21,6 +25,15 @@ const ProjectList = () => {
       dispatch(reset());
     };
   }, [isError, message, dispatch]);
+
+  //Get current posts
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = projects.slice(
+    indexOfFirstProject,
+    indexOfLastProject
+  );
+  const totalPagesNum = Math.ceil(projects.length / projectsPerPage);
 
   return (
     <>
@@ -56,13 +69,14 @@ const ProjectList = () => {
           </tr>
         </thead>
         <tbody>
-          {projects.map((project) => (
+          {currentProjects.map((project) => (
             <tr key={project._id}>
               <ProjectItem project={project} />
             </tr>
           ))}
         </tbody>
       </table>
+      <Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage} />
     </>
   );
 };
