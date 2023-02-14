@@ -12,7 +12,7 @@ const ProjectList = () => {
   );
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [projectsPerPage, setProjectsPerPage] = useState(5);
+  const [projectsPerPage, setProjectsPerPage] = useState(10);
 
   useEffect(() => {
     if (isError) {

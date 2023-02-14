@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 const ProjectItem = ({ project }) => {
+  const editProject = () => {};
+
+  const deleteProject = () => {};
+
   return (
     <>
       <td>{project.name}</td>
@@ -14,7 +18,7 @@ const ProjectItem = ({ project }) => {
             &#xE254;
           </i>
         </button>
-        <button className="btn-delete">
+        <button className="btn-delete" onClick={deleteProject}>
           <i className="material-icons" data-toggle="tooltip" title="Delete">
             &#xE872;
           </i>
