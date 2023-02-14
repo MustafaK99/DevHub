@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ProjectItem = ({ project }) => {
+const ProjectItem = ({ project, users }) => {
   const editProject = () => {};
 
   const deleteProject = () => {};
@@ -11,7 +11,13 @@ const ProjectItem = ({ project }) => {
       <td>{project.description}</td>
       <td>{project.start_time}</td>
       <td>{project.end_time}</td>
-      <td>{project.collaborators}</td>
+
+      <td>
+        {users.map((user) => (
+          <p>{user}</p>
+        ))}
+      </td>
+
       <td>
         <button className="btn-edit">
           <i className="material-icons" data-toggle="tooltip" title="Edit">

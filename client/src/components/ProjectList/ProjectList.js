@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProjects, reset } from "../../features/projects/projectSlice";
 import ProjectItem from "../projectItem/ProjectItem";
 import Pagination from "../Pagination/Pagination";
+import { getUsers } from "../../features/users/userSlice";
+
+import Window from "./Window";
 
 const ProjectList = () => {
   const dispatch = useDispatch();
@@ -11,13 +14,24 @@ const ProjectList = () => {
     (state) => state.projects
   );
 
+  const { users } = useSelector((state) => state.users);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [projectsPerPage, setProjectsPerPage] = useState(10);
+
+  const [open, setOpen] = React.useState(false);
+  const [show, setShow] = React.useState(false);
+
+  const onOpen = () => setShow(true);
+
+  const onClose = () => setShow(false);
 
   useEffect(() => {
     if (isError) {
       console.log(message);
     }
+
+    dispatch(getUsers());
 
     dispatch(getProjects());
 
@@ -45,14 +59,10 @@ const ProjectList = () => {
             </h2>
           </div>
           <div className="col-sm-6">
-            <a
-              href="#addEmployeeModal"
-              className="btn btn-success"
-              data-toggle="modal"
-            >
+            <button className="btn btn-success" onClick={onOpen}>
               <i className="material-icons">&#xE147;</i>{" "}
               <span>Add New Project</span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -71,12 +81,21 @@ const ProjectList = () => {
         <tbody>
           {currentProjects.map((project) => (
             <tr key={project._id}>
-              <ProjectItem project={project} />
+              <ProjectItem
+                project={project}
+                users={users.map((user) => user.name)}
+              />
             </tr>
           ))}
         </tbody>
       </table>
       <Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage} />
+
+      <Window
+        onClose={onClose}
+        show={show}
+        users={users.map((user) => ({ id: user._id, label: user.name }))}
+      />
     </>
   );
 };
