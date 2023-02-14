@@ -14,7 +14,7 @@ const ProjectItem = ({ project, users }) => {
 
       <td>
         {users.map((user) => (
-          <p>{user}</p>
+          <div>{user}</div>
         ))}
       </td>
 
