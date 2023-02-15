@@ -13,7 +13,7 @@ const ProjectItem = ({ project, users }) => {
       <td>{project.end_time}</td>
 
       <td>
-        {users.map((user) => (
+        {users.map((user, index) => (
           <div>{user}</div>
         ))}
       </td>
