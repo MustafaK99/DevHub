@@ -19,6 +19,8 @@ import { getUsers } from "../../features/users/userSlice";
 Modal.setAppElement("body");
 
 const Window = ({ show, onClose, users }) => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [collabrators, setCollabrators] = useState([]);
@@ -45,6 +47,9 @@ const Window = ({ show, onClose, users }) => {
     e.preventDefault();
     let collabs_id = [];
     collabrators[0].value.forEach((x) => collabs_id.push(x.id));
+    dispatch(
+      createProject({ name, description, start_time, end_time, collabs_id })
+    );
 
     setName("");
     setDescription("");
