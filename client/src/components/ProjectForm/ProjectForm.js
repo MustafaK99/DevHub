@@ -2,7 +2,6 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
 import Modal from "react-modal";
-import "./Window.css";
 
 import Stack from "@mui/material/Stack";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -13,14 +12,38 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../../components/Spinner";
-import { createProject, reset } from "../../features/projects/projectSlice";
+import {
+  createProject,
+  getProjects,
+  reset,
+} from "../../features/projects/projectSlice";
 import { getUsers } from "../../features/users/userSlice";
 
-Modal.setAppElement("body");
-
-const Window = ({ show, onClose, users }) => {
+const ProjectForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { users, isError, message } = useSelector((state) => state.users);
+  const { projects, isSuccess, isLoading } = useSelector(
+    (state) => state.projects
+  );
+
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    }
+
+    dispatch(getUsers());
+
+    if (isSuccess) {
+      dispatch(reset());
+      navigate("/projects");
+    }
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [isError, message, dispatch, navigate, isSuccess]);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -58,27 +81,21 @@ const Window = ({ show, onClose, users }) => {
     setEndTime(dayjs().date(30));
     setCollabrators([]);
     collabs_id = [];
-
-    onClose();
   };
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
-    <Modal
-      isOpen={show}
-      onRequestClose={onClose}
-      className={"modal"}
-      overlayClassName={"overlay"}
-    >
+    <div>
       <section className="new-project-form">
         <form onSubmit={onSubmit}>
           <div className={"close-btn-ctn"}>
-            <h1 style={{ flex: "1 90%", color: "black" }}>
+            <h1 style={{ flex: "1 90%", color: "white" }}>
               {" "}
               Create a new project
             </h1>
-            <button className="close-btn" onClick={onClose}>
-              X
-            </button>
           </div>
           <div className="new-project-form-content">
             <TextField
@@ -119,7 +136,10 @@ const Window = ({ show, onClose, users }) => {
               <Autocomplete
                 onChange={(event, value) => setCollabrators([{ value }])}
                 multiple
-                options={users}
+                options={users.map((user) => ({
+                  id: user._id,
+                  label: user.name,
+                }))}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -137,8 +157,8 @@ const Window = ({ show, onClose, users }) => {
           </div>
         </form>
       </section>
-    </Modal>
+    </div>
   );
 };
 
-export default Window;
+export default ProjectForm;

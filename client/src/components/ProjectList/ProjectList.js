@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjects, reset } from "../../features/projects/projectSlice";
 import ProjectItem from "../projectItem/ProjectItem";
@@ -9,8 +10,9 @@ import Window from "./Window";
 
 const ProjectList = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { projects, isLoading, isError, message } = useSelector(
+  const { projects, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.projects
   );
 
@@ -19,16 +21,18 @@ const ProjectList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [projectsPerPage, setProjectsPerPage] = useState(10);
 
-  const [open, setOpen] = React.useState(false);
-  const [show, setShow] = React.useState(false);
-
-  const onOpen = () => setShow(true);
-
-  const onClose = () => setShow(false);
+  const onOpen = () => {
+    dispatch(reset());
+    navigate("/projectForn");
+  };
 
   useEffect(() => {
     if (isError) {
       console.log(message);
+    }
+
+    if (isSuccess) {
+      dispatch(reset());
     }
 
     dispatch(getUsers());
@@ -90,12 +94,6 @@ const ProjectList = () => {
         </tbody>
       </table>
       <Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage} />
-
-      <Window
-        onClose={onClose}
-        show={show}
-        users={users.map((user) => ({ id: user._id, label: user.name }))}
-      />
     </>
   );
 };
