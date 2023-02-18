@@ -102,6 +102,7 @@ const ProjectForm = () => {
               fullWidth
               id="fullWidth"
               label="Name"
+              sx={{ backgroundColor: "white", borderRadius: 3 }}
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -111,7 +112,7 @@ const ProjectForm = () => {
               rows={10}
               id="fullWidth"
               label="Description"
-              sx={{ borderRadius: 3 }}
+              sx={{ borderRadius: 3, backgroundColor: "white" }}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
@@ -122,13 +123,26 @@ const ProjectForm = () => {
                   label="Start Time"
                   value={start_time}
                   onChange={handleChangeDT1}
-                  renderInput={(params) => <TextField {...params} />}
+                  renderInput={(params) => (
+                    <TextField
+                      sx={{ backgroundColor: "white", borderRadius: 3 }}
+                      {...params}
+                    />
+                  )}
                 />
                 <DateTimePicker
                   label="End Time"
                   value={end_time}
                   onChange={handleChangeDT2}
-                  renderInput={(params) => <TextField {...params} />}
+                  renderInput={(params) => (
+                    <TextField
+                      sx={{
+                        backgroundColor: "white",
+                        borderRadius: 3,
+                      }}
+                      {...params}
+                    />
+                  )}
                 />
               </Stack>
             </LocalizationProvider>
@@ -145,7 +159,7 @@ const ProjectForm = () => {
                     {...params}
                     label="Collabrators"
                     placeholder="Select team mates for your project"
-                    sx={{ borderRadius: 3 }}
+                    sx={{ borderRadius: 3, backgroundColor: "white" }}
                   />
                 )}
               />
