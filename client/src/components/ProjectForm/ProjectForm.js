@@ -18,7 +18,8 @@ import {
   reset,
 } from "../../features/projects/projectSlice";
 import { getUsers } from "../../features/users/userSlice";
-
+import "./projectform.css";
+import { bold } from "colors";
 const ProjectForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -67,6 +68,10 @@ const ProjectForm = () => {
     }
   };
 
+  const moveBack = () => {
+    navigate("/projects");
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     let collabs_id = [];
@@ -101,7 +106,8 @@ const ProjectForm = () => {
             <TextField
               fullWidth
               id="fullWidth"
-              label="Name"
+              placeholder="Name"
+              variant="outlined"
               sx={{ backgroundColor: "white", borderRadius: 3 }}
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -111,7 +117,8 @@ const ProjectForm = () => {
               multiline
               rows={10}
               id="fullWidth"
-              label="Description"
+              placeholder="Description"
+              variant="outlined"
               sx={{ borderRadius: 3, backgroundColor: "white" }}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -125,6 +132,9 @@ const ProjectForm = () => {
                   onChange={handleChangeDT1}
                   renderInput={(params) => (
                     <TextField
+                      InputLabelProps={{
+                        style: { fontSize: 20, fontWeight: bold },
+                      }}
                       sx={{ backgroundColor: "white", borderRadius: 3 }}
                       {...params}
                     />
@@ -136,6 +146,9 @@ const ProjectForm = () => {
                   onChange={handleChangeDT2}
                   renderInput={(params) => (
                     <TextField
+                      InputLabelProps={{
+                        style: { fontSize: 20, fontWeight: bold },
+                      }}
                       sx={{
                         backgroundColor: "white",
                         borderRadius: 3,
@@ -157,7 +170,7 @@ const ProjectForm = () => {
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    label="Collabrators"
+                    variant="outlined"
                     placeholder="Select team mates for your project"
                     sx={{ borderRadius: 3, backgroundColor: "white" }}
                   />
@@ -165,8 +178,18 @@ const ProjectForm = () => {
               />
             </div>
 
-            <button type="submit" className="btn btn-block center">
+            <button
+              type="submit"
+              className="btn btn-block center btn-project-form"
+            >
               Submit
+            </button>
+
+            <button
+              onClick={moveBack}
+              className="btn btn-block center btn-project-form-delete"
+            >
+              Back
             </button>
           </div>
         </form>
