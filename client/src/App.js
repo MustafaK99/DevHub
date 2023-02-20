@@ -12,7 +12,8 @@ import Login from "./pages/Login/Login";
 import Project from "./pages/Project/Project";
 import Projects from "./pages/Projects/Projects";
 import Register from "./pages/Register/Register";
-import ProjectForm from "./components/ProjectForm/ProjectForm";
+import NewProject from "./pages/Project/NewProject";
+import ProjectEdit from "./pages/Project/ProjectEdit";
 
 function App() {
   return (
@@ -30,7 +31,8 @@ function App() {
             <Route path="/Register" element={<Register />} />
             <Route path="/project" element={<Project />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/projectForn" element={<ProjectForm />} />
+            <Route path="/NewProject" element={<NewProject />} />
+            <Route path="/EditProject" element={<ProjectEdit />} />
           </Routes>
         </Router>
         <ToastContainer />

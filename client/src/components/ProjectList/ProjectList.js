@@ -23,7 +23,7 @@ const ProjectList = () => {
 
   const onOpen = () => {
     dispatch(reset());
-    navigate("/projectForn");
+    navigate("/NewProject");
   };
 
   useEffect(() => {

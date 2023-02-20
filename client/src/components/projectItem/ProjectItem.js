@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { reset } from "../../features/projects/projectSlice";
 
 const ProjectItem = ({ project, users }) => {
-  const editProject = () => {};
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const editProject = () => {
+    dispatch(reset());
+    navigate("/EditProject");
+  };
 
   const deleteProject = () => {};
 
@@ -19,7 +28,7 @@ const ProjectItem = ({ project, users }) => {
       </td>
 
       <td>
-        <button className="btn-edit">
+        <button className="btn-edit" onClick={editProject}>
           <i className="material-icons" data-toggle="tooltip" title="Edit">
             &#xE254;
           </i>
