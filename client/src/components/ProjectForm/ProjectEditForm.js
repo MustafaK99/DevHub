@@ -10,7 +10,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import {
   createProject,
@@ -29,6 +29,7 @@ const ProjectEditForm = ({
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { users, isError, message } = useSelector((state) => state.users);
   const { projects, isSuccess, isLoading } = useSelector(
@@ -52,16 +53,12 @@ const ProjectEditForm = ({
     };
   }, [isError, message, dispatch, navigate, isSuccess]);
 
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [collabrators, setCollabrators] = useState([]);
+  const [name, setName] = useState(location.state.name);
+  const [description, setDescription] = useState(location.state.description);
+  const [collabrators, setCollabrators] = useState(location.state.collabrators);
 
-  const [start_time, setStartTime] = useState(dayjs().toDate());
-  const [end_time, setEndTime] = useState(
-    dayjs()
-      .date(30)
-      .toDate()
-  );
+  const [start_time, setStartTime] = useState(location.state.start_time);
+  const [end_time, setEndTime] = useState(location.state.end_time);
   const handleChangeDT1 = (newValue) => {
     if (dayjs(newValue).isBefore(dayjs(end_time))) {
       setStartTime(newValue);
@@ -105,7 +102,7 @@ const ProjectEditForm = ({
           <div className={"close-btn-ctn"}>
             <h1 style={{ flex: "1 90%", color: "white" }}>
               {" "}
-              Edit Project Details
+              Edit project details
             </h1>
           </div>
           <div className="new-project-form-content">
@@ -169,6 +166,14 @@ const ProjectEditForm = ({
               <Autocomplete
                 onChange={(event, value) => setCollabrators([{ value }])}
                 multiple
+                defaultValue={users
+                  .filter((user) =>
+                    location.state.collabrators.includes(user._id)
+                  )
+                  .map((user) => ({
+                    id: user._id,
+                    label: user.name,
+                  }))}
                 options={users.map((user) => ({
                   id: user._id,
                   label: user.name,

@@ -9,7 +9,16 @@ const ProjectItem = ({ project, users }) => {
 
   const editProject = () => {
     dispatch(reset());
-    navigate("/EditProject");
+    navigate("/EditProject", {
+      state: {
+        id: project._id,
+        name: project.name,
+        description: project.description,
+        start_time: project.start_time,
+        end_time: project.end_time,
+        collaborators: project.collaborators,
+      },
+    });
   };
 
   const deleteProj = () => {
