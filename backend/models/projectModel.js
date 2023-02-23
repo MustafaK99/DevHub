@@ -1,47 +1,56 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const projectSchema = mongoose.Schema({
-
+const projectSchema = mongoose.Schema(
+  {
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     description: {
-        type: String,
+      type: String,
     },
     start_time: {
-        type: Date
+      type: Date,
     },
     end_time: {
-        type: Date
+      type: Date,
     },
     organisation: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Organisation'
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "Organisation",
     },
-    collaborators: [{
+    collaborators: [
+      {
+        //need to change this so that it is nested to have names and Ids will make it easier to ref and update
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'User'
-    }],
-    epics: [{
+        ref: "User",
+      },
+    ],
+    epics: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         required: false,
-        ref: 'Epic'
-    }],
-    sprints: [{
+        ref: "Epic",
+      },
+    ],
+    sprints: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         required: false,
-        ref: 'Sprint'
-    }],
+        ref: "Sprint",
+      },
+    ],
     backlog: {
-        type: mongoose.Schema.Types.ObjectId,
-        require: false,
-        ref: 'ProductBacklog'
-    }
-}, {
-    timestamps: true
-})
+      type: mongoose.Schema.Types.ObjectId,
+      require: false,
+      ref: "ProductBacklog",
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model('Project', projectSchema)
+module.exports = mongoose.model("Project", projectSchema);

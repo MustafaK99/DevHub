@@ -42,6 +42,7 @@ const ProjectEditForm = ({
     }
 
     dispatch(getUsers());
+    dispatch(getProjects());
 
     if (isSuccess) {
       dispatch(reset());
@@ -167,9 +168,7 @@ const ProjectEditForm = ({
                 onChange={(event, value) => setCollabrators([{ value }])}
                 multiple
                 defaultValue={users
-                  .filter((user) =>
-                    location.state.collabrators.includes(user._id)
-                  )
+                  .filter((user) => projects.collabrators.includes(user._id))
                   .map((user) => ({
                     id: user._id,
                     label: user.name,
