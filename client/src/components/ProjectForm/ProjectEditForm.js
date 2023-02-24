@@ -42,7 +42,6 @@ const ProjectEditForm = ({
     }
 
     dispatch(getUsers());
-    dispatch(getProjects());
 
     if (isSuccess) {
       dispatch(reset());
@@ -56,7 +55,9 @@ const ProjectEditForm = ({
 
   const [name, setName] = useState(location.state.name);
   const [description, setDescription] = useState(location.state.description);
-  const [collabrators, setCollabrators] = useState(location.state.collabrators);
+  const [collabrators, setCollabrators] = useState(
+    location.state.collaborators
+  );
 
   const [start_time, setStartTime] = useState(location.state.start_time);
   const [end_time, setEndTime] = useState(location.state.end_time);
@@ -168,7 +169,7 @@ const ProjectEditForm = ({
                 onChange={(event, value) => setCollabrators([{ value }])}
                 multiple
                 defaultValue={users
-                  .filter((user) => projects.collabrators.includes(user._id))
+                  .filter((user) => collabrators.includes(user._id))
                   .map((user) => ({
                     id: user._id,
                     label: user.name,

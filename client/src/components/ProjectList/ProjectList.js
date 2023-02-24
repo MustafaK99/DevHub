@@ -78,7 +78,6 @@ const ProjectList = () => {
             <th>Description</th>
             <th>Start Date</th>
             <th>End Date</th>
-            <th>Collaborators</th>
             <th>Actions</th>
           </tr>
         </thead>
