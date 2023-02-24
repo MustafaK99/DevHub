@@ -11,7 +11,7 @@ const ProjectItem = ({ project, users }) => {
     dispatch(reset());
     navigate("/EditProject", {
       state: {
-        id: project._id,
+        projectId: project._id,
         name: project.name,
         description: project.description,
         start_time: project.start_time,

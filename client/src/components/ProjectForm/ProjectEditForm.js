@@ -15,6 +15,7 @@ import Spinner from "../../components/Spinner";
 import {
   createProject,
   getProjects,
+  updateProject,
   reset,
 } from "../../features/projects/projectSlice";
 import { getUsers } from "../../features/users/userSlice";
@@ -53,6 +54,7 @@ const ProjectEditForm = ({
     };
   }, [isError, message, dispatch, navigate, isSuccess]);
 
+  const projectId = useState(location.state.projectId);
   const [name, setName] = useState(location.state.name);
   const [description, setDescription] = useState(location.state.description);
   const [collabrators, setCollabrators] = useState(
@@ -83,7 +85,13 @@ const ProjectEditForm = ({
     collabrators[0].value.forEach((x) => collabs_id.push(x.id));
 
     dispatch(
-      createProject({ name, description, start_time, end_time, collabs_id })
+      updateProject(projectId, {
+        name,
+        description,
+        start_time,
+        end_time,
+        collabs_id,
+      })
     );
     setName("");
     setDescription("");
