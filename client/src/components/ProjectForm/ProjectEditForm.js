@@ -85,12 +85,17 @@ const ProjectEditForm = ({
     collabrators[0].value.forEach((x) => collabs_id.push(x.id));
 
     dispatch(
-      updateProject(projectId, {
-        name,
-        description,
-        start_time,
-        end_time,
-        collabs_id,
+      updateProject({
+        projectData: {
+          name,
+          description,
+          start_time,
+          end_time,
+          collabs_id,
+        },
+        id: {
+          projectId,
+        },
       })
     );
     setName("");
