@@ -40,7 +40,6 @@ const setProject = asyncHandler(async (req, res) => {
 });
 
 const updateProject = asyncHandler(async (req, res) => {
-  console.log(req.params.id);
   const givenProject = Project.findById(req.params.id);
 
   if (!givenProject) {
@@ -48,16 +47,16 @@ const updateProject = asyncHandler(async (req, res) => {
     next(error);
   }
 
-  const { name, description, start_time, end_time, collaborators } = req.body;
+  const { name, description, start_time, end_time, collabs_id } = req.body;
 
-  const project = new Project({
+  const project = {
     name,
     description,
     start_time,
     end_time,
-    collaborators,
+    collaborators: collabs_id,
     organisation: req.user.organisation,
-  });
+  };
 
   if (!req.user) {
     res.status(401).json({ message: "Not Authorized" });
@@ -67,10 +66,8 @@ const updateProject = asyncHandler(async (req, res) => {
     res.status(401).json({ message: "Not Authorized" });
   }*/
 
-  const newProject = await Project.findByIdAndUpdate(req.params.id, project, {
-    new: true,
-  });
-  res.status(400).json(newProject);
+  const newProject = await Project.findByIdAndUpdate(req.params.id, project);
+  res.status(201).json(newProject);
 });
 
 const deleteProject = asyncHandler(async (req, res) => {

@@ -81,21 +81,15 @@ const ProjectEditForm = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const final_id = projectId[0];
+    console.log(final_id);
     let collabs_id = [];
     collabrators[0].value.forEach((x) => collabs_id.push(x.id));
 
     dispatch(
       updateProject({
-        projectData: {
-          name,
-          description,
-          start_time,
-          end_time,
-          collabs_id,
-        },
-        id: {
-          projectId,
-        },
+        projectData: { name, description, start_time, end_time, collabs_id },
+        projectId: final_id,
       })
     );
     setName("");

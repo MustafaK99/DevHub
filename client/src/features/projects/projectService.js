@@ -45,14 +45,18 @@ const getProjects = async (token) => {
 
 //update project
 
-const updateProject = async (projectId, projectData, token) => {
+const updateProject = async (projectData, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
-  const response = await axios.put(API_URL + projectId, projectData, config);
+  const response = await axios.put(
+    API_URL + projectData.projectId,
+    projectData.projectData,
+    config
+  );
 
   return response.data;
 };
