@@ -139,7 +139,7 @@ export const projectSlice = createSlice({
       .addCase(updateProject.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.projects = [...state.projects, ...action.payload];
+        state.projects = [...state.projects, action.payload];
       })
       .addCase(updateProject.rejected, (state, action) => {
         state.isLoading = false;
