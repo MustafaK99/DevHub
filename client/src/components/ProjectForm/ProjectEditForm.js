@@ -61,6 +61,8 @@ const ProjectEditForm = ({
     location.state.collaborators
   );
 
+  const [otherCollabrators, setOtherCollabrators] = useState([]);
+
   const [start_time, setStartTime] = useState(location.state.start_time);
   const [end_time, setEndTime] = useState(location.state.end_time);
   const handleChangeDT1 = (newValue) => {
@@ -77,6 +79,8 @@ const ProjectEditForm = ({
 
   const moveBack = () => {
     navigate("/projects");
+    console.log(collabrators);
+    console.log(collabrators[0]);
   };
 
   const onSubmit = (e) => {
@@ -84,7 +88,12 @@ const ProjectEditForm = ({
     const final_id = projectId[0];
     console.log(final_id);
     let collabs_id = [];
-    collabrators[0].value.forEach((x) => collabs_id.push(x.id));
+
+    if (otherCollabrators.length != 0) {
+      otherCollabrators[0].value.forEach((x) => collabs_id.push(x.id));
+    } else {
+      collabrators.forEach((x) => collabs_id.push(x));
+    }
 
     dispatch(
       updateProject({
@@ -173,7 +182,7 @@ const ProjectEditForm = ({
             </LocalizationProvider>
             <div>
               <Autocomplete
-                onChange={(event, value) => setCollabrators([{ value }])}
+                onChange={(event, value) => setOtherCollabrators([{ value }])}
                 multiple
                 defaultValue={users
                   .filter((user) => collabrators.includes(user._id))
