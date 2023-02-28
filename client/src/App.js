@@ -14,6 +14,7 @@ import Projects from "./pages/Projects/Projects";
 import Register from "./pages/Register/Register";
 import NewProject from "./pages/Project/NewProject";
 import ProjectEdit from "./pages/Project/ProjectEdit";
+import Epics from "./pages/Epics/Epics";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/NewProject" element={<NewProject />} />
             <Route path="/EditProject" element={<ProjectEdit />} />
+            <Route path="/Epics" element={<Epics />} />
           </Routes>
         </Router>
         <ToastContainer />
