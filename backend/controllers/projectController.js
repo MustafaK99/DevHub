@@ -62,9 +62,11 @@ const updateProject = asyncHandler(async (req, res) => {
     res.status(401).json({ message: "Not Authorized" });
   }
 
-  /*if (!project.find({ collaborators: "req.user.id" })) {
-    res.status(401).json({ message: "Not Authorized" });
-  }*/
+  checkUser = project.find({ collaborators: "req.user.id" });
+
+  if (!checkUser) {
+    res.status(401);
+  }
 
   const newProject = await Project.findByIdAndUpdate(req.params.id, project);
   res.status(201).json(newProject);
