@@ -8,6 +8,12 @@ const ProjectItem = ({ project, users }) => {
   const dispatch = useDispatch();
 
   const editProject = () => {
+    console.log(project.collaborators);
+
+    project.collaborators.forEach((x) =>
+      console.log(`the id is ${x.id} the name is ${x.label} ${x}`)
+    );
+
     dispatch(reset());
     navigate("/EditProject", {
       state: {

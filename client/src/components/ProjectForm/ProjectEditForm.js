@@ -181,12 +181,10 @@ const ProjectEditForm = ({
               <Autocomplete
                 onChange={(event, value) => setOtherCollabrators([{ value }])}
                 multiple
-                defaultValue={users
-                  .filter((user) => collabrators.includes(user._id))
-                  .map((user) => ({
-                    id: user._id,
-                    label: user.name,
-                  }))}
+                defaultValue={location.state.collaborators.map((x) => ({
+                  id: x.id,
+                  label: x.label,
+                }))}
                 options={users.map((user) => ({
                   id: user._id,
                   label: user.name,
