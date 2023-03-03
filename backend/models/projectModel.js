@@ -22,18 +22,16 @@ const projectSchema = mongoose.Schema(
     },
     collaborators: [
       {
-        collaborator: {
-          id: {
-            //need to change this so that it is nested to have names and Ids will make it easier to ref and update
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: "User",
-          },
+        id: {
+          //need to change this so that it is nested to have names and Ids will make it easier to ref and update
+          type: mongoose.Schema.Types.ObjectId,
+          required: true,
+          ref: "User",
+        },
 
-          name: {
-            type: String,
-            required: true,
-          },
+        label: {
+          type: String,
+          required: true,
         },
       },
     ],

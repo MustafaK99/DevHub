@@ -79,14 +79,11 @@ const ProjectEditForm = ({
 
   const moveBack = () => {
     navigate("/projects");
-    console.log(collabrators);
-    console.log(collabrators[0]);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     const final_id = projectId[0];
-    console.log(final_id);
     let collabs_id = [];
 
     if (otherCollabrators.length != 0) {

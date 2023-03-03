@@ -74,18 +74,22 @@ const ProjectForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    let collabs_id = [];
-    collabrators[0].value.forEach((x) => collabs_id.push(x.id));
+    let collabs_info = collabrators[0];
+    let user_stuff = Object.values(collabs_info);
+    let collabs = user_stuff[0];
+    collabrators[0].value.forEach((x) =>
+      console.log(`the id is ${x.id} the name is ${x.label}`)
+    );
 
     dispatch(
-      createProject({ name, description, start_time, end_time, collabs_id })
+      createProject({ name, description, start_time, end_time, collabs })
     );
     setName("");
     setDescription("");
     setStartTime(dayjs());
     setEndTime(dayjs().date(30));
     setCollabrators([]);
-    collabs_id = [];
+    collabs = [];
   };
 
   if (isLoading) {
