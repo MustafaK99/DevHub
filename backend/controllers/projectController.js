@@ -47,14 +47,14 @@ const updateProject = asyncHandler(async (req, res) => {
     next(error);
   }
 
-  const { name, description, start_time, end_time, collaborator } = req.body;
+  const { name, description, start_time, end_time, collabs } = req.body;
 
   const project = {
     name,
     description,
     start_time,
     end_time,
-    collaborators: collaborator,
+    collaborators: collabs,
     organisation: req.user.organisation,
   };
 
@@ -65,9 +65,11 @@ const updateProject = asyncHandler(async (req, res) => {
   /** 
   checkUser = Project.find({ collaborators: "req.user.id" });
 */
+
+  /*
   if (!checkUser) {
     res.status(401);
-  }
+  }**/
 
   const newProject = await Project.findByIdAndUpdate(req.params.id, project);
   res.status(201).json(newProject);

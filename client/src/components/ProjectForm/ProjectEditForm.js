@@ -58,7 +58,10 @@ const ProjectEditForm = ({
   const [name, setName] = useState(location.state.name);
   const [description, setDescription] = useState(location.state.description);
   const [collabrators, setCollabrators] = useState(
-    location.state.collaborators
+    location.state.collaborators.map((x) => ({
+      id: x.id,
+      label: x.label,
+    }))
   );
 
   const [otherCollabrators, setOtherCollabrators] = useState([]);
@@ -84,17 +87,22 @@ const ProjectEditForm = ({
   const onSubmit = (e) => {
     e.preventDefault();
     const final_id = projectId[0];
-    let collabs_id = [];
+    let collabs;
 
     if (otherCollabrators.length != 0) {
-      otherCollabrators[0].value.forEach((x) => collabs_id.push(x.id));
+      let collabs_info = otherCollabrators[0];
+      let user_stuff = Object.values(collabs_info);
+      collabs = user_stuff[0];
+      console.log(collabs);
     } else {
-      collabrators.forEach((x) => collabs_id.push(x));
+      let collabs_info = collabrators[0];
+      let user_stuff = Object.values(collabs_info);
+      collabs = user_stuff[0];
     }
 
     dispatch(
       updateProject({
-        projectData: { name, description, start_time, end_time, collabs_id },
+        projectData: { name, description, start_time, end_time, collabs },
         projectId: final_id,
       })
     );
@@ -103,7 +111,7 @@ const ProjectEditForm = ({
     setStartTime(dayjs());
     setEndTime(dayjs().date(30));
     setCollabrators([]);
-    collabs_id = [];
+    setOtherCollabrators([]);
   };
 
   if (isLoading) {
