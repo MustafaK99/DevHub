@@ -218,6 +218,7 @@ export default function MiniDrawer() {
 
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton
+              onClick={() => navigate("/epics")}
               sx={{
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
