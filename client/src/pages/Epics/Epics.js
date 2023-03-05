@@ -11,7 +11,7 @@ const Epics = () => {
       {activeProject ? (
         <div className="container-xml">
           <div className="table-responsive">
-            <div className="table-wrapper">display list of epics</div>
+            <div className="table-wrapper"></div>
           </div>
         </div>
       ) : (
