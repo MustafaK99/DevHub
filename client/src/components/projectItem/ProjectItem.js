@@ -12,9 +12,7 @@ import {
 const ProjectItem = ({ project, users }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { projects, isSuccess, isLoading } = useSelector(
-    (state) => state.projects
-  );
+  const { activeProject } = useSelector((state) => state.projects);
   const [active, setActive] = useState();
   const editProject = () => {
     console.log(project.collaborators);
@@ -42,9 +40,11 @@ const ProjectItem = ({ project, users }) => {
 
   const setActiveProject = () => {
     setActive((prevActive) => !prevActive);
+    localStorage.setItem("activeProject", JSON.stringify(project._id));
     dispatch(active_project(project._id));
+
     console.log(project._id);
-    console.log(state.projects.activeProject);
+    console.log(activeProject);
   };
 
   return (
@@ -65,7 +65,7 @@ const ProjectItem = ({ project, users }) => {
             &#xE872;
           </i>
         </button>
-        {projects.activeProject == project._id ? (
+        {activeProject === project._id ? (
           <button className="btn-edit" onClick={setActiveProject}>
             <i className="material-icons" data-toggle="tooltip" title="Delete">
               &#xe9f6;
