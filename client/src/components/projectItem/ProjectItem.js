@@ -47,14 +47,42 @@ const ProjectItem = ({ project, users }) => {
     console.log(activeProject);
   };
 
+  const viewProject = () => {
+    navigate("/ViewProject", {
+      state: {
+        projectId: project._id,
+        name: project.name,
+        description: project.description,
+        start_time: project.start_time,
+        end_time: project.end_time,
+        collaborators: project.collaborators,
+      },
+    });
+  };
+
   return (
     <>
       <td>{project.name}</td>
-      <td>{project.description}</td>
+      <td
+        style={{
+          whiteSpace: "nowrap",
+          maxWidth: "200px",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
+        {project.description}
+      </td>
       <td>{project.start_time}</td>
       <td>{project.end_time}</td>
 
       <td className="actions">
+        <button className="btn-edit" onClick={viewProject}>
+          <i className="material-icons" data-toggle="tooltip" title="Edit">
+            &#xe8f4;
+          </i>
+        </button>
+
         <button className="btn-edit" onClick={editProject}>
           <i className="material-icons" data-toggle="tooltip" title="Edit">
             &#xE254;
