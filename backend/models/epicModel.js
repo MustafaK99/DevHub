@@ -28,9 +28,19 @@ const epicSchema = mongoose.Schema(
     },
     features: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        required: false,
-        ref: "Feature",
+        id: {
+          type: mongoose.Schema.Types.ObjectId,
+          required: false,
+          ref: "Feature",
+        },
+        title: {
+          type: String,
+          required: false,
+        },
+        status: {
+          type: String,
+          required: false,
+        },
       },
     ],
   },
