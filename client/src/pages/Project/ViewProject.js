@@ -11,22 +11,7 @@ const ViewProject = () => {
   const end_time = useState(location.state.end_time);
 
   return (
-    <div>
-      <h1>Name</h1>
-      <p>{name}</p>
-      <h1>description</h1>
-      <p>{description}</p>
-      <h1>start time</h1>
-      <p> {start_time}</p>
-      <h1>end time</h1>
-
-      <p>{end_time}</p>
-
-      <h1>collaborators for this project</h1>
-      {location.state.collaborators.map((x) => (
-        <p> {x.label}</p>
-      ))}
-    </div>
+  
   );
 };
 
