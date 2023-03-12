@@ -23,6 +23,8 @@ h1 {
 }
 
 .project-details-container {
+  padding: 10px;
+  border-radius: 10px;
   width: 620px;
   height: 466px;
   display: grid;

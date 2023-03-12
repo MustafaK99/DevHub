@@ -27,9 +27,9 @@ const ViewProject = () => {
           <p className="project-view-description">
             {location.state.description}
           </p>
-          <h3>start time</h3>
+          <h3>Start time</h3>
           <p>{location.state.start_time}</p>
-          <h3>end time</h3>
+          <h3>End time</h3>
           <p>{location.state.end_time}</p>
           <h3>Collaborators</h3>
           <p>{location.state.collaborators.map((x) => x.label + " ")}</p>
