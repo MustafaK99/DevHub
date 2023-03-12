@@ -1,0 +1,44 @@
+h1 {
+  color: white;
+}
+.project-details-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 25px;
+  margin: 0 auto;
+  position: relative;
+  background-color: #0d1116;
+  border-radius: 25px;
+}
+
+.project-view-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 65%;
+}
+
+.project-details-container {
+  width: 620px;
+  height: 466px;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  align-items: first baseline;
+  background-color: #24292f;
+}
+
+.project-view-description {
+  overflow-y: auto;
+  height: 230px;
+}
+
+.btn-project-view-back {
+  margin-top: 20px;
+  margin-right: 250px;
+  width: 400px;
+  background-color: red;
+}
