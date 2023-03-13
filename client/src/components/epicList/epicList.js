@@ -8,8 +8,9 @@ import { getUsers } from "../../features/users/userSlice";
 import EpicItem from "../epicItem/epicItem";
 
 const EpicList = () => {
-  /**const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  /**const dispatch = useDispatch();
 
   const { projects, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.projects
@@ -19,11 +20,11 @@ const EpicList = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [projectsPerPage, setProjectsPerPage] = useState(10);
-
+  */
   const onOpen = () => {
-    dispatch(reset());
-    navigate("/NewProject");
+    navigate("/NewEpic");
   };
+  /** 
 
   useEffect(() => {
     if (isError) {
@@ -62,7 +63,7 @@ const EpicList = () => {
             </h2>
           </div>
           <div className="col-sm-6">
-            <button className="btn btn-success" /**onClick={onOpen}*/>
+            <button className="btn btn-success" onClick={onOpen}>
               <i className="material-icons">&#xE147;</i>{" "}
               <span>Add New Epic</span>
             </button>
@@ -77,6 +78,7 @@ const EpicList = () => {
             <th>Description</th>
             <th>Start Date</th>
             <th>End Date</th>
+            <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>

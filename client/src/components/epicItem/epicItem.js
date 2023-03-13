@@ -77,6 +77,7 @@ const EpicItem = () => {
       </td>
       <td>13/03/2023</td>
       <td>13/04/2023</td>
+      <td>In progress</td>
 
       <td className="actions">
         <button className="btn-edit" /**onClick={viewProject}*/>
