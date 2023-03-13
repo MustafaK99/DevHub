@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./Epics.css";
+import EpicList from "../../components/epicList/epicList";
 
 const Epics = () => {
   const { activeProject } = useSelector((state) => state.projects);
@@ -11,7 +12,9 @@ const Epics = () => {
       {activeProject ? (
         <div className="container-xml">
           <div className="table-responsive">
-            <div className="table-wrapper"></div>
+            <div className="table-wrapper">
+              <EpicList />
+            </div>
           </div>
         </div>
       ) : (
