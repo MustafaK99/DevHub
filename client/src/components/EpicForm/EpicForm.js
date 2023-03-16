@@ -34,7 +34,7 @@ const EpicForm = () => {
 
     if (isSuccess) {
       dispatch(reset());
-      navigate("/projects");
+      navigate("/epics");
     }
 
     return () => {
@@ -74,7 +74,14 @@ const EpicForm = () => {
     let user_stuff = Object.values(collabs_info);
     let collabs = user_stuff[0];
     dispatch(
-      createProject({ name, description, start_time, end_time, collabs })
+      createEpic({
+        created_by,
+        projectID,
+        current_status,
+        title,
+        content,
+        features,
+      })
     );
     setName("");
     setDescription("");
