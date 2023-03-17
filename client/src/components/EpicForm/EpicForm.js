@@ -42,10 +42,16 @@ const EpicForm = () => {
     };
   }, [isError, message, dispatch, navigate, isSuccess]);
 
+  const [createdBy, setCreatedBy] = useState("");
+  const [projectID, setProjectID] = useState("");
+  const [currentStatus, setCurrentStatus] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [features, setFeatures] = useState("");
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [collabrators, setCollabrators] = useState([]);
-
   const [start_time, setStartTime] = useState(dayjs().toDate());
   const [end_time, setEndTime] = useState(
     dayjs()
@@ -75,9 +81,9 @@ const EpicForm = () => {
     let collabs = user_stuff[0];
     dispatch(
       createEpic({
-        created_by,
+        createdBy,
         projectID,
-        current_status,
+        currentStatus,
         title,
         content,
         features,
