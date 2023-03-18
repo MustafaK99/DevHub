@@ -108,14 +108,14 @@ const EpicForm = () => {
           <div className={"close-btn-ctn"}>
             <h1 style={{ flex: "1 90%", color: "white" }}>
               {" "}
-              Create a new project
+              Create a new epic
             </h1>
           </div>
           <div className="new-project-form-content">
             <TextField
               fullWidth
               id="fullWidth"
-              placeholder="Name"
+              placeholder="Title"
               variant="outlined"
               sx={{ backgroundColor: "white", borderRadius: 3 }}
               value={name}
@@ -180,7 +180,7 @@ const EpicForm = () => {
                   <TextField
                     {...params}
                     variant="outlined"
-                    placeholder="Select team mates for your project"
+                    placeholder="Select features for this epic"
                     sx={{ borderRadius: 3, backgroundColor: "white" }}
                   />
                 )}

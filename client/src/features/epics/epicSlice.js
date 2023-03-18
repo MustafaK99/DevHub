@@ -9,14 +9,12 @@ const initialState = {
   message: "",
 };
 
-// create new project
-
 export const createEpic = createAsyncThunk(
   "epics/create",
   async (epicData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await epicService.createProject(epicData, token);
+      return await epicService.createEpic(epicData, token);
     } catch (error) {
       const message =
         (error.response && error.response.data && error.respone.data.message) ||
@@ -27,8 +25,6 @@ export const createEpic = createAsyncThunk(
     }
   }
 );
-
-// delete  project
 
 export const deleteEpic = createAsyncThunk(
   "epics/delete",
@@ -47,8 +43,6 @@ export const deleteEpic = createAsyncThunk(
   }
 );
 
-//Get epics for given Project
-
 export const getEpics = createAsyncThunk(
   "epics/getAll",
   async (id, thunkAPI) => {
@@ -66,7 +60,6 @@ export const getEpics = createAsyncThunk(
   }
 );
 
-//Update Project
 export const updateEpic = createAsyncThunk(
   "projects/update",
   async (Data, thunkAPI) => {
@@ -84,7 +77,7 @@ export const updateEpic = createAsyncThunk(
   }
 );
 
-export const projectSlice = createSlice({
+export const epicSlice = createSlice({
   name: "epic",
   initialState,
   reducers: {
@@ -149,5 +142,5 @@ export const projectSlice = createSlice({
   },
 });
 
-export const { reset } = projectSlice.actions;
-export default projectSlice.reducer;
+export const { reset } = epicSlice.actions;
+export default epicSlice.reducer;
