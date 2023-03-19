@@ -42,16 +42,12 @@ const EpicForm = () => {
     };
   }, [isError, message, dispatch, navigate, isSuccess]);
 
-  const [createdBy, setCreatedBy] = useState("");
-  const [projectID, setProjectID] = useState("");
-  const [currentStatus, setCurrentStatus] = useState("");
+  let createdBy;
+  let projectID;
+  let currentStatus;
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [features, setFeatures] = useState("");
-
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [collabrators, setCollabrators] = useState([]);
   const [start_time, setStartTime] = useState(dayjs().toDate());
   const [end_time, setEndTime] = useState(
     dayjs()
@@ -76,9 +72,8 @@ const EpicForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    let collabs_info = collabrators[0];
-    let user_stuff = Object.values(collabs_info);
-    let collabs = user_stuff[0];
+    createdBy = JSON.parse(localStorage.getItem("user"));
+
     dispatch(
       createEpic({
         createdBy,
@@ -89,12 +84,9 @@ const EpicForm = () => {
         features,
       })
     );
-    setName("");
-    setDescription("");
+
     setStartTime(dayjs());
     setEndTime(dayjs().date(30));
-    setCollabrators([]);
-    collabs = [];
   };
 
   if (isLoading) {
@@ -118,8 +110,8 @@ const EpicForm = () => {
               placeholder="Title"
               variant="outlined"
               sx={{ backgroundColor: "white", borderRadius: 3 }}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
             <TextField
               fullWidth
@@ -129,8 +121,8 @@ const EpicForm = () => {
               placeholder="Description"
               variant="outlined"
               sx={{ borderRadius: 3, backgroundColor: "white" }}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
             />
 
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -170,7 +162,7 @@ const EpicForm = () => {
             </LocalizationProvider>
             <div>
               <Autocomplete
-                onChange={(event, value) => setCollabrators([{ value }])}
+                onChange={(event, value) => setFeatures([{ value }])}
                 multiple
                 options={[
                   { label: "Dev-192 Create a website", id: 1 },
