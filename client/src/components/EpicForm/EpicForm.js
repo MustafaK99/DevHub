@@ -3,11 +3,6 @@ import TextField from "@mui/material/TextField";
 import * as React from "react";
 import Modal from "react-modal";
 
-import Stack from "@mui/material/Stack";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +12,6 @@ import { createEpic, reset } from "../../features/epics/epicSlice";
 
 import { getUsers } from "../../features/users/userSlice";
 import "./projectform.css";
-import { bold } from "colors";
 const EpicForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -48,23 +42,6 @@ const EpicForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [features, setFeatures] = useState("");
-  const [start_time, setStartTime] = useState(dayjs().toDate());
-  const [end_time, setEndTime] = useState(
-    dayjs()
-      .date(30)
-      .toDate()
-  );
-  const handleChangeDT1 = (newValue) => {
-    if (dayjs(newValue).isBefore(dayjs(end_time))) {
-      setStartTime(newValue);
-    }
-  };
-
-  const handleChangeDT2 = (newValue) => {
-    if (dayjs(newValue).isAfter(dayjs(start_time))) {
-      setEndTime(newValue);
-    }
-  };
 
   const moveBack = () => {
     navigate("/projects");
@@ -84,9 +61,6 @@ const EpicForm = () => {
         features,
       })
     );
-
-    setStartTime(dayjs());
-    setEndTime(dayjs().date(30));
   };
 
   if (isLoading) {
@@ -125,41 +99,6 @@ const EpicForm = () => {
               onChange={(e) => setContent(e.target.value)}
             />
 
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <Stack spacing={2}>
-                <DateTimePicker
-                  label="Start Time"
-                  value={start_time}
-                  onChange={handleChangeDT1}
-                  renderInput={(params) => (
-                    <TextField
-                      InputLabelProps={{
-                        style: { fontSize: 20, fontWeight: bold },
-                      }}
-                      sx={{ backgroundColor: "white", borderRadius: 3 }}
-                      {...params}
-                    />
-                  )}
-                />
-                <DateTimePicker
-                  label="End Time"
-                  value={end_time}
-                  onChange={handleChangeDT2}
-                  renderInput={(params) => (
-                    <TextField
-                      InputLabelProps={{
-                        style: { fontSize: 20, fontWeight: bold },
-                      }}
-                      sx={{
-                        backgroundColor: "white",
-                        borderRadius: 3,
-                      }}
-                      {...params}
-                    />
-                  )}
-                />
-              </Stack>
-            </LocalizationProvider>
             <div>
               <Autocomplete
                 onChange={(event, value) => setFeatures([{ value }])}
