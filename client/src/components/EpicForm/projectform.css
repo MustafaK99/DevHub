@@ -1,12 +1,12 @@
 .MuiFormLabel-root {
-  color: rgba(30, 215, 96, 1) !important;
+  color: rgb(255, 255, 255) !important;
 }
 .MuiFormLabel-root.Mui-focused {
-  color: rgba(30, 215, 96, 1) !important;
+  color: rgb(255, 255, 255) !important;
   outline: none;
 }
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-  border-color: rgba(30, 215, 96, 1) !important;
+  border-color: rgb(255, 255, 255) !important;
   outline: none;
 }
 
@@ -25,4 +25,14 @@
   margin-left: 310px;
   width: 400px;
   background-color: red;
+}
+
+.ql-container {
+  background-color: white;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.feature-new-epic {
+  margin-top: 40px;
 }

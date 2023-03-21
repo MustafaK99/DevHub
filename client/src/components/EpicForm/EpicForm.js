@@ -12,6 +12,9 @@ import { createEpic, reset } from "../../features/epics/epicSlice";
 
 import { getUsers } from "../../features/users/userSlice";
 import "./projectform.css";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
 const EpicForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -83,23 +86,19 @@ const EpicForm = () => {
               id="fullWidth"
               placeholder="Title"
               variant="outlined"
-              sx={{ backgroundColor: "white", borderRadius: 3 }}
+              sx={{ backgroundColor: "white" }}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <TextField
-              fullWidth
-              multiline
-              rows={10}
-              id="fullWidth"
-              placeholder="Description"
-              variant="outlined"
-              sx={{ borderRadius: 3, backgroundColor: "white" }}
+
+            <ReactQuill
               value={content}
-              onChange={(e) => setContent(e.target.value)}
+              theme="snow"
+              className="ql-container"
+              onChange={setContent}
             />
 
-            <div>
+            <div className="feature-new-epic">
               <Autocomplete
                 onChange={(event, value) => setFeatures([{ value }])}
                 multiple
@@ -118,7 +117,7 @@ const EpicForm = () => {
                     {...params}
                     variant="outlined"
                     placeholder="Select features for this epic"
-                    sx={{ borderRadius: 3, backgroundColor: "white" }}
+                    sx={{ backgroundColor: "white" }}
                   />
                 )}
               />
