@@ -41,7 +41,7 @@ const EpicForm = () => {
 
   let createdBy;
   let projectID;
-  let currentStatus;
+  const [currentStatus, setCurrentStatus] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [features, setFeatures] = useState("");
@@ -53,6 +53,8 @@ const EpicForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     createdBy = JSON.parse(localStorage.getItem("user"));
+    setCurrentStatus("in progress");
+    projectID = JSON.parse(localStorage.getItem("activeProject"));
 
     dispatch(
       createEpic({
