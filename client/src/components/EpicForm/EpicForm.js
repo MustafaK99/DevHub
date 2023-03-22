@@ -15,6 +15,13 @@ import "./projectform.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
+const features_val = [
+  {
+    created_by_user: "63b710ff18c6d8bcd2b3771f",
+    title: "Dev-123 Make a website",
+  },
+];
+
 const EpicForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -104,16 +111,8 @@ const EpicForm = () => {
               <Autocomplete
                 onChange={(event, value) => setFeatures([{ value }])}
                 multiple
-                options={[
-                  { label: "Dev-192 Create a website", id: 1 },
-                  { label: "Dev-186 Make a login page", id: 2 },
-                  { label: "Dev-184 Make a search page", id: 3 },
-                  { label: "Dev-182 Make a home page", id: 4 },
-                  { label: "Dev-188 Make a contact us page", id: 5 },
-                  { label: "Dev-113 Make a about us page", id: 6 },
-                  { label: "Dev-132 Make a map page", id: 7 },
-                  { label: "Dev-178 Make a register page", id: 8 },
-                ]}
+                options={features_val}
+                getOptionLabel={(option) => option.title}
                 renderInput={(params) => (
                   <TextField
                     {...params}
