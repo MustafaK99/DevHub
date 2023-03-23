@@ -2,6 +2,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
 import Modal from "react-modal";
+import PropTypes from "prop-types";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +21,24 @@ const features_val = [
     created_by_user: "63b710ff18c6d8bcd2b3771f",
     title: "Dev-123 Make a website",
   },
+
+  {
+    created_by_user: "63b710ff18c6d8bcd4b5117x",
+    title: "Dev-168 Make website work",
+  },
 ];
+
+class Editor extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { editorHtml: "", theme: "snow" };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(html) {
+    this.setState({ editorHtml: html });
+  }
+}
 
 const EpicForm = () => {
   const dispatch = useDispatch();
@@ -54,7 +72,7 @@ const EpicForm = () => {
   const [features, setFeatures] = useState("");
 
   const moveBack = () => {
-    navigate("/projects");
+    navigate("/epics");
   };
 
   const onSubmit = (e) => {
@@ -63,6 +81,11 @@ const EpicForm = () => {
     setCurrentStatus("in progress");
     projectID = JSON.parse(localStorage.getItem("activeProject"));
 
+    console.log(title);
+    console.log(content);
+    console.log(features);
+
+    /** 
     dispatch(
       createEpic({
         createdBy,
@@ -72,7 +95,7 @@ const EpicForm = () => {
         content,
         features,
       })
-    );
+    ); */
   };
 
   if (isLoading) {
@@ -95,7 +118,7 @@ const EpicForm = () => {
               id="fullWidth"
               placeholder="Title"
               variant="outlined"
-              sx={{ backgroundColor: "white" }}
+              sx={{ backgroundColor: "white", borderRadius: 2 }}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -105,6 +128,8 @@ const EpicForm = () => {
               theme="snow"
               className="ql-container"
               onChange={setContent}
+              modules={Editor.modules}
+              formats={Editor.formats}
             />
 
             <div className="feature-new-epic">
@@ -118,7 +143,7 @@ const EpicForm = () => {
                     {...params}
                     variant="outlined"
                     placeholder="Select features for this epic"
-                    sx={{ backgroundColor: "white" }}
+                    sx={{ backgroundColor: "white", borderRadius: 2 }}
                   />
                 )}
               />
@@ -142,6 +167,53 @@ const EpicForm = () => {
       </section>
     </div>
   );
+};
+
+Editor.modules = {
+  toolbar: [
+    [{ header: "1" }, { header: "2" }, { font: [] }],
+    [{ size: [] }],
+    ["bold", "italic", "underline", "strike", "blockquote"],
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
+    ],
+    ["link", "image", "video"],
+    ["clean"],
+  ],
+  clipboard: {
+    // toggle to add extra line breaks when pasting HTML:
+    matchVisual: false,
+  },
+};
+/*
+ * Quill editor formats
+ * See https://quilljs.com/docs/formats/
+ */
+Editor.formats = [
+  "header",
+  "font",
+  "size",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "blockquote",
+  "list",
+  "bullet",
+  "indent",
+  "link",
+  "image",
+  "video",
+];
+
+/*
+ * PropType validation
+ */
+Editor.propTypes = {
+  placeholder: PropTypes.string,
 };
 
 export default EpicForm;

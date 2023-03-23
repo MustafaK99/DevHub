@@ -24,7 +24,7 @@ const epicSchema = mongoose.Schema(
     },
     content: {
       type: String,
-      required: true,
+      required: false,
     },
     features: [
       {
@@ -43,6 +43,7 @@ const epicSchema = mongoose.Schema(
         },
       },
     ],
+    required: false,
   },
   {
     timestamps: true,
