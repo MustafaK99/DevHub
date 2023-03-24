@@ -84,18 +84,17 @@ const EpicForm = () => {
     console.log(title);
     console.log(content);
     console.log(features);
+    console.log(projectID);
 
-    /** 
     dispatch(
       createEpic({
-        createdBy,
-        projectID,
-        currentStatus,
+        created_by_user: createdBy,
+        project: projectID,
+        status: currentStatus,
         title,
         content,
-        features,
       })
-    ); */
+    );
   };
 
   if (isLoading) {

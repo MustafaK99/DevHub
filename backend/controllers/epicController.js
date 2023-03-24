@@ -18,14 +18,14 @@ const getEpic = asyncHandler(async (req, res) => {
 });
 
 const createEpic = asyncHandler(async (req, res) => {
-  const { project, status, title, content, features } = req.body;
+  const { createdBy, projectID, currentStatus, title, content } = req.body;
 
   const epic = new Epic({
-    project,
-    status,
+    createdBy,
+    projectID,
+    currentStatus,
     title,
     content,
-    features,
   });
 
   const savedEpic = await epic.save();
