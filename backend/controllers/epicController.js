@@ -21,9 +21,9 @@ const createEpic = asyncHandler(async (req, res) => {
   const { createdBy, projectID, currentStatus, title, content } = req.body;
 
   const epic = new Epic({
-    createdBy,
-    projectID,
-    currentStatus,
+    created_by_user: createdBy,
+    project: projectID,
+    status: currentStatus,
     title,
     content,
   });
