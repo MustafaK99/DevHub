@@ -80,12 +80,6 @@ const EpicForm = () => {
     createdBy = JSON.parse(localStorage.getItem("user"));
     projectID = JSON.parse(localStorage.getItem("activeProject"));
 
-    console.log(title);
-    console.log(content);
-    console.log(features);
-    console.log(projectID);
-    console.log(currentStatus);
-
     dispatch(
       createEpic({
         createdBy,
