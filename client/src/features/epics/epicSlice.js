@@ -45,10 +45,10 @@ export const deleteEpic = createAsyncThunk(
 
 export const getEpics = createAsyncThunk(
   "epics/getAll",
-  async (id, thunkAPI) => {
+  async (projectId, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await epicService.getEpics(id, token);
+      return await epicService.getEpics(projectId, token);
     } catch (error) {
       const message =
         (error.response && error.response.data && error.respone.data.message) ||

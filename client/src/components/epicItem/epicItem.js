@@ -3,17 +3,14 @@ import ToggleOnIcon from "@mui/icons-material/ToggleOn";
 import ToggleOffIcon from "@mui/icons-material/ToggleOff";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  reset,
-  deleteProject,
-  active_project,
-} from "../../features/projects/projectSlice";
 
-const EpicItem = () => {
-  /**const navigate = useNavigate();
+import { deleteEpic, reset } from "../../features/epics/epicSlice";
+
+const EpicItem = ({ epic }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { activeProject } = useSelector((state) => state.projects);
-  const [active, setActive] = useState();
+
+  /** 
   const editProject = () => {
     console.log(project.collaborators);
 
@@ -37,16 +34,9 @@ const EpicItem = () => {
   const deleteProj = () => {
     dispatch(deleteProject(project._id));
   };
+  */
 
-  const setActiveProject = () => {
-    setActive((prevActive) => !prevActive);
-    localStorage.setItem("activeProject", JSON.stringify(project._id));
-    dispatch(active_project(project._id));
-
-    console.log(project._id);
-    console.log(activeProject);
-  };
-
+  /** 
   const viewProject = () => {
     navigate("/ViewProject", {
       state: {
@@ -64,7 +54,7 @@ const EpicItem = () => {
 
   return (
     <>
-      <td>Epic name</td>
+      <td>{epic.title}</td>
       <td
         style={{
           whiteSpace: "nowrap",
@@ -73,11 +63,11 @@ const EpicItem = () => {
           textOverflow: "ellipsis",
         }}
       >
-        Epic description
+        {epic.content}
       </td>
       <td>13/03/2023</td>
       <td>13/04/2023</td>
-      <td>In progress</td>
+      <td>{epic.status}</td>
 
       <td className="actions">
         <button className="btn-edit" /**onClick={viewProject}*/>

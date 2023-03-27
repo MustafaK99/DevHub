@@ -10,7 +10,7 @@ const {
 
 const { protect } = require("../middleware/authMiddleware");
 
-router.get("/", protect, getEpics);
+router.get("/:projectId", protect, getEpics);
 router.post("/", protect, createEpic);
 router.get("/:id", protect, getEpic);
 router.put("/:id", protect, updateEpic);

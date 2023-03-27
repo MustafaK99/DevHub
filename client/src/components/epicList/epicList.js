@@ -1,30 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getProjects, reset } from "../../features/projects/projectSlice";
-import ProjectItem from "../projectItem/ProjectItem";
 import Pagination from "../Pagination/Pagination";
-import { getUsers } from "../../features/users/userSlice";
 import EpicItem from "../epicItem/epicItem";
+import { getEpics, reset } from "../../features/epics/epicSlice";
+import { getProjects } from "../../features/projects/projectSlice";
 
 const EpicList = () => {
   const navigate = useNavigate();
 
-  /**const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  const { projects, isLoading, isSuccess, isError, message } = useSelector(
-    (state) => state.projects
+  const { epics, isLoading, isSuccess, isError, message } = useSelector(
+    (state) => state.epics
   );
 
-  const { users } = useSelector((state) => state.users);
+  const { projects } = useSelector((state) => state.projects);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [projectsPerPage, setProjectsPerPage] = useState(10);
-  */
+  const [epicsPerPage, setProjectsPerPage] = useState(10);
+
   const onOpen = () => {
     navigate("/NewEpic");
   };
-  /** 
 
   useEffect(() => {
     if (isError) {
@@ -35,9 +33,7 @@ const EpicList = () => {
       dispatch(reset());
     }
 
-    dispatch(getUsers());
-
-    dispatch(getProjects());
+    dispatch(getEpics(JSON.parse(localStorage.getItem("activeProject"))));
 
     return () => {
       dispatch(reset());
@@ -45,14 +41,11 @@ const EpicList = () => {
   }, [isError, message, dispatch]);
 
   //Get current posts
-  const indexOfLastProject = currentPage * projectsPerPage;
-  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = projects.slice(
-    indexOfFirstProject,
-    indexOfLastProject
-  );
-  const totalPagesNum = Math.ceil(projects.length / projectsPerPage);
-  */
+  const indexOfLastEpic = currentPage * epicsPerPage;
+  const indexOfFirstEpic = indexOfLastEpic - epicsPerPage;
+  const currentEpics = epics.slice(indexOfFirstEpic, indexOfLastEpic);
+  const totalPagesNum = Math.ceil(epics.length / epicsPerPage);
+
   return (
     <>
       <div className="table-title">
@@ -83,12 +76,14 @@ const EpicList = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <EpicItem />
-          </tr>
+          {currentEpics.map((epic) => (
+            <tr key={epic._id}>
+              <EpicItem epic={epic} />
+            </tr>
+          ))}
         </tbody>
       </table>
-      {/**<Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage} /> */}
+      {<Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage} />}
     </>
   );
 };
