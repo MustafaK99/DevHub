@@ -3,6 +3,7 @@ import ToggleOnIcon from "@mui/icons-material/ToggleOn";
 import ToggleOffIcon from "@mui/icons-material/ToggleOff";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import parse from "html-react-parser";
 
 import { deleteEpic, reset } from "../../features/epics/epicSlice";
 
@@ -58,15 +59,14 @@ const EpicItem = ({ epic }) => {
       <td
         style={{
           whiteSpace: "nowrap",
-          maxWidth: "200px",
+          maxWidth: "100px",
+          maxHeight: "100px",
           overflow: "hidden",
           textOverflow: "ellipsis",
         }}
       >
-        {epic.content}
+        {parse(epic.content)}
       </td>
-      <td>13/03/2023</td>
-      <td>13/04/2023</td>
       <td>{epic.status}</td>
 
       <td className="actions">

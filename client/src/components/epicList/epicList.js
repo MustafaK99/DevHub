@@ -21,6 +21,7 @@ const EpicList = () => {
   const [epicsPerPage, setProjectsPerPage] = useState(10);
 
   const onOpen = () => {
+    dispatch(reset());
     navigate("/NewEpic");
   };
 
@@ -69,8 +70,6 @@ const EpicList = () => {
           <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Start Date</th>
-            <th>End Date</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>
