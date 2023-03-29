@@ -31,11 +31,10 @@ const EpicItem = ({ epic }) => {
       },
     });
   };
-
-  const deleteProj = () => {
-    dispatch(deleteProject(project._id));
-  };
   */
+  const deleteCurrentEpic = () => {
+    dispatch(deleteEpic(epic._id));
+  };
 
   /** 
   const viewProject = () => {
@@ -81,7 +80,7 @@ const EpicItem = ({ epic }) => {
             &#xE254;
           </i>
         </button>
-        <button className="btn-delete" /**onClick={deleteProj}*/>
+        <button className="btn-delete" onClick={deleteCurrentEpic}>
           <i className="material-icons" data-toggle="tooltip" title="Delete">
             &#xE872;
           </i>
