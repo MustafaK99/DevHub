@@ -5,25 +5,25 @@ const { trusted } = require("mongoose");
 const Issue = require("../models/issueModel");
 const User = require("../models/userModel");
 
-const getTickets = asyncHandler(async (req, res) => {
-  const tickets = await Ticket.find({ user: req.user.id });
+const getIssues = asyncHandler(async (req, res) => {
+  const issues = await Issue.find({ user: req.user.id });
 
-  res.status(200).json(tickets);
+  res.status(200).json(issues);
 });
 
-const getTicket = asyncHandler(async (req, res) => {
-  const ticket = await Ticket.findById(req.params.id);
+const getIssue = asyncHandler(async (req, res) => {
+  const issue = await Issue.findById(req.params.id);
 
-  if (ticket) {
-    res.json(ticket);
+  if (issue) {
+    res.json(issue);
   } else {
     res.status(404).end();
   }
 });
 
-const setTicket = asyncHandler(async (req, res) => {
+const setIssue = asyncHandler(async (req, res) => {
   const { status, title, content, issueType, priority, estimate } = req.body;
-  const ticket = new Ticket({
+  const issue = new Issue({
     status,
     title,
     content,
@@ -33,15 +33,15 @@ const setTicket = asyncHandler(async (req, res) => {
     user: req.user.id,
   });
 
-  const savedTicket = await ticket.save();
+  const savedIssue = await issue.save();
 
-  res.status(201).json(savedTicket);
+  res.status(201).json(savedIssue);
 });
 
-const updateTicket = asyncHandler(async (req, res) => {
-  const givenTicket = Ticket.findById(req.params.id);
+const updateIssue = asyncHandler(async (req, res) => {
+  const givenIssue = Issue.findById(req.params.id);
 
-  if (!givenTicket) {
+  if (!givenIssue) {
     res.status(400);
     next(error);
   }
@@ -64,15 +64,15 @@ const updateTicket = asyncHandler(async (req, res) => {
     res.status(401).json({ message: "Not Authorized" });
   }
 
-  newTicket = await Ticket.findByIdAndUpdate(req.params.id, ticket, {
+  newIssue = await Issue.findByIdAndUpdate(req.params.id, ticket, {
     new: true,
   });
-  res.status(400).json(newTicket);
+  res.status(400).json(newIssue);
 });
 
-const deleteTicket = asyncHandler(async (req, res) => {
-  const ticket = await Ticket.findByIdAndRemove(req.params.id);
-  if (!ticket) {
+const deleteIssue = asyncHandler(async (req, res) => {
+  const issue = await Issue.findByIdAndRemove(req.params.id);
+  if (!issue) {
     res.status(400);
   }
 
@@ -80,18 +80,18 @@ const deleteTicket = asyncHandler(async (req, res) => {
     res.status(401);
   }
 
-  if (ticket.user.toString() !== req.user.id) {
+  if (issue.user.toString() !== req.user.id) {
     res.status(401);
   }
 
-  await ticket.remove();
+  await issue.remove();
   res.status(200).json({ id: req.params.id });
 });
 
 module.exports = {
-  getTickets,
-  setTicket,
-  updateTicket,
-  deleteTicket,
-  getTicket,
+  getIssues,
+  setIssue,
+  updateIssue,
+  deleteIssue,
+  getIssue,
 };
