@@ -22,15 +22,26 @@ const getIssue = asyncHandler(async (req, res) => {
 });
 
 const setIssue = asyncHandler(async (req, res) => {
-  const { status, title, content, issueType, priority, estimate } = req.body;
-  const issue = new Issue({
+  const {
     status,
     title,
-    content,
+    summary,
+    description,
     issueType,
     priority,
     estimate,
-    user: req.user.id,
+    linkedIssues,
+  } = req.body;
+  const issue = new Issue({
+    created_by_user: req.user.id,
+    status,
+    title,
+    summary,
+    description,
+    issueType,
+    priority,
+    estimate,
+    linkedIssues,
   });
 
   const savedIssue = await issue.save();
@@ -46,14 +57,25 @@ const updateIssue = asyncHandler(async (req, res) => {
     next(error);
   }
 
-  const { status, title, content, issueType, priority, estimate } = req.body;
-  const ticket = {
+  const {
     status,
     title,
-    content,
+    summary,
+    description,
     issueType,
     priority,
     estimate,
+    linkedIssues,
+  } = req.body;
+  const ticket = {
+    status,
+    title,
+    summary,
+    description,
+    issueType,
+    priority,
+    estimate,
+    linkedIssues,
   };
 
   if (!req.user) {
@@ -80,7 +102,7 @@ const deleteIssue = asyncHandler(async (req, res) => {
     res.status(401);
   }
 
-  if (issue.user.toString() !== req.user.id) {
+  if (issue.created_by_user.toString() !== req.user.id) {
     res.status(401);
   }
 

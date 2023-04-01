@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const issueSchema = mongoose.Schema(
   {
+    assignee: {
+      type: mongoose.SchemaType.ObjectId,
+      required: false,
+      ref: "User",
+    },
     created_by_user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
@@ -21,7 +26,7 @@ const issueSchema = mongoose.Schema(
     },
     description: {
       type: String,
-      required: true,
+      required: false,
     },
     issueType: {
       type: String,
@@ -35,7 +40,24 @@ const issueSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
-    linkedIssues: [{}],
+    linkedIssues: [
+      {
+        id: {
+          type: mongoose.Schema.Types.ObjectId,
+          required: false,
+          ref: "Ticket",
+        },
+        status: {
+          type: String,
+          required: false,
+        },
+        title: {
+          type: String,
+          required: false,
+        },
+      },
+    ],
+    required: false,
   },
   {
     timestamps: true,
