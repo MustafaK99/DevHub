@@ -16,10 +16,6 @@ const issueSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    title: {
-      type: String,
-      required: true,
-    },
     summary: {
       type: String,
       required: true,
