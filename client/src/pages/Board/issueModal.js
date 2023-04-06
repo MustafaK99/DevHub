@@ -73,6 +73,20 @@ const IssueModal = ({ show, onClose }) => {
             )}
           />
 
+          <div>
+            <Autocomplete
+              options={["Dev-132", "Dev-678", "Dev-869"]}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="linked issues"
+                  placeholder="Link other issues to this issue"
+                  sx={{ borderRadius: 3 }}
+                />
+              )}
+            />
+          </div>
+
           <TextField
             fullWidth
             multiline
