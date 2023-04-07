@@ -1,15 +1,3 @@
-.MuiFormLabel-root {
-  color: rgba(30, 215, 96, 1) !important;
-}
-.MuiFormLabel-root.Mui-focused {
-  color: rgba(30, 215, 96, 1) !important;
-  outline: none;
-}
-.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-  border-color: rgba(30, 215, 96, 1) !important;
-  outline: none;
-}
-
 .new-project-form-content {
   display: grid;
   grid-template-columns: 1fr;

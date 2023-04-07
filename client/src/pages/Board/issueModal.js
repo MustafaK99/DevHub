@@ -41,12 +41,12 @@ const IssueModal = ({ show, onClose }) => {
     <Modal
       isOpen={show}
       onRequestClose={onClose}
-      className={"modal"}
+      className={"modal-issue"}
       overlayClassName={"overlay"}
     >
       <section className="new-project-form">
         <div className={"close-btn-ctn"}>
-          <h1 style={{ flex: "1 90%" }}> Create a new issue</h1>
+          <h1 style={{ flex: "1 90%", color: "white" }}> Create a new issue</h1>
           <button className="close-btn" onClick={onClose}>
             X
           </button>
@@ -55,10 +55,14 @@ const IssueModal = ({ show, onClose }) => {
           <TextField
             fullWidth
             multiline
+            inputProps={{ style: { color: "white" } }}
             id="fullWidth"
-            label="summary"
-            placeholder="Summary"
-            sx={{ borderRadius: 3 }}
+            label="Summary"
+            placeholder="Provide a Summary"
+            sx={{
+              borderRadius: 3,
+              backgroundColor: "#24292f",
+            }}
           />
 
           <Autocomplete
@@ -66,9 +70,9 @@ const IssueModal = ({ show, onClose }) => {
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="issueType"
-                placeholder="Issue Type"
-                sx={{ borderRadius: 3 }}
+                label="Issue Type"
+                placeholder="Select the Issue Type"
+                sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
               />
             )}
           />
@@ -79,9 +83,9 @@ const IssueModal = ({ show, onClose }) => {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="linked issues"
+                  label="Linked Issues"
                   placeholder="Link other issues to this issue"
-                  sx={{ borderRadius: 3 }}
+                  sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
                 />
               )}
             />
@@ -94,7 +98,7 @@ const IssueModal = ({ show, onClose }) => {
             id="fullWidth"
             label="Description"
             placeholder=""
-            sx={{ borderRadius: 3 }}
+            sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
           />
 
           <div>
@@ -105,7 +109,7 @@ const IssueModal = ({ show, onClose }) => {
                   {...params}
                   label="Assignee"
                   placeholder="Assign this issue"
-                  sx={{ borderRadius: 3 }}
+                  sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
                 />
               )}
             />
@@ -119,7 +123,7 @@ const IssueModal = ({ show, onClose }) => {
                   {...params}
                   label="Reporter"
                   placeholder="Assign the reporter"
-                  sx={{ borderRadius: 3 }}
+                  sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
                 />
               )}
             />

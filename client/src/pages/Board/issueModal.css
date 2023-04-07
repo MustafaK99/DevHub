@@ -1,16 +1,16 @@
-.modal {
-  background-color: #fafbfc;
+.modal-issue {
+  background-color: #0f0f0f;
   border-radius: 2px;
   margin: 48px 0 80px;
   min-height: 450px;
-  height: 600px;
+  height: 750px;
   width: 800px;
   outline: none;
   padding: 20px;
 }
 
 h1 {
-  color: #24292f;
+  color: #ffffff;
 }
 
 .overlay {
