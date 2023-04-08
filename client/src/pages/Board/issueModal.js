@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import "./issueModal.css";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { reset, createIssue } from "../../features/issues/issueSlice";
 
 import dayjs from "dayjs";
 import Stack from "@mui/material/Stack";
