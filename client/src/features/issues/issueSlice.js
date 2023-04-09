@@ -60,7 +60,7 @@ export const getIssues = createAsyncThunk(
   }
 );
 
-export const updateEpic = createAsyncThunk(
+export const updateIssue = createAsyncThunk(
   "issues/update",
   async (Data, thunkAPI) => {
     try {

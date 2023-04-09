@@ -65,7 +65,7 @@ const issueService = {
   createIssue,
   getIssues,
   deleteIssue,
-  updateEpic,
+  updateIssue,
 };
 
 export default issueService;

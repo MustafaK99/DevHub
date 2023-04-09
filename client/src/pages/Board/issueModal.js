@@ -81,6 +81,7 @@ const IssueModal = ({ show, onClose }) => {
           <div>
             <Autocomplete
               options={["Dev-132", "Dev-678", "Dev-869"]}
+              multiple
               renderInput={(params) => (
                 <TextField
                   {...params}
