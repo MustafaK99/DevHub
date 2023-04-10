@@ -38,6 +38,23 @@ const IssueModal = ({ show, onClose }) => {
     "James Doe Sr",
     "James Doe III",
   ];
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    createdBy = JSON.parse(localStorage.getItem("user"));
+    projectID = JSON.parse(localStorage.getItem("activeProject"));
+
+    dispatch(
+      createEpic({
+        createdBy,
+        projectID,
+        currentStatus,
+        title,
+        content,
+      })
+    );
+  };
+
   return (
     <Modal
       isOpen={show}
@@ -46,95 +63,100 @@ const IssueModal = ({ show, onClose }) => {
       overlayClassName={"overlay"}
     >
       <section className="new-project-form">
-        <div className={"close-btn-ctn"}>
-          <h1 style={{ flex: "1 90%", color: "white" }}> Create a new issue</h1>
-          <button className="close-btn" onClick={onClose}>
-            X
-          </button>
-        </div>
-        <div className="new-project-form-content">
-          <TextField
-            fullWidth
-            multiline
-            inputProps={{ style: { color: "white" } }}
-            id="fullWidth"
-            label="Summary"
-            placeholder="Provide a Summary"
-            sx={{
-              borderRadius: 3,
-              backgroundColor: "#24292f",
-            }}
-          />
+        <form onSubmit={onSubmit}>
+          <div className={"close-btn-ctn"}>
+            <h1 style={{ flex: "1 90%", color: "white" }}>
+              {" "}
+              Create a new issue
+            </h1>
+            <button className="close-btn" onClick={onClose}>
+              X
+            </button>
+          </div>
+          <div className="new-project-form-content">
+            <TextField
+              fullWidth
+              multiline
+              inputProps={{ style: { color: "white" } }}
+              id="fullWidth"
+              label="Summary"
+              placeholder="Provide a Summary"
+              sx={{
+                borderRadius: 3,
+                backgroundColor: "#24292f",
+              }}
+            />
 
-          <Autocomplete
-            options={["Bugfix", "Epic", "Feature", "Issue"]}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Issue Type"
-                placeholder="Select the Issue Type"
-                sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
+            <Autocomplete
+              options={["Bugfix", "Epic", "Feature", "Issue"]}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Issue Type"
+                  placeholder="Select the Issue Type"
+                  sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
+                />
+              )}
+            />
+
+            <div>
+              <Autocomplete
+                options={["Dev-132", "Dev-678", "Dev-869"]}
+                multiple
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Linked Issues"
+                    placeholder="Link other issues to this issue"
+                    sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
+                  />
+                )}
               />
-            )}
-          />
+            </div>
 
-          <div>
-            <Autocomplete
-              options={["Dev-132", "Dev-678", "Dev-869"]}
-              multiple
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Linked Issues"
-                  placeholder="Link other issues to this issue"
-                  sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
-                />
-              )}
+            <TextField
+              fullWidth
+              multiline
+              rows={10}
+              id="fullWidth"
+              label="Description"
+              placeholder=""
+              sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
             />
+
+            <div>
+              <Autocomplete
+                options={users}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Assignee"
+                    placeholder="Assign this issue"
+                    sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
+                  />
+                )}
+              />
+            </div>
+
+            <div>
+              <Autocomplete
+                options={users}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Reporter"
+                    placeholder="Assign the reporter"
+                    sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
+                  />
+                )}
+              />
+            </div>
+
+            <button type="submit" className="btn btn-block center">
+              Submit
+            </button>
           </div>
-
-          <TextField
-            fullWidth
-            multiline
-            rows={10}
-            id="fullWidth"
-            label="Description"
-            placeholder=""
-            sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
-          />
-
-          <div>
-            <Autocomplete
-              options={users}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Assignee"
-                  placeholder="Assign this issue"
-                  sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
-                />
-              )}
-            />
-          </div>
-
-          <div>
-            <Autocomplete
-              options={users}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Reporter"
-                  placeholder="Assign the reporter"
-                  sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
-                />
-              )}
-            />
-          </div>
-
-          <button type="submit" className="btn btn-block center">
-            Submit
-          </button>
-        </div>
+        </form>
       </section>
     </Modal>
   );
