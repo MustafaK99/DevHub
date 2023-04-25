@@ -6,30 +6,17 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { reset, createIssue } from "../../features/issues/issueSlice";
 
-import dayjs from "dayjs";
-import Stack from "@mui/material/Stack";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { white } from "colors";
-
 Modal.setAppElement("body");
 
 const IssueModal = ({ show, onClose }) => {
-  const [dateAndtime1, setDateAndTime1] = React.useState(dayjs());
-  const [dateAndtime2, setDateAndTime2] = React.useState(dayjs().date(30));
-
-  const handleChangeDT1 = (newValue) => {
-    if (dayjs(newValue).isBefore(dayjs(dateAndtime2))) {
-      setDateAndTime1(newValue);
-    }
-  };
-
-  const handleChangeDT2 = (newValue) => {
-    if (dayjs(newValue).isAfter(dayjs(dateAndtime1))) {
-      setDateAndTime2(newValue);
-    }
-  };
+  const [assignee, setAssignee] = useState();
+  const [status, setStatus] = useState();
+  const [summary, setSummary] = useState();
+  const [description, setDescription] = useState();
+  const [issueType, setIssueType] = useState();
+  const [estimate, setEstimate] = useState();
+  const [priority, setPriority] = useState();
+  const [linkedIssues, setLinkedIssues] = useState();
 
   const users = [
     "Jane Doe",
@@ -94,7 +81,7 @@ const IssueModal = ({ show, onClose }) => {
               placeholder="Provide a Summary"
               sx={{
                 borderRadius: 3,
-                backgroundColor: "#24292f",
+                backgroundColor: "#282A2A",
               }}
             />
 
@@ -112,7 +99,7 @@ const IssueModal = ({ show, onClose }) => {
                   placeholder="Select the Issue Type"
                   sx={{
                     borderRadius: 3,
-                    backgroundColor: "#24292f",
+                    backgroundColor: "#282A2A",
                     borderColor: "white",
                   }}
                 />
@@ -133,7 +120,7 @@ const IssueModal = ({ show, onClose }) => {
                       },
                     }}
                     placeholder="Link other issues to this issue"
-                    sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
+                    sx={{ borderRadius: 3, backgroundColor: "#282A2A" }}
                   />
                 )}
               />
@@ -151,7 +138,7 @@ const IssueModal = ({ show, onClose }) => {
                 },
               }}
               placeholder=""
-              sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
+              sx={{ borderRadius: 3, backgroundColor: "#282A2A" }}
             />
 
             <div>
@@ -167,7 +154,7 @@ const IssueModal = ({ show, onClose }) => {
                       },
                     }}
                     placeholder="Assign this issue"
-                    sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
+                    sx={{ borderRadius: 3, backgroundColor: "#282A2A" }}
                   />
                 )}
               />
@@ -186,7 +173,7 @@ const IssueModal = ({ show, onClose }) => {
                       },
                     }}
                     placeholder="Assign the reporter"
-                    sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
+                    sx={{ borderRadius: 3, backgroundColor: "#282A2A" }}
                   />
                 )}
               />
