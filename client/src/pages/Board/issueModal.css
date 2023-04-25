@@ -32,13 +32,14 @@ h1 {
   height: 40px;
   width: 35px;
   font-size: 20px;
-  color: #24292f;
   border: none;
   border-radius: 25px;
+  margin-bottom: 5px;
+  color: white;
 }
 
 .close-btn:hover {
-  background-color: #9e9999;
+  background-color: #24292f;
   color: white;
 }
 
@@ -52,4 +53,12 @@ h1 {
   position: relative;
   top: 10px;
   left: 120px;
+}
+.MuiChip-filled {
+  background-color: #fff !important;
+}
+
+.MuiOutlinedInput-root {
+  color: #fff !important;
+  border-color: white;
 }

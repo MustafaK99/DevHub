@@ -41,18 +41,20 @@ const IssueModal = ({ show, onClose }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createdBy = JSON.parse(localStorage.getItem("user"));
-    projectID = JSON.parse(localStorage.getItem("activeProject"));
-
+    const createdBy = JSON.parse(localStorage.getItem("user"));
+    const projectID = JSON.parse(localStorage.getItem("activeProject"));
+    /** 
     dispatch(
-      createEpic({
+      createIssue({
         createdBy,
         projectID,
         currentStatus,
         title,
         content,
       })
+      
     );
+    */
   };
 
   return (
@@ -69,7 +71,11 @@ const IssueModal = ({ show, onClose }) => {
               {" "}
               Create a new issue
             </h1>
-            <button className="close-btn" onClick={onClose}>
+            <button
+              className="close-btn"
+              onClick={onClose}
+              style={{ color: "white" }}
+            >
               X
             </button>
           </div>
@@ -80,6 +86,11 @@ const IssueModal = ({ show, onClose }) => {
               inputProps={{ style: { color: "white" } }}
               id="fullWidth"
               label="Summary"
+              InputLabelProps={{
+                sx: {
+                  color: "white",
+                },
+              }}
               placeholder="Provide a Summary"
               sx={{
                 borderRadius: 3,
@@ -93,8 +104,17 @@ const IssueModal = ({ show, onClose }) => {
                 <TextField
                   {...params}
                   label="Issue Type"
+                  InputLabelProps={{
+                    sx: {
+                      color: "white",
+                    },
+                  }}
                   placeholder="Select the Issue Type"
-                  sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
+                  sx={{
+                    borderRadius: 3,
+                    backgroundColor: "#24292f",
+                    borderColor: "white",
+                  }}
                 />
               )}
             />
@@ -107,6 +127,11 @@ const IssueModal = ({ show, onClose }) => {
                   <TextField
                     {...params}
                     label="Linked Issues"
+                    InputLabelProps={{
+                      sx: {
+                        color: "white",
+                      },
+                    }}
                     placeholder="Link other issues to this issue"
                     sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
                   />
@@ -120,6 +145,11 @@ const IssueModal = ({ show, onClose }) => {
               rows={10}
               id="fullWidth"
               label="Description"
+              InputLabelProps={{
+                sx: {
+                  color: "white",
+                },
+              }}
               placeholder=""
               sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
             />
@@ -131,6 +161,11 @@ const IssueModal = ({ show, onClose }) => {
                   <TextField
                     {...params}
                     label="Assignee"
+                    InputLabelProps={{
+                      sx: {
+                        color: "white",
+                      },
+                    }}
                     placeholder="Assign this issue"
                     sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
                   />
@@ -145,6 +180,11 @@ const IssueModal = ({ show, onClose }) => {
                   <TextField
                     {...params}
                     label="Reporter"
+                    InputLabelProps={{
+                      sx: {
+                        color: "white",
+                      },
+                    }}
                     placeholder="Assign the reporter"
                     sx={{ borderRadius: 3, backgroundColor: "#24292f" }}
                   />
