@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const issueSchema = mongoose.Schema(
   {
     assignee: {
-      type: mongoose.SchemaType.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       required: false,
       ref: "User",
     },

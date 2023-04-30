@@ -22,7 +22,6 @@ const Board = () => {
   const [show, setShow] = useState(false);
 
   const onOpen = () => {
-    console.log("hello");
     setShow(true);
   };
 
@@ -180,10 +179,7 @@ const Board = () => {
                           setDragElement={setDragElement}
                         />
                       ))}
-                    <button
-                      className={"add-ticket"}
-                      onClick={(e) => onAddItem(status)}
-                    >
+                    <button className={"add-ticket"} onClick={onOpen}>
                       + Add ticket
                     </button>
                   </Col>
