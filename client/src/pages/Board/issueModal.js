@@ -10,6 +10,7 @@ Modal.setAppElement("body");
 
 const IssueModal = ({ show, onClose }) => {
   const [assignee, setAssignee] = useState();
+  const [reporter, setReporter] = useState();
   const [status, setStatus] = useState();
   const [summary, setSummary] = useState();
   const [description, setDescription] = useState();
@@ -83,10 +84,13 @@ const IssueModal = ({ show, onClose }) => {
                 borderRadius: 3,
                 backgroundColor: "#282A2A",
               }}
+              value={summary}
+              onChange={(e) => setSummary(e.target.value)}
             />
 
             <Autocomplete
-              options={["Bugfix", "Epic", "Feature", "Issue"]}
+              onChange={(event, value) => setIssueType([{ value }])}
+              options={["Bugfix", "Task", "SPIKE"]}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -108,6 +112,27 @@ const IssueModal = ({ show, onClose }) => {
 
             <div>
               <Autocomplete
+                onChange={(event, value) => setPriority([{ value }])}
+                options={["Critical", " High", "Medium", "Low"]}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Priority"
+                    InputLabelProps={{
+                      sx: {
+                        color: "white",
+                      },
+                    }}
+                    placeholder="Set the priority of the issue"
+                    sx={{ borderRadius: 3, backgroundColor: "#282A2A" }}
+                  />
+                )}
+              />
+            </div>
+
+            <div>
+              <Autocomplete
+                onChange={(event, value) => setLinkedIssues([{ value }])}
                 options={["Dev-132", "Dev-678", "Dev-869"]}
                 multiple
                 renderInput={(params) => (
@@ -127,6 +152,8 @@ const IssueModal = ({ show, onClose }) => {
             </div>
 
             <TextField
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
               fullWidth
               multiline
               rows={10}
@@ -143,6 +170,7 @@ const IssueModal = ({ show, onClose }) => {
 
             <div>
               <Autocomplete
+                onChange={(event, value) => setAssignee([{ value }])}
                 options={users}
                 renderInput={(params) => (
                   <TextField
@@ -162,6 +190,7 @@ const IssueModal = ({ show, onClose }) => {
 
             <div>
               <Autocomplete
+                onChange={(event, value) => setReporter([{ value }])}
                 options={users}
                 renderInput={(params) => (
                   <TextField
