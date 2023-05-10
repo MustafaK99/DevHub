@@ -138,7 +138,6 @@ const Board = () => {
             <IssueModal onClose={onClose} show={show} />
 
             <NavItem icon={<CaretIcon />}>
-              <DropdownMenu />
             </NavItem>
           </Dropdown>
 
@@ -153,7 +152,7 @@ const Board = () => {
           </div>
 
           <div className="sprint-taskbar">
-            <p>Days left till sprint end: 5</p>
+            <p>Days left: 5</p>
             <button className="button-column "> Complete Sprint</button>
           </div>
         </div>
