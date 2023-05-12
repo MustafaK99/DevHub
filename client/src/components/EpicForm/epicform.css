@@ -4,14 +4,14 @@
   gap: 10px;
 }
 
-.btn-project-form {
-  margin-left: 310px;
-  width: 400px;
+.btn-epic-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.btn-project-form-delete {
-  margin-left: 310px;
-  width: 400px;
+.btn-epic-delete {
   background-color: red;
 }
 

@@ -12,7 +12,7 @@ import Spinner from "../../components/Spinner";
 import { createEpic, reset } from "../../features/epics/epicSlice";
 
 import { getUsers } from "../../features/users/userSlice";
-import "./projectform.css";
+import "./epicform.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -141,20 +141,18 @@ const EpicForm = () => {
                 )}
               />
             </div>
+            <div className=" btn-epic-form">
+              <button type="submit" className="btn btn-block">
+                Submit
+              </button>
 
-            <button
-              type="submit"
-              className="btn btn-block center btn-project-form"
-            >
-              Submit
-            </button>
-
-            <button
-              onClick={moveBack}
-              className="btn btn-block center btn-project-form-delete"
-            >
-              Back
-            </button>
+              <button
+                onClick={moveBack}
+                className="btn btn-block btn-epic-delete"
+              >
+                Back
+              </button>
+            </div>
           </div>
         </form>
       </section>

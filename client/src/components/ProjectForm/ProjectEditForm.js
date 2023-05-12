@@ -208,19 +208,18 @@ const ProjectEditForm = ({
               />
             </div>
 
-            <button
-              type="submit"
-              className="btn btn-block center btn-project-form"
-            >
-              Update
-            </button>
+            <div className="btn-new-project-group">
+              <button type="submit" className="btn btn-block">
+                Update
+              </button>
 
-            <button
-              onClick={moveBack}
-              className="btn btn-block center btn-project-form-delete"
-            >
-              Back
-            </button>
+              <button
+                onClick={moveBack}
+                className="btn btn-block btn btn-new-project-back"
+              >
+                Back
+              </button>
+            </div>
           </div>
         </form>
       </section>

@@ -1,16 +1,17 @@
 .new-project-form-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.btn-project-form {
-  margin-left: 310px;
-  width: 400px;
+.btn-new-project-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.btn-project-form-delete {
-  margin-left: 310px;
-  width: 400px;
+.btn-new-project-back {
   background-color: red;
 }

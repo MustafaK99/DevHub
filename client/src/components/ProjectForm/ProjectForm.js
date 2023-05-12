@@ -51,11 +51,7 @@ const ProjectForm = () => {
   const [collabrators, setCollabrators] = useState([]);
 
   const [start_time, setStartTime] = useState(dayjs().toDate());
-  const [end_time, setEndTime] = useState(
-    dayjs()
-      .date(30)
-      .toDate()
-  );
+  const [end_time, setEndTime] = useState(dayjs().date(30).toDate());
   const handleChangeDT1 = (newValue) => {
     if (dayjs(newValue).isBefore(dayjs(end_time))) {
       setStartTime(newValue);
@@ -177,20 +173,18 @@ const ProjectForm = () => {
                 )}
               />
             </div>
+            <div className="btn-new-project-group">
+              <button type="submit" className="btn btn-block ">
+                Submit
+              </button>
 
-            <button
-              type="submit"
-              className="btn btn-block center btn-project-form"
-            >
-              Submit
-            </button>
-
-            <button
-              onClick={moveBack}
-              className="btn btn-block center btn-project-form-delete"
-            >
-              Back
-            </button>
+              <button
+                onClick={moveBack}
+                className="btn btn-block btn-new-project-back"
+              >
+                Back
+              </button>
+            </div>
           </div>
         </form>
       </section>
