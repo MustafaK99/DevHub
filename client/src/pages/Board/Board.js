@@ -134,11 +134,10 @@ const Board = () => {
       <div className="board-content">
         <div className="taskbar-board">
           <Dropdown>
-            <NavItem icon={<PlusIcon onClick={onOpen} />} />
+            <NavItem icon={<PlusIcon />} />
             <IssueModal onClose={onClose} show={show} />
 
-            <NavItem icon={<CaretIcon />}>
-            </NavItem>
+            <NavItem icon={<CaretIcon />}></NavItem>
           </Dropdown>
 
           <div className="filter">

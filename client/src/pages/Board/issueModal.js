@@ -18,6 +18,7 @@ const IssueModal = ({ show, onClose }) => {
   const [estimate, setEstimate] = useState();
   const [priority, setPriority] = useState();
   const [linkedIssues, setLinkedIssues] = useState();
+  const [labels, setLabels] = useState();
 
   const users = [
     "Jane Doe",
