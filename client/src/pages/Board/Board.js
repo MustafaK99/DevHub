@@ -130,31 +130,31 @@ const Board = () => {
   return (
     <>
       <MiniDrawer />
+      <div className="taskbar-board">
+        <Dropdown>
+          <NavItem icon={<PlusIcon />} />
+          <IssueModal onClose={onClose} show={show} />
+
+          <NavItem icon={<CaretIcon />}></NavItem>
+        </Dropdown>
+
+        <div className="filter">
+          <span>Filter columns</span>
+          <FilterButton button={categories} filter={filter} />
+        </div>
+
+        <div className="filter">
+          <span>Filter labels</span>
+          <FilterButton button={labels} filter={filterLabel} />
+        </div>
+
+        <div className="sprint-taskbar">
+          <p>Days left: 5</p>
+          <button className="button-column "> Complete Sprint</button>
+        </div>
+      </div>
 
       <div className="board-content">
-        <div className="taskbar-board">
-          <Dropdown>
-            <NavItem icon={<PlusIcon />} />
-            <IssueModal onClose={onClose} show={show} />
-
-            <NavItem icon={<CaretIcon />}></NavItem>
-          </Dropdown>
-
-          <div className="filter">
-            <span>Filter columns</span>
-            <FilterButton button={categories} filter={filter} />
-          </div>
-
-          <div className="filter">
-            <span>Filter labels</span>
-            <FilterButton button={labels} filter={filterLabel} />
-          </div>
-
-          <div className="sprint-taskbar">
-            <p>Days left: 5</p>
-            <button className="button-column "> Complete Sprint</button>
-          </div>
-        </div>
         <div className={"row"}>
           {["open", "in progress", "done"].map((status) => {
             return (
