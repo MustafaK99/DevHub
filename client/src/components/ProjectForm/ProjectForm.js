@@ -101,21 +101,32 @@ const ProjectForm = () => {
           <div className="new-project-form-content">
             <TextField
               fullWidth
+              inputProps={{ style: { color: "white" } }}
               id="fullWidth"
-              placeholder="Name"
-              variant="outlined"
-              sx={{ backgroundColor: "white", borderRadius: 3 }}
+              label="Name"
+              InputLabelProps={{
+                sx: {
+                  color: "white",
+                },
+              }}
+              sx={{ backgroundColor: "#282A2A", borderRadius: 3 }}
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <TextField
-              fullWidth
               multiline
               rows={10}
+              fullWidth
+              inputProps={{ style: { color: "white" } }}
               id="fullWidth"
-              placeholder="Description"
+              label="Description"
+              InputLabelProps={{
+                sx: {
+                  color: "white",
+                },
+              }}
               variant="outlined"
-              sx={{ borderRadius: 3, backgroundColor: "white" }}
+              sx={{ borderRadius: 3, backgroundColor: "#282A2A" }}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
@@ -129,9 +140,13 @@ const ProjectForm = () => {
                   renderInput={(params) => (
                     <TextField
                       InputLabelProps={{
-                        style: { fontSize: 20, fontWeight: bold },
+                        style: {
+                          fontSize: 20,
+                          fontWeight: bold,
+                          color: "white",
+                        },
                       }}
-                      sx={{ backgroundColor: "white", borderRadius: 3 }}
+                      sx={{ borderRadius: 3, backgroundColor: "#282A2A" }}
                       {...params}
                     />
                   )}
@@ -143,11 +158,15 @@ const ProjectForm = () => {
                   renderInput={(params) => (
                     <TextField
                       InputLabelProps={{
-                        style: { fontSize: 20, fontWeight: bold },
+                        style: {
+                          fontSize: 20,
+                          fontWeight: bold,
+                          color: "white",
+                        },
                       }}
                       sx={{
-                        backgroundColor: "white",
                         borderRadius: 3,
+                        backgroundColor: "#282A2A",
                       }}
                       {...params}
                     />
@@ -168,7 +187,7 @@ const ProjectForm = () => {
                     {...params}
                     variant="outlined"
                     placeholder="Select team mates for your project"
-                    sx={{ borderRadius: 3, backgroundColor: "white" }}
+                    sx={{ borderRadius: 3, backgroundColor: "#282A2A" }}
                   />
                 )}
               />

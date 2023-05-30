@@ -15,3 +15,12 @@
 .btn-new-project-back {
   background-color: red;
 }
+.MuiChip-filled {
+  background-color: #4e4a4a !important;
+  color: #fff !important;
+}
+
+.MuiOutlinedInput-root {
+  color: #fff !important;
+  border-color: white;
+}
