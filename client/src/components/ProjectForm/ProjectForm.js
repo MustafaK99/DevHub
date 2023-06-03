@@ -185,8 +185,13 @@ const ProjectForm = () => {
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    variant="outlined"
-                    placeholder="Select team mates for your project"
+                    label="Collabrators"
+                    InputLabelProps={{
+                      sx: {
+                        color: "white",
+                      },
+                    }}
+                    placeholder="Select collabrators for this project"
                     sx={{ borderRadius: 3, backgroundColor: "#282A2A" }}
                   />
                 )}
