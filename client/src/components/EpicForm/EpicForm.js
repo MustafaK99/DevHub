@@ -66,7 +66,7 @@ const EpicForm = () => {
 
   let createdBy;
   let projectID;
-  const currentStatus = "in progress";
+  const currentStatus = "Ready For Development";
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [features, setFeatures] = useState("");
@@ -108,10 +108,15 @@ const EpicForm = () => {
           <div className="new-project-form-content">
             <TextField
               fullWidth
+              inputProps={{ style: { color: "white" } }}
               id="fullWidth"
-              placeholder="Title"
-              variant="outlined"
-              sx={{ backgroundColor: "white", borderRadius: 2 }}
+              label="Title"
+              InputLabelProps={{
+                sx: {
+                  color: "white",
+                },
+              }}
+              sx={{ backgroundColor: "#282A2A", borderRadius: 3 }}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -134,9 +139,14 @@ const EpicForm = () => {
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    variant="outlined"
+                    label="Features"
+                    InputLabelProps={{
+                      sx: {
+                        color: "white",
+                      },
+                    }}
                     placeholder="Select features for this epic"
-                    sx={{ backgroundColor: "white", borderRadius: 2 }}
+                    sx={{ borderRadius: 3, backgroundColor: "#282A2A" }}
                   />
                 )}
               />

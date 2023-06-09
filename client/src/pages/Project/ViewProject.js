@@ -19,7 +19,7 @@ const ViewProject = () => {
   return (
     <section className="project-details-group">
       <div className="project-view-container">
-        <h1>Project details</h1>
+        <h1 className="view-project-title">Project details</h1>
         <div className="project-details-container">
           <h3>Project Name</h3>
           <p>{location.state.name}</p>

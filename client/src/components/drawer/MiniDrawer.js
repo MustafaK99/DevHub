@@ -193,53 +193,6 @@ export default function MiniDrawer() {
         </List>
         <Divider sx={{ borderColor: "white" }} />
 
-        <List>
-          <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                  color: "white",
-                }}
-              >
-                <AddIcon />
-              </ListItemIcon>
-              <ListItemText primary="New Epic" sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              onClick={() => navigate("/epics")}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                  color: "white",
-                }}
-              >
-                <DashboardIcon />
-              </ListItemIcon>
-              <ListItemText primary="Epics" sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        </List>
-
         <Divider sx={{ borderColor: "white" }} />
 
         <List>
@@ -290,7 +243,54 @@ export default function MiniDrawer() {
             </ListItemButton>
           </ListItem>
         </List>
+        <Divider sx={{ borderColor: "white" }} />
 
+        <List>
+          <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                  color: "white",
+                }}
+              >
+                <AddIcon />
+              </ListItemIcon>
+              <ListItemText primary="New Epic" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              onClick={() => navigate("/epics")}
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                  color: "white",
+                }}
+              >
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText primary="Epics" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+        </List>
         <Divider sx={{ borderColor: "white" }} />
         <List>
           <ListItem disablePadding sx={{ display: "block" }}>
