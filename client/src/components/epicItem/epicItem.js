@@ -55,17 +55,6 @@ const EpicItem = ({ epic }) => {
   return (
     <>
       <td>{epic.title}</td>
-      <td
-        style={{
-          whiteSpace: "nowrap",
-          maxWidth: "100px",
-          maxHeight: "100px",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-        }}
-      >
-        {parse(epic.content)}
-      </td>
       <td>{epic.status}</td>
 
       <td className="actions">
