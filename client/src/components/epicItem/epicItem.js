@@ -11,27 +11,18 @@ const EpicItem = ({ epic }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  /** 
-  const editProject = () => {
-    console.log(project.collaborators);
-
-    project.collaborators.forEach((x) =>
-      console.log(`the id is ${x.id} the name is ${x.label} ${x}`)
-    );
-
+  const editEpic = () => {
     dispatch(reset());
     navigate("/EditProject", {
       state: {
-        projectId: project._id,
-        name: project.name,
-        description: project.description,
-        start_time: project.start_time,
-        end_time: project.end_time,
-        collaborators: project.collaborators,
+        epicId: epic._id,
+        name: epic.name,
+        description: epic.description,
+        start_time: epic.status,
       },
     });
   };
-  */
+
   const deleteCurrentEpic = () => {
     dispatch(deleteEpic(epic._id));
   };
@@ -55,6 +46,16 @@ const EpicItem = ({ epic }) => {
   return (
     <>
       <td>{epic.title}</td>
+      <td
+        style={{
+          whiteSpace: "nowrap",
+          maxWidth: "200px",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
+        <pre>{epic.content}</pre>
+      </td>
       <td>{epic.status}</td>
 
       <td className="actions">
@@ -64,11 +65,12 @@ const EpicItem = ({ epic }) => {
           </i>
         </button>
 
-        <button className="btn-edit" /**onClick={editProject}*/>
+        <button className="btn-edit" onClick={editEpic}>
           <i className="material-icons" data-toggle="tooltip" title="Edit">
             &#xE254;
           </i>
         </button>
+
         <button className="btn-delete" onClick={deleteCurrentEpic}>
           <i className="material-icons" data-toggle="tooltip" title="Delete">
             &#xE872;

@@ -69,6 +69,7 @@ const EpicList = () => {
         <thead>
           <tr>
             <th>Name</th>
+            <th>Description</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>
