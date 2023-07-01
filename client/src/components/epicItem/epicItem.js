@@ -45,16 +45,35 @@ const EpicItem = ({ epic }) => {
 
   return (
     <>
-      <td>{epic.title}</td>
       <td
         style={{
           whiteSpace: "nowrap",
           maxWidth: "200px",
+          maxHeight: "100px",
           overflow: "hidden",
           textOverflow: "ellipsis",
         }}
       >
-        <pre>{epic.content}</pre>
+        {epic.title}
+      </td>
+      <td
+        style={{
+          whiteSpace: "nowrap",
+          maxWidth: "200px",
+          maxHeight: "100px",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
+        <div
+          dangerouslySetInnerHTML={{ __html: epic.content }}
+          style={{
+            overflow: "hidden",
+            maxHeight: "40px",
+            maxWidth: "200px",
+            textOverflow: "ellipsis",
+          }}
+        />
       </td>
       <td>{epic.status}</td>
 
