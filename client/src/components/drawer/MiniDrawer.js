@@ -2,9 +2,11 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import AddIcon from "@mui/icons-material/Add";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import QueueIcon from "@mui/icons-material/Queue";
 import SettingsIcon from "@mui/icons-material/Settings";
+import BallotIcon from '@mui/icons-material/Ballot';
 import MuiAppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -212,32 +214,7 @@ export default function MiniDrawer() {
                   color: "white",
                 }}
               >
-                <AddIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="New Features"
-                sx={{ opacity: open ? 1 : 0 }}
-              />
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                  color: "white",
-                }}
-              >
-                <DashboardIcon />
+                <BallotIcon />
               </ListItemIcon>
               <ListItemText primary="Features" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
@@ -246,28 +223,6 @@ export default function MiniDrawer() {
         <Divider sx={{ borderColor: "white" }} />
 
         <List>
-          <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                  color: "white",
-                }}
-              >
-                <AddIcon />
-              </ListItemIcon>
-              <ListItemText primary="New Epic" sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton
               onClick={() => navigate("/epics")}
@@ -285,7 +240,7 @@ export default function MiniDrawer() {
                   color: "white",
                 }}
               >
-                <DashboardIcon />
+                < FormatListBulletedIcon />
               </ListItemIcon>
               <ListItemText primary="Epics" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>

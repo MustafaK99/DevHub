@@ -53,7 +53,7 @@ const EpicList = () => {
         <div className="row">
           <div className="col-sm-6">
             <h2>
-              Active <b>Epics</b>
+               <b>Epics</b>
             </h2>
           </div>
           <div className="col-sm-6">
