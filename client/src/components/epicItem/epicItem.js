@@ -13,7 +13,7 @@ const EpicItem = ({ epic }) => {
 
   const editEpic = () => {
     dispatch(reset());
-    navigate("/EditProject", {
+    navigate("/EditEpic", {
       state: {
         epicId: epic._id,
         name: epic.name,
