@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 
 import { createEpic, reset } from "../../features/epics/epicSlice";
@@ -43,6 +43,7 @@ class Editor extends React.Component {
 const EditEpicForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { users, isError, message } = useSelector((state) => state.users);
   const { epics, isSuccess, isLoading } = useSelector((state) => state.epics);
@@ -64,11 +65,11 @@ const EditEpicForm = () => {
     };
   }, [isError, message, dispatch, navigate, isSuccess]);
 
-  let createdBy;
-  let projectID;
-  const currentStatus = "Ready For Development";
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  let projectID = JSON.parse(localStorage.getItem("activeProject"));
+
+  const [currentStatus, setCurrentStatus] = useState(location.state.status);
+  const [title, setTitle] = useState(location.state.title);
+  const [content, setContent] = useState(location.state.content);
   const [features, setFeatures] = useState("");
 
   const moveBack = () => {
@@ -77,13 +78,9 @@ const EditEpicForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createdBy = JSON.parse(localStorage.getItem("user"));
-    projectID = JSON.parse(localStorage.getItem("activeProject"));
 
     dispatch(
       createEpic({
-        createdBy,
-        projectID,
         currentStatus,
         title,
         content,
@@ -131,7 +128,7 @@ const EditEpicForm = () => {
               <Autocomplete
                 onChange={(event, value) => setFeatures([{ value }])}
                 multiple
-                options={features_val}
+                options={features}
                 getOptionLabel={(option) => option.title}
                 renderInput={(params) => (
                   <TextField
@@ -148,6 +145,29 @@ const EditEpicForm = () => {
                 )}
               />
             </div>
+            <Autocomplete
+              onChange={(event, value) => setCurrentStatus([{ value }])}
+              options={["Ready For Development", "In Progress", "Complete"]}
+              value={currentStatus}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Epic status"
+                  InputLabelProps={{
+                    sx: {
+                      color: "white",
+                    },
+                  }}
+                  placeholder="Select the status"
+                  sx={{
+                    borderRadius: 3,
+                    backgroundColor: "#282A2A",
+                    borderColor: "white",
+                  }}
+                />
+              )}
+            />
+
             <div className=" btn-epic-form">
               <button type="submit" className="btn btn-block">
                 Submit

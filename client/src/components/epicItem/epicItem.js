@@ -16,9 +16,9 @@ const EpicItem = ({ epic }) => {
     navigate("/EditEpic", {
       state: {
         epicId: epic._id,
-        name: epic.name,
-        description: epic.description,
-        start_time: epic.status,
+        status: epic.status,
+        title: epic.title,
+        content: epic.content,
       },
     });
   };
